@@ -1,0 +1,169 @@
+{
+  "search.exclude": {
+    "**/coverage": true,
+    "**/node_modules": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true,
+    "**/*.js.map": {
+      "when": "$(basename)"
+    }
+  },
+  "files.associations": {
+    "*.jsx": "javascriptreact",
+    "*.tsx": "typescriptreact",
+    ".npmrc": "dotenv"
+  },
+
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features",
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features",
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
+  "emmet.variables": {
+    "charset": "UTF-8",
+    "lang": "ko-KR"
+  },
+  "emmet.includeLanguages": {
+    "markdown": "html",
+    "mdx": "javascriptreact",
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "emmet.syntaxProfiles": {
+    "attr_case": "lower",
+    "attr_quotes": "double",
+    "self_closing_tag": "xhtml",
+    "tag_case": "lower",
+    "inline_break": 3,
+    "html": "xhtml",
+  },
+  "emmet.showExpandedAbbreviation": "always",
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.triggerExpansionOnTab": true,
+
+  "html.autoClosingTags": true,
+  "html.validate.styles": true,
+  "html.validate.scripts": true,
+  "html.format.wrapLineLength": 80,
+  "html.format.indentInnerHtml": true,
+  "html.format.indentHandlebars": true,
+  "html.format.maxPreserveNewLines": 1,
+  "html.format.wrapAttributes": "force-expand-multiline",
+
+  "css.validate": true,
+  "css.lint.vendorPrefix": "ignore",
+  "css.lint.unknownAtRules": "ignore",
+  "css.lint.unknownProperties": "ignore",
+  "css.completion.completePropertyWithSemicolon": true,
+
+  "editor.wordWrap": "off",
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.codeActionsOnSave": {
+    // "source.organizeImports": "explicit",
+    // "source.addMissingImports": "explicit",
+    // "source.fixAll.eslint": "explicit",
+  },
+
+  "javascript.autoClosingTags": true,
+  "javascript.format.enable": false,
+  "javascript.validate.enable": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.format.insertSpaceAfterSemicolonInForStatements": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": true,
+  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
+  "javascript.suggest.autoImports": true,
+  "javascript.suggest.paths": false,
+
+  "typescript.autoClosingTags": true,
+  "typescript.format.enable": false,
+  "typescript.validate.enable": true,
+  "typescript.check.npmIsInstalled": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.format.insertSpaceAfterTypeAssertion": true,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.paths": true,
+  
+  "path-intellisense.mappings": {
+    "@": "workspaceFolder/src"
+  },
+
+  "autoimport.filesToScan": "**/*.{js,jsx,ts,tsx,css,svg,jpg,jpeg,png}",
+  "autoimport.spaceBetweenBraces": true,
+  "autoimport.autoComplete": true,
+  
+  "errorLens.enabled": true,
+  "errorLens.fontSize": "14px",
+  // "errorLens.codeLensEnabled": false,
+  // "errorLens.gutterIconsEnabled": true,
+  // "errorLens.gutterIconSet": "emoji",
+  // "errorLens.gutterIconSize": "16px",
+  // "errorLens.gutterEmoji": {
+  //   "error": "🧨",
+  //   "warning": "⚠️",
+  //   "info": "📢",
+  //   "hint": "🔔"
+  // },
+  
+  "codeium.enableCodeLens": false,
+  "codeium.enableConfig": { 
+    "*": true,
+    "html": false,
+    "css": false,
+    "javascript": false,
+    "javascriptreact": false,
+    "typescript": false,
+    "typescriptreact": false,
+    "jsonc": false,
+    "json": false,
+  },
+
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    ".*Classes.*"
+  ],
+  // 참고: https://github.com/paolotiu/tailwind-intellisense-regex-list?tab=readme-ov-file#readme
+  "tailwindCSS.experimental.classRegex": [
+    ["Styles\\s*(?::\\s*[^=]+)?\\s*=\\s*([^;]*);", "['\"`]([^'\"`]*)['\"`]"],
+    ["clsx\\(.*?\\)(?!\\])", "(?:'|\"|`)([^\"'`]*)(?:'|\"|`)"],
+    ["classnames\\(([^)]*)\\)", "[\"'`]([^\"'`]*)[\"'`]"]
+  ],
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.includeLanguages": {
+    "javascriptreact": "html",
+    "plaintext": "html"
+  },
+  "tailwindCSS.experimental.configFile": "./tailwind.config.js",
+  "tailwind-fold.foldStyle": "QUOTES",
+  "tailwind-fold.unfoldIfLineSelected": true,
+  "tailwind-fold.unfoldedTextOpacity": 0.9,
+  "tailwind-fold.autoFold": false,
+}

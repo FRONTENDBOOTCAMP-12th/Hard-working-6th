@@ -1,0 +1,10 @@
+@layer base, components, utilities;
+
+@import './common/normalize.css' layer(base);
+@import './common/base.css' layer(base);
+
+@import './components/prose.css' layer(components);
+
+@import './utilities/a11y.css' layer(utilities);
+@import './variable.css' layer(utilities);
+@import 'tailwindcss';

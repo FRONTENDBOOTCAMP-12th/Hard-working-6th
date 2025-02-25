@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+
+@theme {
+  /* 디자인 토큰 구성 */
+  --nomal: #c1c2c1;
+  --fire: #ef7374;
+  --water: #74acf5;
+  --electric: #fcd659;
+  --grass: #82c274;
+  --esper: #f584a8;
+  --evil: #998b8c;
+}
