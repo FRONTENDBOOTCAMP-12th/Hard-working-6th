@@ -22,19 +22,19 @@
   },
 
   "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features",
+    "editor.defaultFormatter": "vscode.html-language-features"
   },
   "[css]": {
-    "editor.defaultFormatter": "vscode.css-language-features",
+    "editor.defaultFormatter": "vscode.css-language-features"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   "emmet.variables": {
@@ -53,7 +53,7 @@
     "self_closing_tag": "xhtml",
     "tag_case": "lower",
     "inline_break": 3,
-    "html": "xhtml",
+    "html": "xhtml"
   },
   "emmet.showExpandedAbbreviation": "always",
   "emmet.showSuggestionsAsSnippets": true,
@@ -109,7 +109,7 @@
   "typescript.disableAutomaticTypeAcquisition": true,
   "typescript.suggest.autoImports": true,
   "typescript.suggest.paths": true,
-  
+
   "path-intellisense.mappings": {
     "@": "workspaceFolder/src"
   },
@@ -117,7 +117,7 @@
   "autoimport.filesToScan": "**/*.{js,jsx,ts,tsx,css,svg,jpg,jpeg,png}",
   "autoimport.spaceBetweenBraces": true,
   "autoimport.autoComplete": true,
-  
+
   "errorLens.enabled": true,
   "errorLens.fontSize": "14px",
   // "errorLens.codeLensEnabled": false,
@@ -130,9 +130,9 @@
   //   "info": "📢",
   //   "hint": "🔔"
   // },
-  
+
   "codeium.enableCodeLens": false,
-  "codeium.enableConfig": { 
+  "codeium.enableConfig": {
     "*": true,
     "html": false,
     "css": false,
@@ -141,7 +141,7 @@
     "typescript": false,
     "typescriptreact": false,
     "jsonc": false,
-    "json": false,
+    "json": false
   },
 
   "tailwindCSS.classAttributes": [
@@ -161,9 +161,10 @@
     "javascriptreact": "html",
     "plaintext": "html"
   },
-  "tailwindCSS.experimental.configFile": "./tailwind.config.js",
+  // "tailwindCSS.experimental.configFile": "./tailwind.config.js",
+  "tailwindCSS.experimental.configFile": "./src/styles/tailwind.css",
   "tailwind-fold.foldStyle": "QUOTES",
   "tailwind-fold.unfoldIfLineSelected": true,
   "tailwind-fold.unfoldedTextOpacity": 0.9,
-  "tailwind-fold.autoFold": false,
+  "tailwind-fold.autoFold": false
 }
