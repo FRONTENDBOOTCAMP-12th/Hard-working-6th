@@ -7,4 +7,7 @@
 
 @import './utilities/a11y.css' layer(utilities);
 @import './variable.css' layer(utilities);
-@import 'tailwindcss';
+
+@import './tailwind.css';
+
+/* @import './components/playground.css' layer(components); */
