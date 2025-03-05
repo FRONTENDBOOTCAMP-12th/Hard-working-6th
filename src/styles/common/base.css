@@ -2,9 +2,10 @@
 
 body {
   font-family: "Pretendard Variable", Pretendard;
-  font-size: 1.6rem;
-  /* 16px */
   line-height: 1.5;
+  font-size: 1rem;
+  color: #666666;
+  position: relative;
 }
 
 nav ol,

@@ -11,8 +11,3 @@
 @import './tailwind.css';
 
 /* @import './components/playground.css' layer(components); */
-
-* {
-  font-size: 1rem;
-  color: #666666;
-}
