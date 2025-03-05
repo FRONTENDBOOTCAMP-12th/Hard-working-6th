@@ -6,16 +6,16 @@ import TairoTheme from './pages/TairoTheme';
 import PageLayout from './layout/PageLayout';
 
 function App() {
-  useEffect(() => {
-    // async function signUp() {
-    //   const { data, error } = await supabaseClient.auth.signUp({
-    //     email: 'audwognl@gmail.com',
-    //     password: 'password',
-    //   });
-    //   console.log(data, error);
-    // }
-    // signUp();
-  });
+  // useEffect(() => {
+  //   // async function signUp() {
+  //   //   const { data, error } = await supabaseClient.auth.signUp({
+  //   //     email: 'audwognl@gmail.com',
+  //   //     password: 'password',
+  //   //   });
+  //   //   console.log(data, error);
+  //   // }
+  //   // signUp();
+  // });
 
   return (
     <BrowserRouter>
