@@ -1,38 +1,31 @@
 import { useState } from 'react';
 import Chip from '../Atom/Chip';
 
-const ChipList = () => {
+const chipData = ['애정운', '재물운', '학업운', '월간운세'];
+
+interface ChipListProps {
+  onSelect: (selection: string | null) => void;
+}
+
+const ChipList = ({ onSelect }: ChipListProps) => {
   const [selectedChip, setSelectedChip] = useState<string | null>(null);
 
-  const chipData = [
-    { label: '애정운', content: '애정운입니다.' },
-    { label: '재물운', content: '재물운입니다.' },
-    { label: '학업운', content: '학업운입니다.' },
-    { label: '월간운세', content: '월간운세입니다.' },
-  ];
-
   const handleChipClick = (label: string) => {
-    setSelectedChip(label === selectedChip ? null : label);
+    const newSelection = label === selectedChip ? null : label;
+    setSelectedChip(newSelection);
+    onSelect(newSelection); // 부모 컴포넌트로 전달
   };
 
   return (
-    <div>
-      <div className="flex space-x-3 ml-3">
-        {chipData.map((chip) => (
-          <Chip
-            key={chip.label}
-            label={chip.label}
-            onClick={() => handleChipClick(chip.label)}
-            selected={chip.label === selectedChip}
-          />
-        ))}
-      </div>
-
-      {selectedChip && (
-        <div className="mt-4 text-white text-base ml-3">
-          <p>{chipData.find((chip) => chip.label === selectedChip)?.content}</p>
-        </div>
-      )}
+    <div className="flex space-x-3 ml-3">
+      {chipData.map((label) => (
+        <Chip
+          key={label}
+          label={label}
+          onClick={() => handleChipClick(label)}
+          selected={label === selectedChip}
+        />
+      ))}
     </div>
   );
 };
