@@ -1,6 +1,9 @@
-// import { useEffect } from 'react';
-// import supabaseClient from './utils/SupabaseClient';
-import ChipList from './components/Molecule/ChipList';
+import { useEffect } from 'react';
+import supabaseClient from './utils/SupabaseClient';
+import { BrowserRouter, Route, Routes } from 'react-router';
+import TairoPage from './pages/TairoPage';
+import TairoTheme from './pages/TairoTheme';
+import PageLayout from './layout/PageLayout';
 
 function App() {
   // useEffect(() => {
@@ -15,10 +18,14 @@ function App() {
   // });
 
   return (
-    <div className="flex flex-col bg-primary-gradient1">
-      <h1>Chip Component Test</h1>
-      <ChipList />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<PageLayout />}>
+          <Route path="/tairo" element={<TairoPage />} />
+          <Route path="/tairo-theme" element={<TairoTheme />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
