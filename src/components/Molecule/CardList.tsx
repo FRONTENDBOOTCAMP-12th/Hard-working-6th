@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import cardData from '../../assets/data/card_data.json';
+import { tm } from '@/utils/tw-marge';
 
 interface CardListProps {
   setCard: (card: string) => void;
@@ -30,7 +31,24 @@ function CardList({ setCard }: CardListProps) {
           return (
             <motion.li
               key={card}
-              className="absolute left-1/2 transform -translate-x-1/2 bg-[url('/src/assets/tarot_image/card-back.png')] bg-cover shadow-md w-30 h-53 flex justify-center items-center text-black font-bold rounded-md origin-bottom hover:cursor-pointer"
+              className={tm(
+                'absolute',
+                'left-1/2',
+                'transform -translate-x-1/2',
+                " bg-[url('/src/assets/tarot_image/card-back.png')]",
+                'bg-cover',
+                'shadow-md',
+                ' w-30',
+                'h-53',
+                'flex',
+                'justify-center',
+                'items-center',
+                'text-black',
+                'font-bold',
+                'rounded-md',
+                'origin-bottom',
+                'hover:cursor-pointer'
+              )}
               initial={{ rotate: 0, opacity: 0, y: 250 }}
               animate={{ rotate: angle, opacity: 1, x: x, y: y }}
               transition={{ delay: index * 0.02, duration: 0.5 }}
