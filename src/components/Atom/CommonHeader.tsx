@@ -15,7 +15,7 @@ function CommonHeader({ text = 'title' }: CommonHeaderProps) {
           aria-label="뒤로가기"
         >
           <img
-            src="/src/assets/icon/chevron_left.svg"
+            src="/src/assets/icon/chevron-left.svg"
             alt=""
             className="w-full"
           />
