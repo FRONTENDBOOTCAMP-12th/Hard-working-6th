@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import supabaseClient from './utils/SupabaseClient';
+import { BrowserRouter, Route, Routes } from 'react-router';
+import TairoPage from './pages/TairoPage';
 
 function App() {
   useEffect(() => {
@@ -13,7 +15,13 @@ function App() {
     // signUp();
   });
 
-  return <div className="bg-red-200">box</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/tairo" element={<TairoPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
