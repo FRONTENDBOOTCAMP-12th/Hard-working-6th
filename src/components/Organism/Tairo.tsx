@@ -1,6 +1,7 @@
 import OpenAI from 'openai';
 import CardList from '../Molecule/CardList';
 import { useEffect, useState, useRef } from 'react';
+import { useStore } from '@/stores/theme';
 
 const { VITE_GPTAPI_KEY } = import.meta.env;
 
@@ -10,7 +11,8 @@ const openai = new OpenAI({
 });
 
 function Tairo() {
-  const [theme, setTheme] = useState('오늘의 운세');
+  const theme = useStore((state) => state.theme);
+
   const [card, setCard] = useState('');
   const [msg, setMsg] = useState('');
 
@@ -21,7 +23,7 @@ function Tairo() {
     const signal = controller.signal;
 
     if (isMounted.current) {
-      console.log('실행');
+      console.log('실행', theme);
       async function fetchGpt() {
         try {
           const completion = await openai.chat.completions.create(
@@ -57,7 +59,7 @@ function Tairo() {
         }
       }
 
-      fetchGpt();
+      // fetchGpt();
       return () => {
         controller.abort();
       };
@@ -70,7 +72,7 @@ function Tairo() {
       <CardList setCard={setCard}></CardList>
       <h2>{card}</h2>
 
-      <p>{msg}</p>
+      <p>카드를 뽑아주세요.</p>
     </div>
   );
 }
