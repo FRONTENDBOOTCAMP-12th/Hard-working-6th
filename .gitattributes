@@ -1,1 +1,8 @@
 * text eol=lf
+
+# Git은 지정된 파일이 텍스트가 아니라는 것을 인식하므로 변경하려고 하면 안됩니다.
+*.png binary
+*.jpg binary
+*.gif binary
+*.avif binary
+*.webp binary

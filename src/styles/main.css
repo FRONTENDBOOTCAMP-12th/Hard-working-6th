@@ -6,7 +6,7 @@
 @import './components/prose.css' layer(components);
 
 @import './utilities/a11y.css' layer(utilities);
-@import './variable.css' layer(utilities);
+/* @import './variable.css' layer(utilities); */
 
 @import './tailwind.css';
 

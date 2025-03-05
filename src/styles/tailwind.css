@@ -11,7 +11,7 @@
   --color-disable: #C7C7C7;
   --color-font: #666666;
 
-  /* ------------------------------- font-weight ------------------------------ /
+  /* ------------------------------- font-weight ------------------------------ */
   --text-thin: 100;
   --text-extra-light: 200;
   --text-light: 300;
@@ -22,26 +22,26 @@
   --text-extra-bold: 800;
   --text-black: 900;
 
-  / -------------------------------- font-size ------------------------------- /
+  /* -------------------------------- font-size ------------------------------- */
   --font-sm: 0.75rem;
-  / 12px /
+  /* 12px */
   --font-md: 1rem;
-  / 16px /
+  /* 16px */
   --font-lg: 1.25rem;
-  / 20px /
+  /* 20px */
   --font-xl: 1.5rem;
-  / 24px /
+  /* 24px */
   --font-2xl: 1.75rem;
-  / 28px /
+  /* 28px */
   --font-3xl: 2rem;
-  / 32px /
+  /* 32px */
   --font-4xl: 2.25rem;
-  / 36px /
+  /* 36px */
   --font-5xl: 2.5rem;
-  / 40px /
+  /* 40px */
 
-  / ------------------------------- line-height ------------------------------ /
+  /* ------------------------------- line-height ------------------------------ */
   --extra-light-line-height: 1.4;
   --light-line-height: 1.5;
-  --regular-line-height: 1.6;*/
+  --regular-line-height: 1.6;
 }

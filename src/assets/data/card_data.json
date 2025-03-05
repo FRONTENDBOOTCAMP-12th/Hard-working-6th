@@ -1,0 +1,104 @@
+{
+  "cards": [
+    {
+      "name": "The Fool",
+      "src": "/src/assets/00_the_fool.png",
+      "mean": "새로운 시작, 자유, 순수, 모험"
+    },
+    {
+      "name": "The Magician",
+      "src": "/src/assets/01_the_magician.webp",
+      "mean": "창조력, 의지, 잠재력 실현"
+    },
+    {
+      "name": "The High Priestess",
+      "src": "/src/assets/02_the_high_priestess.webp",
+      "mean": "직관, 신비, 내면의 지혜"
+    },
+    {
+      "name": "The Empress",
+      "src": "/src/assets/03_the_empress.webp",
+      "mean": "풍요, 모성, 창조성, 자연"
+    },
+    {
+      "name": "The Emperor",
+      "src": "/src/assets/04_the_emperor.webp",
+      "mean": "권위, 안정, 구조, 리더십"
+    },
+    {
+      "name": "The Hierophant",
+      "src": "/src/assets/05_the_hierophant.webp",
+      "mean": "전통, 가르침, 영적 지도"
+    },
+    {
+      "name": "The Lovers",
+      "src": "/src/assets/06_the_lovers.webp",
+      "mean": "사랑, 조화, 선택, 관계"
+    },
+    {
+      "name": "The Chariot",
+      "src": "/src/assets/07_the_chariot.webp",
+      "mean": "승리, 의지, 전진"
+    },
+    {
+      "name": "Strength",
+      "src": "/src/assets/08_strength.webp",
+      "mean": "용기, 인내, 내면의 힘"
+    },
+    {
+      "name": "The Hermit",
+      "src": "/src/assets/09_the_hermit.webp",
+      "mean": "고독, 성찰, 지혜"
+    },
+    {
+      "name": "Wheel of Fortune",
+      "src": "/src/assets/10_wheel_of_fortune.webp",
+      "mean": "운명, 변화, 행운"
+    },
+    {
+      "name": "Justice",
+      "src": "/src/assets/11_justice.webp",
+      "mean": "공정, 균형, 책임"
+    },
+    {
+      "name": "The Hanged Man",
+      "src": "/src/assets/12_the_hanged_man.png",
+      "mean": "희생, 새로운 관점, 멈춤"
+    },
+    {
+      "name": "Death",
+      "src": "/src/assets/13_death.png",
+      "mean": "변화, 끝맺음, 새로운 시작"
+    },
+    {
+      "name": "Temperance",
+      "src": "/src/assets/14_temperance.webp",
+      "mean": "조화, 균형, 절제"
+    },
+    {
+      "name": "The Devil",
+      "src": "/src/assets/15_the_devil.webp",
+      "mean": "유혹, 속박, 물질주의"
+    },
+    {
+      "name": "The Tower",
+      "src": "/src/assets/16_the_tower.webp",
+      "mean": "혼란, 붕괴, 깨달음"
+    },
+    {
+      "name": "The Star",
+      "src": "/src/assets/17_the_star.png",
+      "mean": "희망, 영감, 치유"
+    },
+    {
+      "name": "The Moon",
+      "src": "/src/assets/18_the_moon.png",
+      "mean": "환상, 불안, 직관"
+    },
+    {
+      "name": "The World",
+      "src": "/src/assets/21_the_world.png",
+      "mean": "완성, 성취, 통합"
+    }
+  ]
+}
