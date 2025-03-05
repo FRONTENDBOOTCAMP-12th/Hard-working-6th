@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import supabaseClient from './utils/SupabaseClient';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import TairoPage from './pages/TairoPage';
+import TairoTheme from './pages/TairoTheme';
+import PageLayout from './layout/PageLayout';
 
 function App() {
   useEffect(() => {
@@ -18,7 +20,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/tairo" element={<TairoPage />} />
+        <Route element={<PageLayout />}>
+          <Route path="/tairo" element={<TairoPage />} />
+          <Route path="/tairo-theme" element={<TairoTheme />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
