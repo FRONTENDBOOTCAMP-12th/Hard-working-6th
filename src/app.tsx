@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import supabaseClient from './utils/SupabaseClient';
+import TodayFortune from './components/Atom/TodayFortune';
+import CommonNav from './components/Atom/CommonNav';
 
 function App() {
   useEffect(() => {
@@ -13,7 +15,12 @@ function App() {
     // signUp();
   });
 
-  return <div className="bg-red-200">box</div>;
+  return (
+    <>
+      <CommonNav></CommonNav>
+      <TodayFortune></TodayFortune>
+    </>
+  );
 }
 
 export default App;

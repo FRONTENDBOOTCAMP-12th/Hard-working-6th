@@ -29,7 +29,7 @@ function CommonNav() {
               alt="홈 메뉴 "
               className="size-[30px]"
             />
-            <p className="text-white text-xs">홈</p>
+            <p className="text-white text-c-sm font-normal">홈</p>
           </a>
         </li>
 
@@ -43,7 +43,7 @@ function CommonNav() {
               alt="타로 메뉴"
               className="size-[30px]"
             />
-            <p className="text-white text-xs">타로</p>
+            <p className="text-white text-c-sm font-normal">타로</p>
           </a>
         </li>
 
@@ -57,7 +57,7 @@ function CommonNav() {
               alt="기록 메뉴"
               className="size-[30px]"
             />
-            <p className="text-white text-xs">기록</p>
+            <p className="text-white text-c-sm font-normal">기록</p>
           </a>
         </li>
 
@@ -71,7 +71,7 @@ function CommonNav() {
               alt="내정보 메뉴"
               className="size-[30px]"
             />
-            <p className="text-white text-xs">내정보</p>
+            <p className="text-white text-c-sm font-normal">내정보</p>
           </a>
         </li>
       </ul>

@@ -10,7 +10,6 @@ function CommonHeader({ text = 'title' }: CommonHeaderProps) {
       <div className={tm('relative', 'flex flex-row')}>
         <button
           type="button"
-          // onClick={handleBack}
           className={tm('w-9 h-9', 'ml-5')}
           aria-label="뒤로가기"
         >
@@ -21,9 +20,14 @@ function CommonHeader({ text = 'title' }: CommonHeaderProps) {
           />
         </button>
 
-        <p className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        <h1
+          className={tm(
+            'absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]',
+            'font-medium'
+          )}
+        >
           {text}
-        </p>
+        </h1>
       </div>
     </header>
   );
