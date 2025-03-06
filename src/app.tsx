@@ -1,6 +1,7 @@
 // import { useEffect } from 'react';
 // import supabaseClient from './utils/SupabaseClient';
-import ChipList from './components/Molecule/ChipList';
+// import ChipList from './components/Molecule/ChipList';
+import HistoryCalendar from './components/Atom/Calendar';
 
 function App() {
   // useEffect(() => {
@@ -16,8 +17,8 @@ function App() {
 
   return (
     <div className="flex flex-col bg-primary-gradient1">
-      <h1>Chip Component Test</h1>
-      <ChipList />
+      <h1>Calendar Test</h1>
+      <HistoryCalendar />
     </div>
   );
 }
