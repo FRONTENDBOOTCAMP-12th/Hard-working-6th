@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import supabaseClient from './utils/SupabaseClient';
 import { BrowserRouter, Route, Routes } from 'react-router';
