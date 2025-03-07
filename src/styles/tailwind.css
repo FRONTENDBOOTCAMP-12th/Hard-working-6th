@@ -1,6 +1,12 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-gradient1: #4F2D86;
-  --color-gradient2: #393C86;
+  --color-primary-gradient1: #4F2D86;
+  --color-primary-gradient2: #393C86;
+  --color-black: #121212;
+  --color-red: #D50000;
+  --color-gray: #AEAEAE;
+  --color-light-gray: #EAEAEA;
+  --color-disable: #C7C7C7;
+  --color-font: #666666;
 }
