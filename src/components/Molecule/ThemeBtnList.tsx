@@ -3,7 +3,14 @@ import ThemeButton from '../Atom/ThemeButton';
 import { useStore } from '@/stores/theme';
 
 function ThemeButtonList() {
-  const ThemeData = ['애정운', '재물운', '학업운', '월간운세'];
+  const ThemeData = [
+    '애정운',
+    '재물운',
+    '학업운',
+    '취업운',
+    '오늘의 운세',
+    '월간운세',
+  ];
   const updateTheme = useStore((state) => state.updateTheme);
 
   return (
