@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-  /* ------------------------------- font-color ------------------------------ */
+  /* ------------------------------- color ------------------------------ */
   --color-primary-gradient1: #4F2D86;
   --color-primary-gradient2: #393C86;
   --color-black: #121212;
@@ -11,37 +11,23 @@
   --color-disable: #C7C7C7;
   --color-font: #666666;
 
-  /* ------------------------------- font-weight ------------------------------ */
-  --text-thin: 100;
-  --text-extra-light: 200;
-  --text-light: 300;
-  --text-regular: 400;
-  --text-medium: 500;
-  --text-semi-bold: 600;
-  --text-bold: 700;
-  --text-extra-bold: 800;
-  --text-black: 900;
-
   /* -------------------------------- font-size ------------------------------- */
-  --font-sm: 0.75rem;
+  --text-c-sm: 0.75rem;
   /* 12px */
-  --font-md: 1rem;
+  --text-c-md: 1rem;
   /* 16px */
-  --font-lg: 1.25rem;
+  --text-c-2md: 1.125rem;
+  /* 18px */
+  --text-c-lg: 1.25rem;
   /* 20px */
-  --font-xl: 1.5rem;
+  --text-c-xl: 1.5rem;
   /* 24px */
-  --font-2xl: 1.75rem;
+  --text-c-2xl: 1.75rem;
   /* 28px */
-  --font-3xl: 2rem;
+  --text-c-3xl: 2rem;
   /* 32px */
-  --font-4xl: 2.25rem;
+  --text-c-4xl: 2.25rem;
   /* 36px */
-  --font-5xl: 2.5rem;
+  --text-c-5xl: 2.5rem;
   /* 40px */
-
-  /* ------------------------------- line-height ------------------------------ */
-  --extra-light-line-height: 1.4;
-  --light-line-height: 1.5;
-  --regular-line-height: 1.6;
 }

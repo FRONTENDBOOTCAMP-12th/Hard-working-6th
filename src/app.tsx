@@ -1,7 +1,11 @@
-// import { useEffect } from 'react';
-// import supabaseClient from './utils/SupabaseClient';
-// import ChipList from './components/Molecule/ChipList';
-import HistoryCalendar from './components/Atom/Calendar';
+
+import { useEffect } from 'react';
+import supabaseClient from './utils/SupabaseClient';
+import { BrowserRouter, Route, Routes } from 'react-router';
+import TairoPage from './pages/TairoPage';
+import TairoTheme from './pages/TairoTheme';
+import PageLayout from './layout/PageLayout';
+import TairoResult from './components/Organism/TairoResult';
 
 function App() {
   // useEffect(() => {
@@ -16,10 +20,15 @@ function App() {
   // });
 
   return (
-    <div className="flex flex-col bg-primary-gradient1">
-      <h1>Calendar Test</h1>
-      <HistoryCalendar />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<PageLayout />}>
+          <Route path="/tairo" element={<TairoPage />} />
+          <Route path="/tairo-theme" element={<TairoTheme />} />
+          <Route path="/tairo-result" element={<TairoResult />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
