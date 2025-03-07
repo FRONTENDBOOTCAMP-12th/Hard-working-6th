@@ -5,7 +5,7 @@ function pageLayout() {
   return (
     <>
       <CommonHeader></CommonHeader>
-      <div className="p-5 overflow-hidden">
+      <div className="p-5 overflow-hidden w-full h-screen">
         <Outlet></Outlet>
       </div>
     </>

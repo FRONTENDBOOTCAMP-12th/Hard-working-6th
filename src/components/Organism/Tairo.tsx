@@ -8,10 +8,11 @@ function Tairo() {
   const card = useStore((state) => state.card);
 
   return (
-    <div className="">
+    <div>
       <h1>Tairo / {theme}</h1>
-      <CardList></CardList>
-
+      <div className="flex justify-center items-center mt-15">
+        <CardList></CardList>
+      </div>
       <p>카드를 뽑아주세요.</p>
       {/* <h2>{card}</h2> */}
       <Link to="/tairo-result">결과보기</Link>
