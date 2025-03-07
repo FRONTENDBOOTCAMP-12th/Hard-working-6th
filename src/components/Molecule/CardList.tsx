@@ -19,7 +19,7 @@ function CardList() {
   useEffect(() => {
     prevActiveIndex.current = activeCardIndex;
 
-    console.log('이전 상태:', prevActiveIndex.current);
+    // console.log('이전 상태:', prevActiveIndex.current);
   }, [activeCardIndex]);
 
   const handleCardClick = (index: number) => {
@@ -29,6 +29,9 @@ function CardList() {
     const randomVal = Math.floor(Math.random() * 20);
 
     const card = cardData.cards[randomVal].name;
+    console.log('선택한 카드:', card);
+    console.log('선택한 카드 인덱스:', randomVal);
+
     updateCard(card);
   };
 
@@ -36,7 +39,7 @@ function CardList() {
   const radius = 10; // 카드 반지름
 
   return (
-    <article className="fixed -z-20 flex justify-center items-center transform rotate-z-5 w-screen h-screen top-0 left-0">
+    <article className=" flex justify-center items-center transform rotate-z-5 w-50 h-50 top-0 left-0">
       <ul className="relative w-full h-[25vh] ">
         {cards.map((card, index) => {
           const angle = (index - cards.length / 2) * 9; // 카드 회전 각도 조정
