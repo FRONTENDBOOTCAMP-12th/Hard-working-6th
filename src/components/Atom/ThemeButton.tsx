@@ -21,7 +21,7 @@ function ThemaButton({ text, onClick }: ThemaButtonProps) {
         'w-full',
         'mt-2',
         'shadow-md',
-        'shadow-neutral-400'
+        'shadow-black/20'
       )}
       type="button"
       onClick={onClick}
@@ -47,13 +47,8 @@ function getIconName(text: string) {
       return ['circle-dollar-sign', '뜻밖의 행운이 찾아올지도? 재물운 체크!'];
     case '학업운':
       return ['graduation-cap', '오늘은 공부하기 좋은 날일까?'];
-    case '취업운':
-      return ['briefcase', '여기에 뭐 넣지??'];
-    case '오늘의 운세':
-      return ['today', '여기에도 뭐 넣지??'];
     case '월간운세':
       return ['calendar-fold', '이번 달, 행운이 찾아올까요?'];
-
     default:
       return 'default';
   }

@@ -4,6 +4,11 @@
   /* ------------------------------- font-color ------------------------------ */
   --color-primary-gradient1: #4F2D86;
   --color-primary-gradient2: #393C86;
+
+  --color-bg-gradient1: #080710;
+  --color-bg-gradient2: #9573EB;
+  --color-text: #141235;
+
   --color-black: #121212;
   --color-red: #D50000;
   --color-gray: #AEAEAE;
