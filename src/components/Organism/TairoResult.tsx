@@ -2,6 +2,7 @@ import OpenAI from 'openai';
 import { useEffect, useRef, useState } from 'react';
 import { useStore } from '@/stores/theme';
 import data from '@/assets/data/card_data.json';
+import paper from '/src/assets/paper.png';
 
 const { VITE_GPTAPI_KEY } = import.meta.env;
 
@@ -76,8 +77,8 @@ function TairoResult() {
 
       <section className="">
         <img
-          src="/src/assets/paper.png"
-          alt=""
+          src={paper}
+          alt="결과"
           className="w-[calc(100%-40px)] -mt-24 absolute -z-10"
         />
 
