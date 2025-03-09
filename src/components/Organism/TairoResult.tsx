@@ -68,15 +68,25 @@ function TairoResult() {
 
   return (
     <div className="flex justify-center items-center flex-col">
-      <h1>타로 결과</h1>
       <img
         src={isSelectedCard.src}
         alt={`${card} 카드`}
-        className="w-30 h-52 rounded-lg overflow-hidden"
+        className="w-30 h-52 rounded-lg overflow-hidden z-10"
       />
-      <h2>{card}</h2>
 
-      <p>{msg}</p>
+      <section className="">
+        <img
+          src="/src/assets/paper.png"
+          alt=""
+          className="w-[calc(100%-40px)] -mt-24 absolute -z-10"
+        />
+
+        <div className="mt-10">
+          <strong className="ml-8">{card}</strong>
+
+          <p className="m-8 mt-4">{msg}</p>
+        </div>
+      </section>
     </div>
   );
 }
