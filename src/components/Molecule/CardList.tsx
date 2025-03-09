@@ -52,7 +52,7 @@ function CardList() {
 
           //  active 상태일 때 x, y 좌표
           const activeX = 20;
-          const activeY = 200;
+          const activeY = 300;
 
           return (
             <motion.li
@@ -74,6 +74,7 @@ function CardList() {
                 'rounded-md',
                 'origin-bottom',
                 'hover:cursor-pointer',
+
                 isActive ? 'active-card' : ''
                 // active
               )}
