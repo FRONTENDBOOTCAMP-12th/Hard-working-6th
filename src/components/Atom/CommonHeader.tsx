@@ -1,4 +1,5 @@
 import { tm } from '@/utils/tw-marge';
+import { color } from 'framer-motion';
 
 interface CommonHeaderProps {
   text?: string;
@@ -6,7 +7,14 @@ interface CommonHeaderProps {
 
 function CommonHeader({ text = 'title' }: CommonHeaderProps) {
   return (
-    <header className={tm('w-full h-[110px]', 'pt-16', 'bg-transparent')}>
+    <header
+      className={tm(
+        'w-full h-[110px]',
+        'pt-16',
+        'bg-transparent',
+        'text-white'
+      )}
+    >
       <div className={tm('relative', 'flex flex-row')}>
         <button
           type="button"
