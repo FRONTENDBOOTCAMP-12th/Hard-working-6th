@@ -21,7 +21,7 @@ function ThemaButton({ text, onClick }: ThemaButtonProps) {
         'w-full',
         'mt-2',
         'shadow-md',
-        'shadow-neutral-400'
+        'shadow-black/20'
       )}
       type="button"
       onClick={onClick}
