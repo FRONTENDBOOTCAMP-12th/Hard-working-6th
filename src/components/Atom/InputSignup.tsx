@@ -31,7 +31,7 @@ function InputSignup({
   };
 
   return (
-    <div>
+    <div className="w-full">
       <label htmlFor={id} className="sr-only">
         {getLabel()}
       </label>
