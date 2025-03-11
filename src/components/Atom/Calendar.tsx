@@ -8,7 +8,7 @@ type CalendarObject = HTMLDivElement & {
   setActiveStartDate: (firstDayOfTodaysMonth: Date) => void;
 };
 
-export default function CustomCalendar() {
+function CustomCalendar() {
   const calendarRef = useRef<null | CalendarObject>(null);
   const [date, setDate] = useState<Date | null>(new Date());
 
@@ -55,3 +55,5 @@ export default function CustomCalendar() {
     </div>
   );
 }
+
+export default CustomCalendar;
