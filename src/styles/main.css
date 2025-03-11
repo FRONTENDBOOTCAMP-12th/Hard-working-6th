@@ -7,5 +7,6 @@
 /* @import './variable.css' layer(utilities); */
 
 @import './tailwind.css';
+@import './components/cardSwiper.css';
 
 /* @import './components/playground.css' layer(components); */
