@@ -1,5 +1,6 @@
 import { tm } from '@/utils/tw-marge';
 import { color } from 'framer-motion';
+import left from '/src/assets/icon/chevron-left-white.svg';
 
 interface CommonHeaderProps {
   text?: string;
@@ -21,11 +22,7 @@ function CommonHeader({ text = 'title' }: CommonHeaderProps) {
           className={tm('w-9 h-9', 'ml-5')}
           aria-label="뒤로가기"
         >
-          <img
-            src="/src/assets/icon/chevron-left.svg"
-            alt=""
-            className="w-full"
-          />
+          <img src={left} alt="" className="w-full" />
         </button>
 
         <h1
