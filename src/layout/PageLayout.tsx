@@ -6,9 +6,9 @@ import CommonNav from '../components/Atom/CommonNav';
 
 function pageLayout() {
   return (
-    <div className="h-[calc(100vh-110px)] mb-24">
+    <div className="min-h-screen bg-gradient-to-tr from-bg-gradient2 to-bg-gradient1">
       <CommonHeader></CommonHeader>
-      <div className="p-5 overflow-hidden w-full min-h-[calc(100vh-110px)]">
+      <div className="p-5 w-full h-full -z-40 pb-[110px]">
         <Outlet></Outlet>
       </div>
       <CommonNav></CommonNav>
