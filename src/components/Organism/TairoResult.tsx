@@ -182,7 +182,7 @@ function TairoResult() {
       <section className="relative">
         <img src={paper} alt="결과" className="w-full -mt-24 absolute z-0" />
 
-        <div className="relative z-10 mt-10">
+        <div className="relative z-10 mt-10 text-black">
           <strong className="ml-8">{card}</strong>
           <p className="m-8 mt-4">{msg}</p>
         </div>
