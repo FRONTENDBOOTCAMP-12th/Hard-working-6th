@@ -1,11 +1,19 @@
-.react-calendar__navigation {
+.custom-calendar .react-calendar {
+	background: url('../../assets/paper.png') no-repeat center center;
+	background-size: cover;
+	border: none;
+	padding: 1.5rem;
+	box-shadow: none;
+}
+
+.custom-calendar .react-calendar__navigation {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 2px;
 }
 
-.react-calendar__navigation__arrow {
+.custom-calendar .react-calendar__navigation__arrow {
 	flex: 0 0 auto;
 }
 
@@ -16,24 +24,17 @@
 	background-color: transparent;
 }
 
-.react-calendar__navigation__label {
+.custom-calendar .react-calendar__navigation__label {
 	max-width: 7rem;
 	flex: 1;
 	text-align: center;
 }
 
-.react-calendar__month-view__days__day--neighboringMonth {
+.custom-calendar .react-calendar__month-view__days__day--neighboringMonth {
 	visibility: hidden;
 }
 
-.react-calendar {
-	background: url('../../assets/paper.png') no-repeat center center;
-	background-size: cover;
-	border: none;
-	padding: 1.5rem;
-}
-
-.react-calendar__tile {
+.custom-calendar .react-calendar__tile {
 	border-radius: 40%;
 }
 
