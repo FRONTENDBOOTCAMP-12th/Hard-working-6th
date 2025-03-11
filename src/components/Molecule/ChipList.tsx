@@ -7,7 +7,7 @@ interface ChipListProps {
   onSelect: (selection: string | null) => void;
 }
 
-const ChipList = ({ onSelect }: ChipListProps) => {
+function ChipList({ onSelect }: ChipListProps) {
   const [selectedChip, setSelectedChip] = useState<string | null>(null);
 
   const handleChipClick = (label: string) => {
@@ -28,6 +28,6 @@ const ChipList = ({ onSelect }: ChipListProps) => {
       ))}
     </div>
   );
-};
+}
 
 export default ChipList;
