@@ -6,14 +6,22 @@ import {
   subscribeWithSelector,
 } from 'zustand/middleware';
 
+interface Store {
+  theme: string;
+  card: string;
+  updateTheme: (theme: string) => void;
+  updateCard: (card: string) => void;
+}
+
 export const useStore = create(
-  persist(
-    devtools((set) => ({
-      theme: '',
-      update: (theme: string) => set({ theme }),
-    })),
+  combine(
     {
-      name: 'store/counter',
-    }
+      theme: '',
+      card: '',
+    },
+    (set) => ({
+      updateTheme: (theme: string) => set({ theme }),
+      updateCard: (card: string) => set({ card }),
+    })
   )
 );

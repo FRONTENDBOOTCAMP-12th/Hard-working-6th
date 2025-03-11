@@ -117,13 +117,13 @@
     {
       "name": "The Sun",
       "number": "XIX",
-      "src": "/assets/tarot-image/19-the-sun.webp",
+      "src": "/assets/tarot-image/19-the-sun.png",
       "mean": "성공, 행복, 긍정"
     },
     {
       "name": "Judgement",
       "number": "XX",
-      "src": "/assets/tarot-image/20-judgement.webp",
+      "src": "/assets/tarot-image/20-judgement.png",
       "mean": "부활, 평가, 깨어남"
     },
     {
