@@ -24,7 +24,8 @@ function CustomCalendar() {
       <div className="custom-calendar relative">
         <Calendar
           ref={calendarRef}
-          className="p-2 text-black shadow-lg rounded-lg w-[350px]"
+          aria-label="기록 캘린더"
+          className="p-2 text-black"
           onChange={(date) => setDate(date as Date)}
           value={date}
           navigationLabel={({ date }) => (
