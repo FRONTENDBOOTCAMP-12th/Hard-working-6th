@@ -1,5 +1,5 @@
 import SignUpList from '../components/Molecule/SignUpList';
-import Logo from '/src/assets/logo.png';
+import Logo from '/src/assets/Logo.png';
 import CommonHeader from '../components/Atom/CommonHeader';
 
 function SignUp() {
