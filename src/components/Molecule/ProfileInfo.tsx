@@ -1,16 +1,25 @@
-import TextLabel from "../Atom/TextLabel";
+import TextLabel from '../Atom/TextLabel';
 
 interface ProfileInfoProps {
   name: string;
+  gender: string;
   birth: string;
   email: string;
   joined: string;
 }
 
-const ProfileInfo = ({ name, birth, email, joined }: ProfileInfoProps) => {
+const ProfileInfo = ({
+  name,
+  gender,
+  birth,
+  email,
+  joined,
+}: ProfileInfoProps) => {
   return (
     <div className="text-center">
-      <h2 className="text-xl font-semibold text-[var(--color-font)]">{name}</h2>
+      <h2 className="text-xl font-semibold text-[var(--color-font)]">
+        {name} {gender}
+      </h2>
 
       <TextLabel text={birth} className="mt-1 text-[var(--color-gray)]" />
 
