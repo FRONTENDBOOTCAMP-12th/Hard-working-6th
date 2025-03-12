@@ -20,6 +20,7 @@ function TairoHistory({ userId }: TairoHistoryProps) {
   const [selectedChip, setSelectedChip] = useState<string | null>('애정운');
   const [historyData, setHistoryData] = useState<HistoryItem[]>([]);
   const [filteredData, setFilteredData] = useState<HistoryItem[]>([]);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
 
   const handleChipSelect = (selection: string | null) => {
     setSelectedChip(selection);
@@ -55,19 +56,37 @@ function TairoHistory({ userId }: TairoHistoryProps) {
   }, [userId]);
 
   useEffect(() => {
-    if (selectedChip && historyData.length > 0) {
-      const filtered = historyData.filter(
-        (item) => item.card_theme === selectedChip
-      );
-      setFilteredData(filtered);
-    } else {
-      setFilteredData(historyData);
+    let filtered = historyData;
+
+    if (selectedDate) {
+      // 선택된 날짜를 KST로 변환 (09:00 ~ 23:59로 설정)
+      const startOfDayKST = new Date(selectedDate);
+      startOfDayKST.setHours(0, 0, 0, 0);
+
+      const endOfDayKST = new Date(selectedDate);
+      endOfDayKST.setHours(23, 59, 59, 999);
+
+      // KST로 변환된 날짜로 비교
+      filtered = filtered.filter((item) => {
+        const createdAtKST = new Date(item.created_at); // 이미 KST로 저장되어 있다고 가정
+
+        return createdAtKST >= startOfDayKST && createdAtKST <= endOfDayKST;
+      });
     }
-  }, [selectedChip, historyData]);
+
+    if (selectedChip) {
+      filtered = filtered.filter((item) => item.card_theme === selectedChip);
+    }
+
+    setFilteredData(filtered);
+  }, [selectedDate, selectedChip, historyData]);
 
   return (
     <div className="flex flex-col justify-center items-center p-6 bg-primary-gradient1">
-      <CustomCalendar aria-label="이전 기록을 볼 수 있는 캘린더" />
+      <CustomCalendar
+        onDateSelect={setSelectedDate}
+        aria-label="날짜를 선택하여 이전 기록을 볼 수 있는 캘린더"
+      />
       <div className="mt-4">
         <h2 id="chip-list" className="sr-only">
           운세 주제 선택
@@ -80,9 +99,8 @@ function TairoHistory({ userId }: TairoHistoryProps) {
           <ul className="mt-2">
             {filteredData.map((item) => (
               <li key={item.id} className="border-b border-gray-400 py-2">
-                <p>날짜: {item.created_at}</p>
-                <p>카드 이름: {item.card_name}</p>
-                <p>내용: {item.content}</p>
+                <p className="text-center">{item.card_name}</p>
+                <p>{item.content}</p>
               </li>
             ))}
           </ul>

@@ -8,7 +8,11 @@ type CalendarObject = HTMLDivElement & {
   setActiveStartDate: (firstDayOfTodaysMonth: Date) => void;
 };
 
-function CustomCalendar() {
+interface CustomCalendarProps {
+  onDateSelect: (date: Date) => void;
+}
+
+function CustomCalendar({ onDateSelect }: CustomCalendarProps) {
   const calendarRef = useRef<null | CalendarObject>(null);
   const [date, setDate] = useState<Date | null>(new Date());
 
@@ -17,6 +21,7 @@ function CustomCalendar() {
     setDate(today);
     const calendar = calendarRef.current;
     calendar?.setActiveStartDate(new Date());
+    onDateSelect(today); // 부모 컴포넌트로 전달
   };
 
   return (
@@ -26,7 +31,10 @@ function CustomCalendar() {
           ref={calendarRef}
           aria-label="기록 캘린더"
           className="p-2 text-black"
-          onChange={(date) => setDate(date as Date)}
+          onChange={(date) => {
+            setDate(date as Date);
+            onDateSelect(date as Date);
+          }}
           value={date}
           navigationLabel={({ date }) => (
             <span className="text-lg font-semibold">
