@@ -67,8 +67,11 @@ function TairoHistory({ userId }: TairoHistoryProps) {
 
   return (
     <div className="flex flex-col justify-center items-center p-6 bg-primary-gradient1">
-      <CustomCalendar />
+      <CustomCalendar aria-label="이전 기록을 볼 수 있는 캘린더" />
       <div className="mt-4">
+        <h2 id="chip-list" className="sr-only">
+          운세 주제 선택
+        </h2>
         <ChipList onSelect={handleChipSelect} />
       </div>
 

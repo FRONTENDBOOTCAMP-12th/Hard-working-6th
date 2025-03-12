@@ -31,7 +31,7 @@ function ChipList({ onSelect }: ChipListProps) {
           label={label}
           onClick={() => handleChipClick(label)}
           selected={label === selectedChip}
-          aria-pressed={label === selectedChip}
+          aria-pressed={label === selectedChip ? 'true' : 'false'}
         />
       ))}
     </div>
