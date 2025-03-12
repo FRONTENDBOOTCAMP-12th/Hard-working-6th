@@ -6,6 +6,9 @@ import TairoTheme from './pages/TairoTheme';
 import PageLayout from './layout/PageLayout';
 import TairoResult from './components/Organism/TairoResult';
 import ProfileCard from './components/Organism/ProfileCard';
+import SignUpList from './components/Molecule/SignUpList';
+import Test from './components/Molecule/Test';
+import SignUp from './pages/SignUp';
 
 function App() {
   // useEffect(() => {
@@ -28,6 +31,7 @@ function App() {
           <Route path="/tairo-result" element={<TairoResult />} />
           <Route path="/profile-card" element={<ProfileCard />} />
         </Route>
+        <Route path="/" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );
