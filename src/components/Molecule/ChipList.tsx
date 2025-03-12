@@ -8,10 +8,10 @@ interface ChipListProps {
 }
 
 function ChipList({ onSelect }: ChipListProps) {
-  const [selectedChip, setSelectedChip] = useState<string | null>(null);
+  const [selectedChip, setSelectedChip] = useState<string | null>('애정운');
 
   const handleChipClick = (label: string) => {
-    const newSelection = label === selectedChip ? null : label;
+    const newSelection = label;
     setSelectedChip(newSelection);
     onSelect(newSelection); // 부모 컴포넌트로 전달
   };
