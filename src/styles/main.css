@@ -7,6 +7,7 @@
 /* @import './variable.css' layer(utilities); */
 
 @import './tailwind.css';
+@import './components/cardSwiper.css';
 
 @font-face {
   font-family: 'NotoSerifKR';

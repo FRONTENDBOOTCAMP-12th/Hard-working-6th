@@ -7,27 +7,35 @@ interface ChipListProps {
   onSelect: (selection: string | null) => void;
 }
 
-const ChipList = ({ onSelect }: ChipListProps) => {
-  const [selectedChip, setSelectedChip] = useState<string | null>(null);
+function ChipList({ onSelect }: ChipListProps) {
+  const [selectedChip, setSelectedChip] = useState<string | null>('애정운');
 
   const handleChipClick = (label: string) => {
-    const newSelection = label === selectedChip ? null : label;
+    const newSelection = label;
     setSelectedChip(newSelection);
     onSelect(newSelection); // 부모 컴포넌트로 전달
   };
 
   return (
-    <div className="flex space-x-3 ml-3">
+    <div
+      className="flex space-x-3 ml-3"
+      role="group"
+      aria-labelledby="chip-list"
+    >
+      <h2 id="chip-list" className="sr-only">
+        운세 선택
+      </h2>
       {chipData.map((label) => (
         <Chip
           key={label}
           label={label}
           onClick={() => handleChipClick(label)}
           selected={label === selectedChip}
+          aria-pressed={label === selectedChip ? 'true' : 'false'}
         />
       ))}
     </div>
   );
-};
+}
 
 export default ChipList;

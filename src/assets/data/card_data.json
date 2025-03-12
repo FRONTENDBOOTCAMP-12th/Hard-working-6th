@@ -2,101 +2,133 @@
   "cards": [
     {
       "name": "The Fool",
+      "number": "0",
       "src": "/assets/tarot-image/00-the-fool.png",
       "mean": "새로운 시작, 자유, 순수, 모험"
     },
     {
       "name": "The Magician",
+      "number": "I",
       "src": "/assets/tarot-image/01-the-magician.webp",
       "mean": "창조력, 의지, 잠재력 실현"
     },
     {
       "name": "The High Priestess",
+      "number": "II",
       "src": "/assets/tarot-image/02-the-high-priestess.webp",
-      "mean": "직관, 신비, 내면의 지혜"
+      "mean": "직관, 신비, 잠재력"
     },
     {
       "name": "The Empress",
+      "number": "III",
       "src": "/assets/tarot-image/03-the-empress.webp",
-      "mean": "풍요, 모성, 창조성, 자연"
+      "mean": "풍요, 창조, 모성"
     },
     {
       "name": "The Emperor",
+      "number": "IV",
       "src": "/assets/tarot-image/04-the-emperor.webp",
       "mean": "권위, 안정, 구조, 리더십"
     },
     {
       "name": "The Hierophant",
+      "number": "V",
       "src": "/assets/tarot-image/05-the-hierophant.webp",
       "mean": "전통, 가르침, 영적 지도"
     },
     {
       "name": "The Lovers",
+      "number": "VI",
       "src": "/assets/tarot-image/06-the-lovers.webp",
       "mean": "사랑, 조화, 선택, 관계"
     },
     {
       "name": "The Chariot",
+      "number": "VII",
       "src": "/assets/tarot-image/07-the-chariot.webp",
-      "mean": "승리, 의지, 전진"
+      "mean": "승리, 의지, 통제"
     },
     {
       "name": "Strength",
+      "number": "VIII",
       "src": "/assets/tarot-image/08-strength.webp",
       "mean": "용기, 인내, 내면의 힘"
     },
     {
       "name": "The Hermit",
+      "number": "IX",
       "src": "/assets/tarot-image/09-the-hermit.webp",
-      "mean": "고독, 성찰, 지혜"
+      "mean": "고독, 자아 성찰, 지혜"
     },
     {
       "name": "Wheel of Fortune",
+      "number": "X",
       "src": "/assets/tarot-image/10-wheel-of-fortune.webp",
       "mean": "운명, 변화, 행운"
     },
     {
       "name": "Justice",
+      "number": "XI",
       "src": "/assets/tarot-image/11-justice.webp",
-      "mean": "공정, 균형, 책임"
+      "mean": "공정, 균형, 진실"
     },
     {
       "name": "The Hanged Man",
+      "number": "XII",
       "src": "/assets/tarot-image/12-the-hanged-man.png",
-      "mean": "희생, 새로운 관점, 멈춤"
+      "mean": "희생, 관점 변화, 기다림"
     },
     {
       "name": "Death",
+      "number": "XIII",
       "src": "/assets/tarot-image/13-death.png",
-      "mean": "변화, 끝맺음, 새로운 시작"
+      "mean": "끝맺음, 전환, 새로운 시작"
     },
     {
       "name": "Temperance",
+      "number": "XIV",
       "src": "/assets/tarot-image/14-temperance.webp",
-      "mean": "조화, 균형, 절제"
+      "mean": "균형, 조화, 절제"
     },
     {
       "name": "The Devil",
+      "number": "XV",
       "src": "/assets/tarot-image/15-the-devil.webp",
-      "mean": "유혹, 속박, 물질주의"
+      "mean": "유혹, 속박, 물질적 집착"
     },
     {
       "name": "The Tower",
+      "number": "XVI",
       "src": "/assets/tarot-image/16-the-tower.webp",
-      "mean": "혼란, 붕괴, 깨달음"
+      "mean": "갑작스러운 변화, 붕괴, 혁명"
     },
     {
       "name": "The Star",
+      "number": "XVII",
       "src": "/assets/tarot-image/17-the-star.png",
       "mean": "희망, 영감, 치유"
     },
     {
       "name": "The Moon",
+      "number": "XVIII",
       "src": "/assets/tarot-image/18-the-moon.png",
-      "mean": "환상, 불안, 직관"
+      "mean": "환상, 직관, 무의식"
+    },
+    {
+      "name": "The Sun",
+      "number": "XIX",
+      "src": "/assets/tarot-image/19-the-sun.png",
+      "mean": "성공, 행복, 긍정"
+    },
+    {
+      "name": "Judgement",
+      "number": "XX",
+      "src": "/assets/tarot-image/20-judgement.png",
+      "mean": "부활, 평가, 깨어남"
     },
     {
       "name": "The World",
+      "number": "XXI",
       "src": "/assets/tarot-image/21-the-world.png",
       "mean": "완성, 성취, 통합"
     }
