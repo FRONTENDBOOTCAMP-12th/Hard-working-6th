@@ -16,6 +16,8 @@ function Chip({ label, selected, onClick }: ChipProps) {
       }}
       tabIndex={0}
       role="button"
+      aria-label={label}
+      aria-pressed={selected}
     >
       <span>{label}</span>
     </div>

@@ -17,13 +17,21 @@ function ChipList({ onSelect }: ChipListProps) {
   };
 
   return (
-    <div className="flex space-x-3 ml-3">
+    <div
+      className="flex space-x-3 ml-3"
+      role="group"
+      aria-labelledby="chip-list"
+    >
+      <h2 id="chip-list" className="sr-only">
+        운세 선택
+      </h2>
       {chipData.map((label) => (
         <Chip
           key={label}
           label={label}
           onClick={() => handleChipClick(label)}
           selected={label === selectedChip}
+          aria-pressed={label === selectedChip}
         />
       ))}
     </div>
