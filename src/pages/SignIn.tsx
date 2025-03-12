@@ -1,4 +1,4 @@
-import Logo from '/src/assets/logo.png';
+import Logo from '/src/assets/Logo.png';
 import LoginList from '@/components/Molecule/LoginList';
 
 function SignIn() {
