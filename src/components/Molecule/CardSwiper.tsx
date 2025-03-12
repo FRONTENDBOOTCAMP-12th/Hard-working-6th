@@ -1,14 +1,8 @@
-import { tm } from '@/utils/tw-marge';
 import cardsData from '@/assets/data/card_data.json';
 import CardItem from '../Atom/CardSlideItem';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, Virtual } from 'swiper/modules';
-// import { useSwiperSlide } from 'swiper/react';
-
-// import 'swiper/swiper.css';
+import { Navigation, Autoplay, EffectCards } from 'swiper/modules';
 import 'swiper/css';
-// import 'swiper/css/autoplay';
-// import 'swiper/css/navigation';
 
 // 카드 데이터 타입
 interface Card {
@@ -30,17 +24,28 @@ function CardSwiper() {
       <h2 className="sr-only">타로 카드 보기</h2>
 
       <Swiper
-        modules={[Navigation, Autoplay, Virtual]}
+        modules={[Navigation, Autoplay, EffectCards]}
         spaceBetween={-170}
         slidesPerView={2}
+        slidesPerGroup={1}
         initialSlide={1}
         centeredSlides={true}
-        autoplay={{ delay: 4000 }}
+        autoplay={{ delay: 3000 }}
+        speed={500}
         loop={true}
         loopAdditionalSlides={1}
-        scrollbar={{ draggable: true }}
-        // onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
+        longSwipes={false}
+        longSwipesRatio={0.1}
+        // onBeforeSlideChangeStart={}
+        // scrollbar={{ draggable: true }}
+        // slideToClickedSlide={true}
+        // effect={'cards'}
+        // grabCursor={true}
+        touchRatio={1}
+        resistance={false}
+        // resistanceRatio={2}
+        // watchSlidesProgress={true}ㄴ
+        className="card-swiper"
       >
         {cards?.cards.map((card: Card, index: number) => {
           return (
