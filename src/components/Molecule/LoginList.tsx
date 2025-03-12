@@ -13,15 +13,20 @@ function LoginList() {
 
   async function signInWithEmail() {
     const { data, error } = await supabaseClient.auth.signInWithPassword({
-      email: 'valid.email@supabase.io',
-      password: 'example-password',
+      email: `${idVal}`,
+      password: `${pwVal}`,
     });
-    console.log(data, error);
+
+    if (!error) {
+      console.log('성공: ', data, error);
+    } else if (error) {
+      console.log('실패: ', data, error);
+    }
   }
 
   return (
     <div>
-      <div className="space-y-8">
+      <div className="space-y-4">
         <InputLogin
           id="email"
           type="email"
@@ -36,15 +41,17 @@ function LoginList() {
           // value={password}
           onChange={setPwval}
         />
-        <button type="button" className="ml-auto text-font ">
+        {/* <button type="button" className="ml-auto text-font ">
           ID/PW가 기억나지 않나요?
-        </button>
+        </button> */}
       </div>
-      <div className="space-y-4">
+      <div className="mt-14 space-y-4">
         <CommonButton type={'submit'} color={'bg-gray'}>
           아직 회원이 아니신가요?
         </CommonButton>
-        <CommonButton type={'submit'}>로그인</CommonButton>
+        <CommonButton type={'submit'} onClick={signInWithEmail}>
+          로그인
+        </CommonButton>
         <CommonButton type={'submit'} color={'bg-black'}>
           {<BrandGithub />}Github
         </CommonButton>
