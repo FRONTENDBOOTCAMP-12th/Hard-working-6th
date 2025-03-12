@@ -1,11 +1,11 @@
-:root {
-  font-size: 62.5%; /* 10px */
-}
+:root {}
 
 body {
   font-family: "Pretendard Variable", Pretendard;
-  font-size: 1.6rem; /* 16px */
   line-height: 1.5;
+  font-size: 1rem;
+  color: #666666;
+  position: relative;
 }
 
 nav ol,
@@ -19,7 +19,13 @@ nav a {
   text-decoration: none;
 }
 
-h1,h2,h3,h4,h5,h6,p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   overflow-wrap: break-word;
 }
 
@@ -29,7 +35,10 @@ hr {
   height: 0;
 }
 
-canvas,img,svg,video {
+canvas,
+img,
+svg,
+video {
   max-width: 100%;
 }
 
