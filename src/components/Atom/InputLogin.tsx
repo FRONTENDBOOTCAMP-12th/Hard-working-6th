@@ -8,13 +8,12 @@ interface InputLoginProps {
   placeholder?: string;
 }
 
-function InputLogin({
-  id,
-  type,
-  value,
-  onChange,
-  placeholder,
-}: InputLoginProps) {
+function InputLogin({ id, type, onChange, placeholder }: InputLoginProps) {
+  const handleChange = (e) => {
+    onChange(e.target.value);
+  };
+
+  // console.log('시작', data);
   return (
     <div className="relative">
       <label
@@ -35,8 +34,8 @@ function InputLogin({
         )}
         id={id}
         type={type}
-        value={value}
-        onChange={onChange}
+        // defaultValue={data}
+        onChange={handleChange}
         placeholder={placeholder}
         required
       />
