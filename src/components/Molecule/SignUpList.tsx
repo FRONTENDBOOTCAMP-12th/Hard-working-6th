@@ -6,6 +6,8 @@ import supabaseClient from '@/utils/SupabaseClient';
 import SelectBox from '../Atom/SelectBox';
 import RadioButtonGroup from '../Atom/RadioButtonGroup';
 import { Female, Male } from '@mynaui/icons-react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 function SignUpList() {
   const [email, setEmail] = useState('');
@@ -14,7 +16,7 @@ function SignUpList() {
   const [emailMessage, setEmailMessage] = useState('');
   const [passwordMessage, setPasswordMessage] = useState('');
   const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('');
-  const [globalMessage, setGlobalMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
   const [userName, setUserName] = useState('');
 
   const [selected, setSelected] = useState('');
@@ -25,6 +27,7 @@ function SignUpList() {
   ];
 
   /* ---------------------------------- 여기서부터 --------------------------------- */
+  const MySwal = withReactContent(Swal);
 
   const nowYear = new Date().getFullYear();
   const [form, setForm] = useState({
@@ -61,7 +64,7 @@ function SignUpList() {
 
   const id = useId();
 
-  const handleChangeName = (e) => {
+  const handleChangeName = (e: any) => {
     setUserName(e.target.value);
     console.log('이름:', e.target.value);
   };
@@ -127,12 +130,7 @@ function SignUpList() {
 
   // 회원가입 버튼 클릭 시 최종 유효성 검사 및 회원가입 요청
   const handleSignUp = async () => {
-    setGlobalMessage('');
-
-    if (emailMessage || passwordMessage || passwordConfirmMessage) {
-      setGlobalMessage('입력값을 확인해 주세요.');
-      return;
-    }
+    setIsSuccess(true);
 
     const { data, error } = await supabaseClient.auth.signUp({
       email,
@@ -157,10 +155,19 @@ function SignUpList() {
     }
 
     if (error) {
-      setGlobalMessage(`회원가입 실패: ${error.message}`);
+      MySwal.fire({
+        title: <p>문제가 생겼습니다 🥲</p>,
+        icon: 'error',
+      });
     } else {
-      setGlobalMessage('회원가입 성공! 이메일을 확인하세요.');
-      console.log('회원가입 성공:', data);
+      MySwal.fire({
+        title: <p>회원가입 성공!</p>,
+        icon: 'success',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = '/login';
+        }
+      });
     }
   };
 
@@ -253,11 +260,6 @@ function SignUpList() {
       </div>
 
       <CommonButton onClick={handleSignUp}>회원가입</CommonButton>
-
-      {/* 회원가입 성공/실패 */}
-      {globalMessage && (
-        <p className="text-red-500 text-center mt-3">{globalMessage}</p>
-      )}
     </>
   );
 }
