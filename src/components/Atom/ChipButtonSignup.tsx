@@ -2,7 +2,7 @@ import { tm } from '@/utils/tw-marge';
 
 interface ChipButtonSignupProps {
   children: string;
-  onClick?: () => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   type?: 'button' | 'submit';
 }
