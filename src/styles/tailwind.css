@@ -16,6 +16,10 @@
   --color-disable: #C7C7C7;
   --color-font: #666666;
 
+  /* -------------------------------- font- ------------------------------- */
+  --font-pretendard: "Pretendard Variable", Pretendard;
+  --font-playfair: "Playfair", serif;
+
   /* -------------------------------- font-size ------------------------------- */
   --text-c-sm: 0.75rem;
   /* 12px */
