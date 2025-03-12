@@ -7,7 +7,7 @@ function SignUp() {
     <div className="flex flex-col items-center p-5">
       <CommonHeader></CommonHeader>
       <h1 className="sr-only">Sign Up</h1>
-      <img src={Logo} alt="tAIro" className="w-33" />
+      <img src={Logo} alt="tAIro" className="w-33 mb-10" />
       <SignUpList></SignUpList>
     </div>
   );
