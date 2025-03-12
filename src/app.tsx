@@ -31,10 +31,7 @@ function App() {
           <Route path="/tairo-result" element={<TairoResult />} />
           <Route path="/profile-card" element={<ProfileCard />} />
         </Route>
-
         <Route path="/" element={<SignUp />} />
-
-        <Route path="/test" element={<Test />} />
       </Routes>
     </BrowserRouter>
   );
