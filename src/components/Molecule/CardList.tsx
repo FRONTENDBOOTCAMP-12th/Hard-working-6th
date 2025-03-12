@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import cardData from '../../assets/data/card_data.json';
 import { tm } from '@/utils/tw-marge';
 import { useStore } from '@/stores/theme';
@@ -29,8 +29,8 @@ function CardList() {
     const randomVal = Math.floor(Math.random() * 20);
 
     const card = cardData.cards[randomVal].name;
-    console.log('선택한 카드:', card);
-    console.log('선택한 카드 인덱스:', randomVal);
+    // console.log('선택한 카드:', card);
+    // console.log('선택한 카드 인덱스:', randomVal);
 
     updateCard(card);
   };
@@ -86,7 +86,6 @@ function CardList() {
                 // active 상태에 따라 x,y 좌표 변경
                 x: isActive ? activeX : x,
                 y: isActive ? activeY : y,
-                ease: 'ease',
               }}
               transition={{
                 ...(wasActive || isActive

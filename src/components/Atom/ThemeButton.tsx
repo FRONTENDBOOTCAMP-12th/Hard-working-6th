@@ -11,9 +11,7 @@ function ThemaButton({ text, onClick }: ThemaButtonProps) {
       className={tm(
         'flex',
         'justify-between',
-        'bg-gradient-to-tr',
-        'to-primary-gradient1',
-        'from-primary-gradient2',
+        'bg-[#00000061]',
         'text-white',
         'py-6',
         'px-4',
