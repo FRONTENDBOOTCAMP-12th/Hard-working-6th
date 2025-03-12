@@ -10,10 +10,14 @@ interface TodayFortunes {
   today_fortunes: Fortune[];
 }
 
+interface TodayFortuneProps {
+  className?: string;
+}
+
 // JSON 데이터에 타입 적용
 const todayFortunes: TodayFortunes = todayFortunesData;
 
-function TodayFortune() {
+function TodayFortune({ className }: TodayFortuneProps) {
   const getStoredFortune = () => {
     const storedData = localStorage.getItem('daily_fortune');
 
@@ -52,7 +56,7 @@ function TodayFortune() {
   }, []);
 
   return (
-    <section className="w-[275px] ml-6">
+    <section className={tm('w-[275px] ml-6', className)}>
       <h2 className="sr-only">오늘의 운세</h2>
 
       {fortune && (

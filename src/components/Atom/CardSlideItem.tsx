@@ -19,7 +19,7 @@ function CardItem({ card }: CardItemProps) {
     <motion.div
       initial={{ y: 0, scale: 1, opacity: 0.8 }}
       animate={{
-        y: isActive ? -32 : 0,
+        y: isActive ? -30 : 0,
         scale: isActive ? 1.15 : 1,
         opacity: isActive ? 1 : 0.8,
       }}

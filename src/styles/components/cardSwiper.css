@@ -1,7 +1,6 @@
 .swiper.card-swiper {
-  background-color: midnightblue;
   width: 340px;
-  height: 400px;
+  height: 380px;
 }
 
 .swiper.card-swiper .swiper-wrapper {
@@ -37,7 +36,7 @@
 
       font-family: "Playfair", serif;
       color: #fff;
-      text-shadow: #fc0 1px 0 7px;
+      text-shadow: #fff 1px 0 7px;
       opacity: 0;
       transition: all 1s ease-in-out;
 
@@ -61,12 +60,12 @@
       z-index: 12;
 
       position: absolute;
-      bottom: 8px;
+      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
 
       color: #fff;
-      text-shadow: #fc0 1px 0 4px;
+      text-shadow: #fff 1px 0 4px;
       white-space: nowrap;
 
       transition: all 1s ease-in-out;

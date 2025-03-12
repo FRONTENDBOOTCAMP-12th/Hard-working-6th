@@ -8,6 +8,10 @@ import CardSwiper from './components/Molecule/CardSwiper';
 import TodayFortune from './components/Atom/TodayFortune';
 import TairoResult from './components/Organism/TairoResult';
 import ProfileCard from './components/Organism/ProfileCard';
+import SignUpList from './components/Molecule/SignUpList';
+import Test from './components/Molecule/Test';
+import SignUp from './pages/SignUp';
+import HomePage from './pages/HomePageg';
 // import Test from './components/Molecule/Test';
 import SignIn from './pages/SignIn';
 
@@ -35,7 +39,9 @@ function App() {
           <Route path="/profile-card" element={<ProfileCard />} />
           <Route path="/tairo-history" element={<TairoHistory />} />
         </Route>
-        <Route path="/" element={<SignIn />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<SignUp />} />
+
       </Routes>
     </BrowserRouter>
   );
