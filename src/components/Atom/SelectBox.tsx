@@ -3,8 +3,8 @@ import { tm } from '@/utils/tw-marge';
 interface SelectBoxProps {
   id: string;
   label: string;
-  options: number[];
-  value: number | null;
+  options: number[] | string[];
+  value: number;
   onChange: (value: number) => void;
   disabled?: boolean;
 }
@@ -18,13 +18,13 @@ function SelectBox({
   disabled = false,
 }: SelectBoxProps) {
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <label htmlFor={id} className="sr-only">
         {label}
       </label>
       <select
         id={id}
-        value={value ?? ''}
+        defaultValue={value}
         onChange={(e) => onChange(Number(e.target.value))}
         disabled={disabled}
         className={tm(
@@ -36,7 +36,7 @@ function SelectBox({
         <option value={label}>{label}</option>
         {options.map((option) => (
           <option key={option} value={option}>
-            {option}년
+            {option}
           </option>
         ))}
       </select>

@@ -1,4 +1,8 @@
 import { tm } from '@/utils/tw-marge';
+import home from '/src/assets/icon/house-white.svg';
+import tarot from '/src/assets/icon/moon-star-white.svg';
+import record from '/src/assets/icon/album-white.svg';
+import user from '/src/assets/icon/user-round-white.svg';
 
 // interface CommonNavProps {
 //   text?: string;
@@ -24,11 +28,7 @@ function CommonNav() {
             href="/"
             className="flex flex-col items-center justify-center gap-1.5"
           >
-            <img
-              src="/src/assets/icon/house-white.svg"
-              alt="홈 메뉴 "
-              className="size-[30px]"
-            />
+            <img src={home} alt="홈 메뉴 " className="size-[30px]" />
             <p className="text-white text-c-sm font-normal">홈</p>
           </a>
         </li>
@@ -38,11 +38,7 @@ function CommonNav() {
             href="/"
             className="flex flex-col items-center justify-center gap-1.5"
           >
-            <img
-              src="/src/assets/icon/moon-star-white.svg"
-              alt="타로 메뉴"
-              className="size-[30px]"
-            />
+            <img src={tarot} alt="타로 메뉴" className="size-[30px]" />
             <p className="text-white text-c-sm font-normal">타로</p>
           </a>
         </li>
@@ -52,11 +48,7 @@ function CommonNav() {
             href="/"
             className="flex flex-col items-center justify-center gap-1.5"
           >
-            <img
-              src="/src/assets/icon/album-white.svg"
-              alt="기록 메뉴"
-              className="size-[30px]"
-            />
+            <img src={record} alt="기록 메뉴" className="size-[30px]" />
             <p className="text-white text-c-sm font-normal">기록</p>
           </a>
         </li>
@@ -66,11 +58,7 @@ function CommonNav() {
             href="/"
             className="flex flex-col items-center justify-center gap-1.5"
           >
-            <img
-              src="/src/assets/icon/user-round-white.svg"
-              alt="내정보 메뉴"
-              className="size-[30px]"
-            />
+            <img src={user} alt="내정보 메뉴" className="size-[30px]" />
             <p className="text-white text-c-sm font-normal">내정보</p>
           </a>
         </li>

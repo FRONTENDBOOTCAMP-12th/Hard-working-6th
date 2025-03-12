@@ -8,4 +8,11 @@
 
 @import './tailwind.css';
 
+@font-face {
+  font-family: 'NotoSerifKR';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* @import './components/playground.css' layer(components); */
