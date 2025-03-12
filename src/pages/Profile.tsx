@@ -1,5 +1,5 @@
-import ProfileCard from "../components/Organism/ProfileCard";
-import ProfileNavigation from "../components/Organism/ProfileNavigation";
+import ProfileCard from '@/components/Organism/ProfileCard';
+import ProfileNavigation from '@/components/Organism/ProfileNavigation';
 
 const Profile = () => {
   return (
