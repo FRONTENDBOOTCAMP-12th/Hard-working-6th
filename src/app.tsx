@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import supabaseClient from './utils/SupabaseClient';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import TairoPage from './pages/TairoPage';
 import TairoTheme from './pages/TairoTheme';
@@ -9,9 +7,8 @@ import CardSwiper from './components/Molecule/CardSwiper';
 import TodayFortune from './components/Atom/TodayFortune';
 import TairoResult from './components/Organism/TairoResult';
 import ProfileCard from './components/Organism/ProfileCard';
-import SignUpList from './components/Molecule/SignUpList';
-import Test from './components/Molecule/Test';
-import SignUp from './pages/SignUp';
+// import Test from './components/Molecule/Test';
+import SignIn from './pages/SignIn';
 
 function App() {
   // useEffect(() => {
@@ -36,7 +33,7 @@ function App() {
           <Route path="/tairo-result" element={<TairoResult />} />
           <Route path="/profile-card" element={<ProfileCard />} />
         </Route>
-        <Route path="/" element={<SignUp />} />
+        <Route path="/" element={<SignIn />} />
       </Routes>
     </BrowserRouter>
   );
