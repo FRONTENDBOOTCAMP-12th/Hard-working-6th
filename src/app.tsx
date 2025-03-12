@@ -12,6 +12,7 @@ import ProfileCard from './components/Organism/ProfileCard';
 import SignUpList from './components/Molecule/SignUpList';
 import Test from './components/Molecule/Test';
 import SignUp from './pages/SignUp';
+import HomePage from './pages/HomePageg';
 
 function App() {
   // useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/tairo-result" element={<TairoResult />} />
           <Route path="/profile-card" element={<ProfileCard />} />
         </Route>
+        <Route path="/home" element={<HomePage />} />
         <Route path="/" element={<SignUp />} />
       </Routes>
     </BrowserRouter>

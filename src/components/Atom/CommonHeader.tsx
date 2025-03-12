@@ -13,7 +13,8 @@ function CommonHeader({ text = 'title' }: CommonHeaderProps) {
         'w-full h-[110px]',
         'pt-16',
         'bg-transparent',
-        'text-white'
+        'text-white',
+        'z-22'
       )}
     >
       <div className={tm('relative', 'flex flex-row')}>
