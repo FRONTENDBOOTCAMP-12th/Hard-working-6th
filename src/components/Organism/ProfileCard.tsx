@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import ProfileInfo from '../Molecule/ProfileInfo';
-import AvatarSelector from '../Molecule/AvatarSelector';
+import ProfileInfo from '@/components/Molecule/ProfileInfo';
+import AvatarSelector from '@/components/Molecule/AvatarSelector';
 
 const ProfileCard = () => {
   // ✅ 상태: 프로필 이미지 & 모달 상태

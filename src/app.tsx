@@ -12,6 +12,7 @@ import SignUp from './pages/SignUp';
 import HomePage from './pages/HomePageg';
 // import Test from './components/Molecule/Test';
 import SignIn from './pages/SignIn';
+import Profile from './pages/Profile';
 
 function App() {
   // useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/tairo-result" element={<TairoResult />} />
           <Route path="/profile-card" element={<ProfileCard />} />
           <Route path="/tairo-history" element={<TairoHistory />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
         <Route path="/home" element={<HomePage />} />
         <Route path="/sign-up" element={<SignUp />} />
