@@ -29,10 +29,6 @@ export const addMemoItem = async (newItem: RequiredMemoListItem) => {
   return supabaseClient.from(DB_NAME).insert([newItem]).select();
 };
 
-export const addMemoItems = async (manyItems: RequiredMemoListItem[]) => {
-  return supabaseClient.from(DB_NAME).insert(manyItems).select();
-};
-
 // 행(row) 데이터 수정
 export const editMemoItem = async (editItem: MemoListItem) => {
   return supabaseClient

@@ -1,12 +1,16 @@
-
 import OpenAI from 'openai';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useStore } from '@/stores/theme';
-import data from '@/assets/data/card_data.json';
+import cardData from '@/assets/data/card_data.json';
 import paper from '/src/assets/paper.png';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { addMemoItem } from '@/utils/supabaseHistory';
+import supabaseClient from '@/utils/SupabaseClient';
 
 const { VITE_GPTAPI_KEY } = import.meta.env;
+const {
+  data: { user },
+} = await supabaseClient.auth.getUser();
 
 const openai = new OpenAI({
   apiKey: VITE_GPTAPI_KEY,
@@ -18,6 +22,17 @@ function TairoResult() {
   const card = useStore((state) => state.card);
   const [msg, setMsg] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const addData = async () => {
+    const data = {
+      id: user,
+      card_theme: theme,
+      card_name: card,
+      content: msg,
+    };
+    await addMemoItem(data);
+    console.log(data);
+  };
 
   useEffect(() => {
     const controller = new AbortController();
@@ -59,6 +74,7 @@ function TairoResult() {
           console.error('오류 발생:', error);
         }
       } finally {
+        addData();
       }
     }
 
@@ -68,7 +84,7 @@ function TairoResult() {
     };
   }, [card, theme]);
 
-  const isSelectedCard = data.cards.find(({ name }) => name === card)!;
+  const isSelectedCard = cardData.cards.find(({ name }) => name === card)!;
 
   console.log(isSelectedCard.src);
 

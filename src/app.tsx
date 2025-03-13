@@ -3,11 +3,7 @@ import TairoPage from './pages/TairoPage';
 import TairoTheme from './pages/TairoTheme';
 import TairoHistory from './pages/TairoHistory';
 import PageLayout from './layout/PageLayout';
-
-import CardSwiper from './components/Molecule/CardSwiper';
-import TodayFortune from './components/Atom/TodayFortune';
 import TairoResult from './components/Organism/TairoResult';
-import ProfileCard from './components/Organism/ProfileCard';
 import SignUp from './pages/SignUp';
 import HomePage from './pages/HomePage';
 // import Test from './components/Molecule/Test';

@@ -1,5 +1,4 @@
 import CardList from '../Molecule/CardList';
-import { useEffect, useState, useRef } from 'react';
 import { useStore } from '@/stores/theme';
 import { Link } from 'react-router';
 import CommonButton from '../Atom/CommonButton';
