@@ -165,6 +165,7 @@ function SignUpList() {
     } else {
       MySwal.fire({
         title: <p>회원가입 성공!</p>,
+        text: '이메일을 확인해주세요!',
         icon: 'success',
       }).then((result) => {
         if (result.isConfirmed) {

@@ -4,6 +4,8 @@ import InputLogin from '../Atom/InputLogin';
 import supabaseClient from '@/utils/SupabaseClient';
 import { BrandGithub } from '@mynaui/icons-react';
 import { Link, useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 function LoginList() {
   const [idVal, setIdval] = useState('');
@@ -11,6 +13,8 @@ function LoginList() {
 
   console.log(idVal);
   console.log(pwVal);
+
+  const MySwal = withReactContent(Swal);
 
   const navigate = useNavigate();
 
@@ -33,6 +37,10 @@ function LoginList() {
       navigate('/home');
     } else if (error) {
       console.log('실패: ', data, error);
+      MySwal.fire({
+        title: <p>정보가 일치하지 않습니다.</p>,
+        icon: 'error',
+      });
     }
   }
 
