@@ -18,6 +18,7 @@ function Chip({ label, selected, onClick }: ChipProps) {
       role="button"
       aria-label={label}
       aria-pressed={selected}
+      style={{ whiteSpace: 'nowrap', flexShrink: 1 }}
     >
       <span>{label}</span>
     </div>
