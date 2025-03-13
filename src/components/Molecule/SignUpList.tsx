@@ -10,14 +10,48 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { useNavigate } from 'react-router';
 
+function getDateInfo(form: { year: number; month: string; day: string }) {
+  const now = new Date();
+  const years = [];
+
+  for (let y = now.getFullYear(); y >= 1960; y -= 1) {
+    years.push(y);
+  }
+
+  const month = [];
+  for (let m = 1; m <= 12; m += 1) {
+    if (m < 10) {
+      // 날짜가 2자리로 나타나야 했기 때문에 1자리 월에 0을 붙혀준다
+      month.push('0' + m.toString());
+    } else {
+      month.push(m.toString());
+    }
+  }
+  const days = [];
+  const date = new Date(form.year, parseInt(form.month), 0).getDate();
+
+  for (let d = 1; d <= date; d += 1) {
+    if (d < 10) {
+      // 날짜가 2자리로 나타나야 했기 때문에 1자리 일에 0을 붙혀준다
+      days.push('0' + d.toString());
+    } else {
+      days.push(d.toString());
+    }
+  }
+
+  return { years, month, days };
+}
+
+const MySwal = withReactContent(Swal);
+
 function SignUpList() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [, setPasswordConfirm] = useState('');
   const [emailMessage, setEmailMessage] = useState('');
   const [passwordMessage, setPasswordMessage] = useState('');
   const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('');
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [, setIsSuccess] = useState(false);
   const [userName, setUserName] = useState('');
 
   const [selected, setSelected] = useState('');
@@ -30,7 +64,6 @@ function SignUpList() {
   ];
 
   /* ---------------------------------- 여기서부터 --------------------------------- */
-  const MySwal = withReactContent(Swal);
 
   const nowYear = new Date().getFullYear();
   const [form, setForm] = useState({
@@ -39,35 +72,9 @@ function SignUpList() {
     day: '01',
   });
 
-  const now = new Date();
-  let years = [];
-  for (let y = now.getFullYear(); y >= 1960; y -= 1) {
-    years.push(y);
-  }
-
-  let month = [];
-  for (let m = 1; m <= 12; m += 1) {
-    if (m < 10) {
-      // 날짜가 2자리로 나타나야 했기 때문에 1자리 월에 0을 붙혀준다
-      month.push('0' + m.toString());
-    } else {
-      month.push(m.toString());
-    }
-  }
-  let days = [];
-  let date = new Date(form.year, parseInt(form.month), 0).getDate();
-  for (let d = 1; d <= date; d += 1) {
-    if (d < 10) {
-      // 날짜가 2자리로 나타나야 했기 때문에 1자리 일에 0을 붙혀준다
-      days.push('0' + d.toString());
-    } else {
-      days.push(d.toString());
-    }
-  }
-
   const id = useId();
 
-  const handleChangeName = (e: any) => {
+  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(e.target.value);
     console.log('이름:', e.target.value);
   };
@@ -175,6 +182,8 @@ function SignUpList() {
     }
   };
 
+  const { years, month, days } = getDateInfo(form);
+
   return (
     <>
       <div className="space-y-8 mb-5 w-full">
@@ -192,7 +201,13 @@ function SignUpList() {
               </p>
             )}
           </div>
-          <ChipButtonSignup>중복확인</ChipButtonSignup>
+          <ChipButtonSignup
+            onClick={() => {
+              console.log('test');
+            }}
+          >
+            중복확인
+          </ChipButtonSignup>
         </div>
 
         <div className="relative">
