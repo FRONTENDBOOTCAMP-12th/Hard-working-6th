@@ -3,6 +3,7 @@ import CardItem from '../Atom/CardSlideItem';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay, EffectCards } from 'swiper/modules';
 import 'swiper/css';
+import { EffectCoverflow } from 'swiper/modules';
 
 // 카드 데이터 타입
 interface Card {
@@ -24,27 +25,19 @@ function CardSwiper() {
       <h2 className="sr-only">타로 카드 보기</h2>
 
       <Swiper
-        modules={[Navigation, Autoplay, EffectCards]}
-        spaceBetween={-170}
-        slidesPerView={2}
-        slidesPerGroup={1}
-        initialSlide={1}
-        centeredSlides={true}
-        autoplay={{ delay: 3000 }}
-        speed={500}
         loop={true}
+        centeredSlides={true}
+        slidesPerView={2}
         loopAdditionalSlides={1}
-        longSwipes={false}
-        longSwipesRatio={0.1}
-        // onBeforeSlideChangeStart={}
-        // scrollbar={{ draggable: true }}
-        // slideToClickedSlide={true}
-        // effect={'cards'}
-        // grabCursor={true}
-        touchRatio={1}
-        resistance={false}
-        // resistanceRatio={2}
-        // watchSlidesProgress={true}ㄴ
+        slideToClickedSlide={true}
+        autoplay={{ delay: 3000 }}
+        effect="coverflow"
+        coverflowEffect={{
+          rotate: 0,
+          slideShadows: false,
+          stretch: 70,
+        }}
+        modules={[EffectCoverflow, Autoplay]}
         className="card-swiper"
       >
         {cards?.cards.map((card: Card, index: number) => {
