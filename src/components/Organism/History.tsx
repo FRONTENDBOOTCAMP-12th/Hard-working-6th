@@ -82,7 +82,7 @@ function TairoHistory({ userId }: TairoHistoryProps) {
   }, [selectedDate, selectedChip, historyData]);
 
   return (
-    <div className="flex flex-col justify-center items-center p-6 bg-primary-gradient1">
+    <div className="flex flex-col justify-center items-center p-6">
       <CustomCalendar
         onDateSelect={setSelectedDate}
         aria-label="날짜를 선택하여 이전 기록을 볼 수 있는 캘린더"

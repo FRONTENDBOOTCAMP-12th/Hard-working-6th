@@ -56,7 +56,7 @@ function CustomCalendar({ onDateSelect }: CustomCalendarProps) {
         <button
           type="button"
           onClick={handleTodayClick}
-          className="absolute top-13 right-9 px-3 py-1 bg-[#7D3C3C] text-[#F0E6D2] border-[#5C2A2A] hover:bg-[#5C2A2A] text-sm rounded-lg shadow-md transition"
+          className="absolute top-8 left-7.5 px-3 py-1 bg-[#7D3C3C] text-[#F0E6D2] border-[#5C2A2A] hover:bg-[#5C2A2A] text-sm rounded-lg shadow-md transition"
         >
           오늘
         </button>

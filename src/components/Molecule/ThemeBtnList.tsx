@@ -14,7 +14,7 @@ function ThemeButtonList() {
   const updateTheme = useStore((state) => state.updateTheme);
 
   return (
-    <Link to="/tairo">
+    <Link to="/tairo-theme/tairo">
       {ThemeData.map((theme) => (
         <ThemeButton
           key={theme}

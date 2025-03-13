@@ -3,6 +3,7 @@ import CommonButton from '../Atom/CommonButton';
 import InputLogin from '../Atom/InputLogin';
 import supabaseClient from '@/utils/SupabaseClient';
 import { BrandGithub } from '@mynaui/icons-react';
+import { Link } from 'react-router';
 
 function LoginList() {
   const [idVal, setIdval] = useState('');
@@ -19,6 +20,7 @@ function LoginList() {
 
     if (!error) {
       console.log('성공: ', data, error);
+      window.location.href = '/home';
     } else if (error) {
       console.log('실패: ', data, error);
     }
@@ -46,12 +48,16 @@ function LoginList() {
         </button> */}
       </div>
       <div className="mt-14 space-y-4">
-        <CommonButton type={'submit'} color={'bg-gray'}>
-          아직 회원이 아니신가요?
-        </CommonButton>
+        <Link to="/sign-up">
+          <CommonButton type={'submit'} color={'bg-gray'}>
+            아직 회원이 아니신가요?
+          </CommonButton>
+        </Link>
+
         <CommonButton type={'submit'} onClick={signInWithEmail}>
           로그인
         </CommonButton>
+
         <CommonButton type={'submit'} color={'bg-black'}>
           {<BrandGithub />}Github
         </CommonButton>
