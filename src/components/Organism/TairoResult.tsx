@@ -30,7 +30,7 @@ function TairoResult() {
       card_name: card,
       content: msg,
     };
-    await addMemoItem(data);
+    addMemoItem(data);
     console.log(data);
   };
 
