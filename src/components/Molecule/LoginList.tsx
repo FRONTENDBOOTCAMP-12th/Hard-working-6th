@@ -3,7 +3,7 @@ import CommonButton from '../Atom/CommonButton';
 import InputLogin from '../Atom/InputLogin';
 import supabaseClient from '@/utils/SupabaseClient';
 import { BrandGithub } from '@mynaui/icons-react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 function LoginList() {
   const [idVal, setIdval] = useState('');
@@ -11,6 +11,16 @@ function LoginList() {
 
   console.log(idVal);
   console.log(pwVal);
+
+  const navigate = useNavigate();
+
+  const signInWithOAuth = async () => {
+    const { error, data } = await supabaseClient.auth.signInWithOAuth({
+      provider: 'github',
+    });
+
+    console.log(data, error);
+  };
 
   async function signInWithEmail() {
     const { data, error } = await supabaseClient.auth.signInWithPassword({
@@ -20,7 +30,7 @@ function LoginList() {
 
     if (!error) {
       console.log('성공: ', data, error);
-      window.location.href = '/home';
+      navigate('/home');
     } else if (error) {
       console.log('실패: ', data, error);
     }
@@ -58,7 +68,11 @@ function LoginList() {
           로그인
         </CommonButton>
 
-        <CommonButton type={'submit'} color={'bg-black'}>
+        <CommonButton
+          type={'submit'}
+          color={'bg-black'}
+          onClick={signInWithOAuth}
+        >
           {<BrandGithub />}Github
         </CommonButton>
       </div>
