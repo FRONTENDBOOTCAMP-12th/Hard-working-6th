@@ -29,19 +29,20 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<PageLayout />}>
-          <Route path="/card-swiper" element={<CardSwiper />} />
-          <Route path="/today-fortune" element={<TodayFortune />} />
-          <Route path="/tairo" element={<TairoPage />} />
-          <Route path="/tairo-theme" element={<TairoTheme />} />
-          <Route path="/tairo-result" element={<TairoResult />} />
-          <Route path="/profile-card" element={<ProfileCard />} />
-          <Route path="/tairo-history" element={<TairoHistory />} />
-          <Route path="/profile" element={<Profile />} />
-        </Route>
         <Route path="/home" element={<HomePage />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/" element={<SignIn />} />
+
+        <Route element={<PageLayout />}>
+          <Route path="/tairo-theme">
+            <Route index element={<TairoTheme />} />
+            <Route path="tairo" element={<TairoPage />} />
+            <Route path="result" element={<TairoResult />} />
+          </Route>
+
+          <Route path="/tairo-history" element={<TairoHistory />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

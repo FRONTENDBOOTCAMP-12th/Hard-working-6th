@@ -161,11 +161,11 @@ function SignUpList() {
       });
     } else {
       MySwal.fire({
-        title: <p>회원가입 성공!</p>,
+        title: <p>인증 메일을 보냈습니다!</p>,
         icon: 'success',
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href = '/login';
+          window.location.href = '/';
         }
       });
     }
