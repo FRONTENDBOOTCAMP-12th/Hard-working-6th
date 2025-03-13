@@ -1,5 +1,6 @@
 import { useSwiperSlide } from 'swiper/react';
 import { motion } from 'motion/react';
+import cardBack from '@/assets/tarot-image/card-back.png';
 
 interface Card {
   name: string;
@@ -26,7 +27,7 @@ function CardItem({ card }: CardItemProps) {
       transition={{ duration: 0.5, ease: 'easeInOut' }}
     >
       <motion.img
-        src={isActive ? card.src : '/src/assets/tarot-image/card-back.png'}
+        src={isActive ? card.src : cardBack}
         alt={isActive ? card.name : '카드 뒷면 이미지'}
         initial={{ opacity: 0 }} // 처음엔 투명한 상태
         animate={{ opacity: 1 }} // 나타나는 효과
