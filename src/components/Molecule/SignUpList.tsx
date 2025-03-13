@@ -8,6 +8,7 @@ import RadioButtonGroup from '../Atom/RadioButtonGroup';
 import { Female, Male } from '@mynaui/icons-react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { useNavigate } from 'react-router';
 
 function SignUpList() {
   const [email, setEmail] = useState('');
@@ -20,6 +21,8 @@ function SignUpList() {
   const [userName, setUserName] = useState('');
 
   const [selected, setSelected] = useState('');
+
+  const navigate = useNavigate();
 
   const options = [
     { value: 'M', label: '남성', icon: <Male /> },
@@ -161,11 +164,11 @@ function SignUpList() {
       });
     } else {
       MySwal.fire({
-        title: <p>인증 메일을 보냈습니다!</p>,
+        title: <p>회원가입 성공!</p>,
         icon: 'success',
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href = '/';
+          navigate('/');
         }
       });
     }
