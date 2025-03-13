@@ -1,12 +1,18 @@
 import { tm } from '@/utils/tw-marge';
-import { color } from 'framer-motion';
 import left from '/src/assets/icon/chevron-left-white.svg';
+import { useNavigate } from 'react-router';
 
 interface CommonHeaderProps {
   text?: string;
 }
 
-function CommonHeader({ text = 'title' }: CommonHeaderProps) {
+function CommonHeader({ text }: CommonHeaderProps) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    void navigate(-1);
+  };
+
   return (
     <header
       className={tm(
@@ -22,6 +28,7 @@ function CommonHeader({ text = 'title' }: CommonHeaderProps) {
           type="button"
           className={tm('w-9 h-9', 'ml-5')}
           aria-label="뒤로가기"
+          onClick={handleClick}
         >
           <img src={left} alt="" className="w-full" />
         </button>
