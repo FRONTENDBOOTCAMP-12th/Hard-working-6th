@@ -19,16 +19,20 @@ const AvatarSelector = ({ onSelect, onClose }: AvatarSelectorProps) => {
 
         <div className="flex justify-around">
           {avatars.map((avatar) => (
-            <img
-              key={avatar}
-              src={avatar}
-              alt="Avatar Option"
-              className="w-16 h-16 rounded-full border-2 cursor-pointer hover:border-indigo-500"
+            <button
+              type="button"
               onClick={() => {
                 onSelect(avatar); // ✅ 선택한 아바타 변경
                 if (onClose) onClose(); // ✅ 모달 닫기
               }}
-            />
+            >
+              <img
+                key={avatar}
+                src={avatar}
+                alt="Avatar Option"
+                className="w-16 h-16 rounded-full border-2 cursor-pointer hover:border-indigo-500"
+              />
+            </button>
           ))}
         </div>
 

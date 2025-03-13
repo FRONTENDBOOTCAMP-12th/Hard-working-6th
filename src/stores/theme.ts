@@ -1,17 +1,12 @@
 import { create } from 'zustand';
-import {
-  combine,
-  devtools,
-  persist,
-  subscribeWithSelector,
-} from 'zustand/middleware';
+import { combine } from 'zustand/middleware';
 
-interface Store {
-  theme: string;
-  card: string;
-  updateTheme: (theme: string) => void;
-  updateCard: (card: string) => void;
-}
+// interface Store {
+//   theme: string;
+//   card: string;
+//   updateTheme: (theme: string) => void;
+//   updateCard: (card: string) => void;
+// }
 
 export const useStore = create(
   combine(
