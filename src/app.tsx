@@ -9,7 +9,7 @@ import TodayFortune from './components/Atom/TodayFortune';
 import TairoResult from './components/Organism/TairoResult';
 import ProfileCard from './components/Organism/ProfileCard';
 import SignUp from './pages/SignUp';
-import HomePage from './pages/HomePageg';
+import HomePage from './pages/HomePage';
 // import Test from './components/Molecule/Test';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
