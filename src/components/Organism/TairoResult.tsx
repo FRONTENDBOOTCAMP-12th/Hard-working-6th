@@ -8,9 +8,6 @@ import { addMemoItem } from '@/utils/supabaseHistory';
 import supabaseClient from '@/utils/SupabaseClient';
 
 const { VITE_GPTAPI_KEY } = import.meta.env;
-const {
-  data: { user },
-} = await supabaseClient.auth.getUser();
 
 const openai = new OpenAI({
   apiKey: VITE_GPTAPI_KEY,
@@ -22,26 +19,27 @@ function TairoResult() {
   const card = useStore((state) => state.card);
   const [msg, setMsg] = useState('');
   const [loading, setLoading] = useState(false);
-
-  const addData = async () => {
-    const data = {
-      id: user,
-      card_theme: theme,
-      card_name: card,
-      content: msg,
-    };
-    addMemoItem(data);
-    console.log(data);
-  };
+  const [userData, setUserData] = useState('');
 
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    console.log('실행', theme);
-    async function fetchGpt() {
+    const processData = async () => {
       setLoading(true);
+
       try {
+        const { data } = await supabaseClient.auth.getUser();
+        const userId = data.user?.id;
+
+        if (!userId) {
+          console.error('사용자 ID를 가져올 수 없습니다.');
+          return;
+        }
+
+        setUserData(userId);
+        console.log('유저 데이터:', userId);
+
         const completion = await openai.chat.completions.create(
           {
             model: 'gpt-4o',
@@ -63,9 +61,22 @@ function TairoResult() {
           }
         );
 
-        setMsg(completion.choices[0].message.content as string);
-        console.log(completion.choices[0].message);
-        console.log('이 때 상태: ', loading);
+        const gptMessage = completion.choices[0].message.content as string;
+        console.log('GPT 응답 받음:', gptMessage);
+
+        setMsg(gptMessage);
+
+        const insertData = {
+          card_theme: theme,
+          card_name: card,
+          content: gptMessage,
+          user_id: userId,
+        };
+
+        console.log('저장할 데이터:', insertData);
+        await addMemoItem(insertData);
+        console.log('데이터 저장 완료');
+
         setLoading(false);
       } catch (error) {
         if ((error as Error).message.includes('abort')) {
@@ -73,12 +84,12 @@ function TairoResult() {
         } else {
           console.error('오류 발생:', error);
         }
-      } finally {
-        addData();
+        setLoading(false);
       }
-    }
+    };
 
-    fetchGpt();
+    processData();
+
     return () => {
       controller.abort();
     };
@@ -86,10 +97,8 @@ function TairoResult() {
 
   const isSelectedCard = cardData.cards.find(({ name }) => name === card)!;
 
-  console.log(isSelectedCard.src);
-
   return loading ? (
-    <div className="flex flex-col justify-center items-center w-full h-100 ">
+    <div className="flex flex-col justify-center items-center w-full h-100 mt-20">
       <DotLottieReact src="/assets/loading-image.json" loop autoplay />{' '}
     </div>
   ) : (

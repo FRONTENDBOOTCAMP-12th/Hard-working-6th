@@ -2,8 +2,6 @@ import CommonHeader from '@/components/Atom/CommonHeader';
 import { Outlet, useLocation } from 'react-router';
 import CommonNav from '../components/Atom/CommonNav';
 
-//bg-[url(/src/assets/bg5.png)] bg-cover
-
 function PageLayout() {
   const location = useLocation();
 
