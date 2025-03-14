@@ -21,6 +21,9 @@ function LoginList() {
   const signInWithOAuth = async () => {
     const { error, data } = await supabaseClient.auth.signInWithOAuth({
       provider: 'github',
+      options: {
+        redirectTo: 'https://tairo.netlify.app/home',
+      },
     });
 
     console.log(data, error);
