@@ -75,9 +75,11 @@ function LoginList() {
           </CommonButton>
         </Link>
 
-        <CommonButton type={'submit'} onClick={signInWithEmail}>
-          로그인
-        </CommonButton>
+        <div className="mt-4">
+          <CommonButton type={'submit'} onClick={signInWithEmail}>
+            로그인
+          </CommonButton>
+        </div>
 
         <CommonButton
           type={'submit'}
