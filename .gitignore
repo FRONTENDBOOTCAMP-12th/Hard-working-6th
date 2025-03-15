@@ -168,6 +168,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+.dev-dist
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json

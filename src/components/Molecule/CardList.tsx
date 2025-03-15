@@ -52,7 +52,7 @@ function CardList() {
 
           //  active 상태일 때 x, y 좌표
           const activeX = 20;
-          const activeY = 300;
+          const activeY = 220;
 
           return (
             <motion.li

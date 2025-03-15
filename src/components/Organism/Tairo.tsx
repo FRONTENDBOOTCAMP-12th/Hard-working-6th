@@ -15,8 +15,6 @@ function Tairo() {
         <CardList></CardList>
       </div>
 
-      <p className="text-center text-xl mt-8 text-white">카드를 뽑아주세요.</p>
-
       <section className="absolute bottom-25 w-[calc(100%-40px)] ">
         <Link to="/tairo-theme/result">
           <CommonButton>결과보기</CommonButton>
