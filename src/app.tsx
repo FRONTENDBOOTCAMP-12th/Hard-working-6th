@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage';
 // import Test from './components/Molecule/Test';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   // useEffect(() => {
@@ -29,15 +30,18 @@ function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/" element={<SignIn />} />
 
-        <Route element={<PageLayout />}>
-          <Route path="/tairo-theme">
-            <Route index element={<TairoTheme />} />
-            <Route path="tairo" element={<TairoPage />} />
-            <Route path="result" element={<TairoResult />} />
-          </Route>
+        {/* 보호된 페이지 */}
+        <Route element={<ProtectedRoute />}>
+          <Route element={<PageLayout />}>
+            <Route path="/tairo-theme">
+              <Route index element={<TairoTheme />} />
+              <Route path="tairo" element={<TairoPage />} />
+              <Route path="result" element={<TairoResult />} />
+            </Route>
 
-          <Route path="/tairo-history" element={<TairoHistory />} />
-          <Route path="/profile" element={<Profile />} />
+            <Route path="/tairo-history" element={<TairoHistory />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
