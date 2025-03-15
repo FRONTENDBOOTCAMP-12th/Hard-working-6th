@@ -4,9 +4,36 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import viteImagemin from 'vite-plugin-imagemin';
 import viteCompression from 'vite-plugin-compression';
+import { VitePWA } from 'vite-plugin-pwa';
 
 const viteConfig = defineConfig({
   plugins: [
+    VitePWA({
+      registerType: 'autoUpdate',
+      manifest: {
+        name: 'tAIro - AI가 보는 타로',
+        short_name: 'tAIro',
+        start_url: '/',
+        display: 'standalone',
+        background_color: '#ffffff',
+        theme_color: '#4F2D86',
+        icons: [
+          {
+            src: 'icon/icon-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: 'icon/icon-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+        ],
+      },
+      devOptions: {
+        enabled: true,
+      },
+    }),
     viteCompression(),
     viteImagemin({
       gifsicle: {
