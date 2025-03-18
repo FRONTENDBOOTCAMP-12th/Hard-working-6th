@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import CustomCalendar from '../Atom/Calendar';
 import ChipList from '../Molecule/ChipList';
 import { getMemoList } from '@/utils/supabaseHistory';
@@ -18,17 +18,24 @@ interface TairoHistoryProps {
 }
 
 function TairoHistory({ userId }: TairoHistoryProps) {
-  const [selectedChip, setSelectedChip] = useState<string | null>('애정운');
+  const [selectedChip, setSelectedChip] = useState<string | null>(
+    '오늘의 운세'
+  );
   const [historyData, setHistoryData] = useState<HistoryItem[]>([]);
   const [filteredData, setFilteredData] = useState<HistoryItem[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [markedDates, setMarkedDates] = useState<
     Record<string, { isMarked: boolean; color: string }>
   >({});
-
+  const contentRef = useRef<HTMLDivElement | null>(null); // 스크롤을 참조할 ref
   const handleChipSelect = (selection: string | null) => {
     setSelectedChip(selection);
   };
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTop = 0; // 스크롤을 맨 위로 초기화
+    }
+  }, [selectedChip, filteredData]);
 
   useEffect(() => {
     const fetchHistory = async () => {
@@ -82,7 +89,7 @@ function TairoHistory({ userId }: TairoHistoryProps) {
 
       filtered = filtered.filter((item) => {
         const createdAtKST = new Date(item.created_at);
-        createdAtKST.setHours(createdAtKST.getHours() - 9);
+        createdAtKST.setHours(createdAtKST.getHours() - 9); // created_at이 로컬 시간이 UCT로 저장이 돼서 로컬 시간이 +9가 되어있는 상태여서 변환함
 
         return createdAtKST >= startOfDayKST && createdAtKST <= endOfDayKST;
       });
@@ -97,15 +104,13 @@ function TairoHistory({ userId }: TairoHistoryProps) {
 
   return (
     <div className="flex flex-col justify-center items-center p-6">
-      {/* 캘린더 */}
       <CustomCalendar
         onDateSelect={setSelectedDate}
         markedDates={markedDates}
         aria-label="날짜를 선택하여 이전 기록을 볼 수 있는 캘린더"
       />
 
-      {/* 칩 리스트 */}
-      <div className="mt-4 w-full overflow-x-auto whitespace-nowrap">
+      <div className="mt-4 w-full overflow-x-auto whitespace-nowrap scrollbar-none">
         <h2 id="chip-list" className="sr-only">
           운세 주제 선택
         </h2>
@@ -114,19 +119,23 @@ function TairoHistory({ userId }: TairoHistoryProps) {
         </div>
       </div>
 
-      {/* 기록 리스트 */}
-      <div className="mt-6 text-white w-full">
+      <div
+        ref={contentRef}
+        className="mt-6 text-white w-full bg-[rgba(59,33,95,0.5)] px-4 rounded-lg h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-700"
+      >
         {filteredData.length > 0 ? (
           <ul className="mt-2">
             {filteredData.map((item) => (
-              <li key={item.id} className="border-b border-gray-400 py-2">
+              <li key={item.id} className="border-b border-gray-400 pt-2 pb-2">
                 <p className="text-center">{item.card_name}</p>
                 <p>{item.content}</p>
               </li>
             ))}
           </ul>
         ) : (
-          <p>이전 기록이 없습니다.</p>
+          <p className="flex items-center justify-center h-full text-2xl">
+            이전 기록이 없습니다.
+          </p>
         )}
       </div>
     </div>
