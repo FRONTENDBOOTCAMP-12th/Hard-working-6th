@@ -97,19 +97,25 @@ function TairoHistory({ userId }: TairoHistoryProps) {
 
   return (
     <div className="flex flex-col justify-center items-center p-6">
+      {/* 캘린더 */}
       <CustomCalendar
         onDateSelect={setSelectedDate}
         markedDates={markedDates}
         aria-label="날짜를 선택하여 이전 기록을 볼 수 있는 캘린더"
       />
-      <div className="mt-4">
+
+      {/* 칩 리스트 */}
+      <div className="mt-4 w-full overflow-x-auto whitespace-nowrap">
         <h2 id="chip-list" className="sr-only">
           운세 주제 선택
         </h2>
-        <ChipList onSelect={handleChipSelect} />
+        <div className="flex space-x-3 snap-x snap-mandatory overflow-x-auto">
+          <ChipList onSelect={handleChipSelect} />
+        </div>
       </div>
 
-      <div className="mt-6 text-white">
+      {/* 기록 리스트 */}
+      <div className="mt-6 text-white w-full">
         {filteredData.length > 0 ? (
           <ul className="mt-2">
             {filteredData.map((item) => (
