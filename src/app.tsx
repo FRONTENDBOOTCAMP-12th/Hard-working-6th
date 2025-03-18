@@ -6,10 +6,11 @@ import PageLayout from './layout/PageLayout';
 import TairoResult from './components/Organism/TairoResult';
 import SignUp from './pages/SignUp';
 import HomePage from './pages/HomePage';
-// import Test from './components/Molecule/Test';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
+import NotFound from './pages/NotFound';
+import TestComponent from './components/Organism/test';
 
 function App() {
   // useEffect(() => {
@@ -41,8 +42,11 @@ function App() {
 
             <Route path="/tairo-history" element={<TairoHistory />} />
             <Route path="/profile" element={<Profile />} />
+
+            <Route path="/test" element={<TestComponent />} />
           </Route>
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

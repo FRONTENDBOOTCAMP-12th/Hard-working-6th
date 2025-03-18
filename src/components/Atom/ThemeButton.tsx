@@ -45,6 +45,10 @@ function getIconName(text: string) {
       return ['circle-dollar-sign', '뜻밖의 행운이 찾아올지도? 재물운 체크!'];
     case '학업운':
       return ['graduation-cap', '오늘은 공부하기 좋은 날일까?'];
+    case '취업운':
+      return ['calendar-fold', '꿈꾸던 직장을 만날 수 있을까요?'];
+    case '오늘의 운세':
+      return ['calendar-fold', '오늘 하루, 어떤 운명이 기다리고 있을까요?'];
     case '월간운세':
       return ['calendar-fold', '이번 달, 행운이 찾아올까요?'];
     default:

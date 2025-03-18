@@ -168,7 +168,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-.dev-dist
+/dev-dist
 
 ### VisualStudioCode ###
 .vscode/*
