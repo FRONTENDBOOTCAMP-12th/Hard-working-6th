@@ -54,21 +54,19 @@ function TairoHistory({ userId }: TairoHistoryProps) {
       void fetchHistory();
     }
   }, [userId]);
-
   useEffect(() => {
     let filtered = historyData;
 
     if (selectedDate) {
-      // 선택된 날짜를 KST로 변환 (09:00 ~ 23:59로 설정)
       const startOfDayKST = new Date(selectedDate);
       startOfDayKST.setHours(0, 0, 0, 0);
 
       const endOfDayKST = new Date(selectedDate);
       endOfDayKST.setHours(23, 59, 59, 999);
 
-      // KST로 변환된 날짜로 비교
       filtered = filtered.filter((item) => {
-        const createdAtKST = new Date(item.created_at); // 이미 KST로 저장되어 있다고 가정
+        const createdAtKST = new Date(item.created_at);
+        createdAtKST.setHours(createdAtKST.getHours() - 9); // 'created_at'이 로컬시간UTC로 저장이 돼서 created_at에서 9시간 빼서 실제 로컬 시간으로 맞춰줌
 
         return createdAtKST >= startOfDayKST && createdAtKST <= endOfDayKST;
       });
