@@ -3,9 +3,9 @@ import { tm } from '@/utils/tw-marge';
 interface SelectBoxProps {
   id: string;
   label: string;
-  options: number[] | string[];
-  value: number;
-  onChange: (value: number) => void;
+  options: string[];
+  value: string;
+  onChange: (value: string) => void;
   disabled?: boolean;
 }
 
@@ -25,7 +25,7 @@ function SelectBox({
       <select
         id={id}
         defaultValue={value}
-        onChange={(e) => onChange(Number(e.target.value))}
+        onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
         className={tm(
           'border-b border-b-gray',

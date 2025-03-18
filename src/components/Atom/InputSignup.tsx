@@ -3,11 +3,18 @@ import { tm } from '@/utils/tw-marge';
 interface InputSignupProps {
   type: 'email' | 'password' | 'text' | 'number';
   id: string;
+  value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
 }
 
-function InputSignup({ id, type, onChange, placeholder }: InputSignupProps) {
+function InputSignup({
+  id,
+  type,
+  value,
+  onChange,
+  placeholder,
+}: InputSignupProps) {
   const getLabel = () => {
     switch (type) {
       case 'email':
@@ -36,6 +43,7 @@ function InputSignup({ id, type, onChange, placeholder }: InputSignupProps) {
         )}
         id={id}
         type={type}
+        value={value}
         onChange={onChange}
         placeholder={placeholder}
         required
