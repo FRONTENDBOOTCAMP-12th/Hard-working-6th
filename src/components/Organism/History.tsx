@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import CustomCalendar from '../Atom/Calendar';
 import ChipList from '../Molecule/ChipList';
 import { getMemoList } from '@/utils/supabaseHistory';
+import { getMarkedDateKey } from '@/utils/dateUtils';
 
 interface HistoryItem {
   id: number;
@@ -21,6 +22,9 @@ function TairoHistory({ userId }: TairoHistoryProps) {
   const [historyData, setHistoryData] = useState<HistoryItem[]>([]);
   const [filteredData, setFilteredData] = useState<HistoryItem[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+  const [markedDates, setMarkedDates] = useState<
+    Record<string, { isMarked: boolean; color: string }>
+  >({});
 
   const handleChipSelect = (selection: string | null) => {
     setSelectedChip(selection);
@@ -41,6 +45,17 @@ function TairoHistory({ userId }: TairoHistoryProps) {
           (item: HistoryItem) => item.user_id === userId
         );
         setHistoryData(userHistory);
+
+        const newMarkedDates: Record<
+          string,
+          { isMarked: boolean; color: string }
+        > = {};
+        userHistory.forEach((item) => {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          const dateKey = getMarkedDateKey(item.created_at as string);
+          newMarkedDates[dateKey] = { isMarked: true, color: 'red' };
+        });
+        setMarkedDates(newMarkedDates);
       } else {
         setHistoryData([]);
       }
@@ -51,9 +66,10 @@ function TairoHistory({ userId }: TairoHistoryProps) {
     };
 
     if (userId) {
-      void fetchHistory();
+      fetchHistory();
     }
   }, [userId]);
+
   useEffect(() => {
     let filtered = historyData;
 
@@ -66,7 +82,7 @@ function TairoHistory({ userId }: TairoHistoryProps) {
 
       filtered = filtered.filter((item) => {
         const createdAtKST = new Date(item.created_at);
-        createdAtKST.setHours(createdAtKST.getHours() - 9); // 'created_at'이 로컬시간UTC로 저장이 돼서 created_at에서 9시간 빼서 실제 로컬 시간으로 맞춰줌
+        createdAtKST.setHours(createdAtKST.getHours() - 9);
 
         return createdAtKST >= startOfDayKST && createdAtKST <= endOfDayKST;
       });
@@ -83,6 +99,7 @@ function TairoHistory({ userId }: TairoHistoryProps) {
     <div className="flex flex-col justify-center items-center p-6">
       <CustomCalendar
         onDateSelect={setSelectedDate}
+        markedDates={markedDates}
         aria-label="날짜를 선택하여 이전 기록을 볼 수 있는 캘린더"
       />
       <div className="mt-4">
