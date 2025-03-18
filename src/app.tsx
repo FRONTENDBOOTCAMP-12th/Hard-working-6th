@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
+import NotFound from './pages/NotFound';
 
 function App() {
   // useEffect(() => {
@@ -43,6 +44,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
           </Route>
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
