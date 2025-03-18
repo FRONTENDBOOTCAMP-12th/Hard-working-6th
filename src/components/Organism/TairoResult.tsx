@@ -8,6 +8,7 @@ import { addMemoItem } from '@/utils/supabaseHistory';
 import supabaseClient from '@/utils/SupabaseClient';
 
 const { VITE_GPTAPI_KEY } = import.meta.env;
+import CommonButton from '../Atom/CommonButton';
 
 const openai = new OpenAI({
   apiKey: VITE_GPTAPI_KEY,
@@ -109,14 +110,18 @@ function TairoResult() {
         className="w-30 h-52 rounded-lg overflow-hidden z-10"
       />
 
-      <section className="relative">
-        <img src={paper} alt="결과" className="w-full -mt-24 absolute z-0" />
+      <section className="relative flex flex-col items-center w-100 h-100">
+        <img src={paper} alt="결과" className="max-w-100 -mt-18 absolute z-0" />
 
         <div className="relative z-10 mt-10 text-black">
-          <strong className="ml-8">{card}</strong>
-          <p className="m-8 mt-4">{msg}</p>
+          <strong className="ml-12">{card}</strong>
+          <p className="m-12 mt-4">{msg}</p>
         </div>
       </section>
+
+      <article className="mt-12 w-full">
+        <CommonButton>저장하기</CommonButton>
+      </article>
     </div>
   );
 }
