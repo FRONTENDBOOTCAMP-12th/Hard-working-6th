@@ -1,19 +1,17 @@
+import { forwardRef } from 'react';
 import { tm } from '@/utils/tw-marge';
 
 interface InputLoginProps {
   type: 'email' | 'password';
   id: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  defaultValue?: string;
   placeholder?: string;
 }
 
-function InputLogin({ id, type, onChange, placeholder }: InputLoginProps) {
-  const handleChange = (e) => {
-    onChange(e.target.value);
-  };
-
-  // console.log('시작', data);
+function InputLogin(
+  { id, type, defaultValue, placeholder }: InputLoginProps,
+  ref: React.Ref<HTMLInputElement>
+) {
   return (
     <div className="relative">
       <label
@@ -34,8 +32,8 @@ function InputLogin({ id, type, onChange, placeholder }: InputLoginProps) {
         )}
         id={id}
         type={type}
-        // defaultValue={data}
-        onChange={handleChange}
+        defaultValue={defaultValue}
+        ref={ref}
         placeholder={placeholder}
         required
       />
@@ -43,4 +41,7 @@ function InputLogin({ id, type, onChange, placeholder }: InputLoginProps) {
   );
 }
 
-export default InputLogin;
+// forwardRef로 감싸기 (React.forwardRef는 고차 함수 형태이므로 감싸야 함)
+const ForwardedInputLogin = forwardRef(InputLogin);
+
+export default ForwardedInputLogin;

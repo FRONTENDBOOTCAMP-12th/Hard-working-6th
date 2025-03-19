@@ -1,21 +1,17 @@
-import { useState } from 'react';
-import CommonButton from '../Atom/CommonButton';
-import InputLogin from '../Atom/InputLogin';
-import supabaseClient from '@/utils/SupabaseClient';
-import { BrandGithub } from '@mynaui/icons-react';
+import { useRef } from 'react';
 import { Link, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { BrandGithub } from '@mynaui/icons-react';
+import supabaseClient from '@/utils/SupabaseClient';
+import CommonButton from '../Atom/CommonButton';
+import InputLogin from '../Atom/InputLogin';
 
 function LoginList() {
-  const [idVal, setIdval] = useState('');
-  const [pwVal, setPwval] = useState('');
-
-  console.log(idVal);
-  console.log(pwVal);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   const MySwal = withReactContent(Swal);
-
   const navigate = useNavigate();
 
   const signInWithOAuth = async () => {
@@ -30,16 +26,27 @@ function LoginList() {
   };
 
   async function signInWithEmail() {
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+
+    if (!email || !password) {
+      MySwal.fire({
+        title: <p>이메일과 비밀번호를 입력해주세요.</p>,
+        icon: 'warning',
+      });
+      return;
+    }
+
     const { data, error } = await supabaseClient.auth.signInWithPassword({
-      email: `${idVal}`,
-      password: `${pwVal}`,
+      email,
+      password,
     });
 
     if (!error) {
-      console.log('성공: ', data, error);
+      console.log('성공: ', data);
       navigate('/home');
-    } else if (error) {
-      console.log('실패: ', data, error);
+    } else {
+      console.log('실패: ', error);
       MySwal.fire({
         title: <p>정보가 일치하지 않습니다.</p>,
         icon: 'error',
@@ -54,40 +61,34 @@ function LoginList() {
           id="email"
           type="email"
           placeholder="ID를 입력해 주세요"
-          // value={email}
-          onChange={setIdval}
+          ref={emailRef}
+          defaultValue=""
         />
         <InputLogin
           id="password"
           type="password"
           placeholder="비밀번호를 입력해 주세요"
-          // value={password}
-          onChange={setPwval}
+          ref={passwordRef}
+          defaultValue=""
         />
-        {/* <button type="button" className="ml-auto text-font ">
-          ID/PW가 기억나지 않나요?
-        </button> */}
       </div>
-      <div className="mt-14 space-y-4">
-        <Link to="/sign-up">
-          <CommonButton type={'submit'} color={'bg-gray'}>
-            아직 회원이 아니신가요?
-          </CommonButton>
-        </Link>
 
+      <div className="mt-14 space-y-4">
         <div className="mt-4">
-          <CommonButton type={'submit'} onClick={signInWithEmail}>
+          <CommonButton type="submit" onClick={signInWithEmail}>
             로그인
           </CommonButton>
         </div>
 
-        <CommonButton
-          type={'submit'}
-          color={'bg-black'}
-          onClick={signInWithOAuth}
-        >
-          {<BrandGithub />}Github
+        <CommonButton type="submit" color="bg-black" onClick={signInWithOAuth}>
+          <BrandGithub /> Github
         </CommonButton>
+
+        <Link to="/sign-up">
+          <CommonButton type="submit" color="bg-gray">
+            아직 회원이 아니신가요?
+          </CommonButton>
+        </Link>
       </div>
     </div>
   );
