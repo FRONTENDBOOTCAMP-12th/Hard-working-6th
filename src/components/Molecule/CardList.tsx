@@ -4,7 +4,11 @@ import cardData from '../../assets/data/card_data.json';
 import { tm } from '@/utils/tw-marge';
 import { useStore } from '@/stores/theme';
 
-function CardList() {
+interface CardListProps {
+  setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function CardList({ setIsActive }: CardListProps) {
   const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
   const updateCard = useStore((state) => state.updateCard);
 
@@ -34,6 +38,12 @@ function CardList() {
 
     updateCard(card);
   };
+
+  useEffect(() => {
+    if (activeCardIndex !== null) {
+      setIsActive(true);
+    }
+  }, [activeCardIndex]);
 
   const cards = Array.from({ length: 22 }, (_, i) => i);
   const radius = 10; // 카드 반지름
