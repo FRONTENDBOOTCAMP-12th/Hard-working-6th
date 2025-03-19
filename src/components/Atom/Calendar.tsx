@@ -2,6 +2,7 @@ import Calendar from 'react-calendar';
 import { useState, useRef } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import '../../styles/components/calendar.css';
+import { getMarkedDateKey } from '@/utils/dateUtils';
 import moment from 'moment';
 
 type CalendarObject = HTMLDivElement & {
@@ -10,9 +11,10 @@ type CalendarObject = HTMLDivElement & {
 
 interface CustomCalendarProps {
   onDateSelect: (date: Date) => void;
+  markedDates: Record<string, { isMarked: boolean; color: string }>;
 }
 
-function CustomCalendar({ onDateSelect }: CustomCalendarProps) {
+function CustomCalendar({ onDateSelect, markedDates }: CustomCalendarProps) {
   const calendarRef = useRef<null | CalendarObject>(null);
   const [date, setDate] = useState<Date | null>(new Date());
 
@@ -22,6 +24,27 @@ function CustomCalendar({ onDateSelect }: CustomCalendarProps) {
     const calendar = calendarRef.current;
     calendar?.setActiveStartDate(new Date());
     onDateSelect(today); // 부모 컴포넌트로 전달
+  };
+  const tileContent = ({ date }: { date: Date }) => {
+    const dateString = date.toISOString().split('T')[0]; // "YYYY-MM-DD" 형식으로 변환
+    const markedDate = markedDates[getMarkedDateKey(dateString)];
+
+    return (
+      <div className="relative flex flex-col items-center">
+        {markedDate?.isMarked && (
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '-6px',
+              width: '6px',
+              height: '6px',
+              borderRadius: '50%',
+              backgroundColor: markedDate.color,
+            }}
+          ></div>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -36,14 +59,7 @@ function CustomCalendar({ onDateSelect }: CustomCalendarProps) {
             onDateSelect(date as Date);
           }}
           value={date}
-          navigationLabel={({ date }) => (
-            <span className="text-lg font-semibold">
-              {date.toLocaleString('default', {
-                month: 'long',
-                year: 'numeric',
-              })}
-            </span>
-          )}
+          tileContent={tileContent}
           formatShortWeekday={(locale, date) =>
             date.toLocaleDateString(locale, { weekday: 'short' }).slice(0, 1)
           }
@@ -52,7 +68,6 @@ function CustomCalendar({ onDateSelect }: CustomCalendarProps) {
           calendarType="gregory" // 일요일부터 표시되도록 그레고리력으로 변경
           formatDay={(_locale, date) => moment(date).format('D')} // "일" 제거
         />
-
         <button
           type="button"
           onClick={handleTodayClick}

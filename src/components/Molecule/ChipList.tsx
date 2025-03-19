@@ -1,14 +1,23 @@
 import { useState } from 'react';
 import Chip from '../Atom/Chip';
 
-const chipData = ['애정운', '재물운', '학업운', '월간운세'];
+const chipData = [
+  '오늘의 운세',
+  '애정운',
+  '재물운',
+  '학업운',
+  '취업운',
+  '월간운세',
+];
 
 interface ChipListProps {
   onSelect: (selection: string | null) => void;
 }
 
 function ChipList({ onSelect }: ChipListProps) {
-  const [selectedChip, setSelectedChip] = useState<string | null>('애정운');
+  const [selectedChip, setSelectedChip] = useState<string | null>(
+    '오늘의 운세'
+  );
 
   const handleChipClick = (label: string) => {
     const newSelection = label;
