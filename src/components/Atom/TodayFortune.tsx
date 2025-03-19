@@ -19,6 +19,14 @@ interface TodayFortuneProps {
 // JSON 데이터에 타입 적용
 const todayFortunes: TodayFortunes = todayFortunesData;
 
+// Supabase가 응답한 포춘 데이터 인터페이스
+interface FortuneResponse {
+  created_at: string;
+  today_fortune: string;
+  today_fortune_date: string;
+  user_id: string;
+}
+
 function TodayFortune({ className }: TodayFortuneProps) {
   // 유저 아이디
   const [userId, setUserId] = useState<string | null>(null);
@@ -35,10 +43,6 @@ function TodayFortune({ className }: TodayFortuneProps) {
     // 수퍼베이스에서 userId 가져오기
 
     void (async () => {
-      // let { data: user_fortune, error } = await supabaseClient
-      //   .from('user_fortune')
-      //   .select('id');
-
       const { data, error } = await supabaseClient.auth.getUser();
 
       if (error) {
@@ -46,8 +50,6 @@ function TodayFortune({ className }: TodayFortuneProps) {
       } else {
         setUserId(data.user?.id || null);
       }
-
-      // console.log(userId);
     })();
   }, []);
 
@@ -74,8 +76,10 @@ function TodayFortune({ className }: TodayFortuneProps) {
       if (data) {
         // 기존 데이터가 있으면 그대로 사용
 
-        setTodayFortune(data.today_fortune);
-        // return;
+        // Supabase가 응답한 포춘 데이터에서 today_fortune 추출
+        const { today_fortune } = data as FortuneResponse;
+        // today_fortune 데이터 객체로 변경한 후, 상태 업데이트 요청
+        setTodayFortune(JSON.parse(today_fortune) as Fortune);
       } else {
         // 기존 데이터가 없으면 새로운 운세 저장
 
@@ -107,12 +111,11 @@ function TodayFortune({ className }: TodayFortuneProps) {
     };
 
     void fetchTodayFortune();
-  }, [userId]);
+  }, [today, userId]);
 
   return (
     <section className={tm('w-[275px] ml-6', className)}>
       <h2 className="sr-only">오늘의 운세</h2>
-      {/* {todayFortune && ( */}
       <div className="text-white">
         <h3 className="text-c-2md font-semibold whitespace-nowrap">
           {todayFortune.title}
@@ -121,7 +124,6 @@ function TodayFortune({ className }: TodayFortuneProps) {
           {todayFortune.desc}
         </p>
       </div>
-      {/* )} */}
     </section>
   );
 }
