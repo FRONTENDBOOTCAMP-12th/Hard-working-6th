@@ -14,6 +14,8 @@ import { Female, Male } from '@mynaui/icons-react';
 const MySwal = withReactContent(Swal);
 
 function SignUpList() {
+  const [isEmailChecked, setIsEmailChecked] = useState(false); // 중복 확인 상태
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -56,6 +58,10 @@ function SignUpList() {
 
   // 회원가입 버튼 클릭 시 최종 유효성 검사 및 회원가입 요청
   const handleSignUp = async () => {
+    if (!isEmailChecked) {
+      Swal.fire('알림', '이메일 중복 확인을 해주세요.', 'warning');
+      return;
+    }
     const birthday = `${birthdate.year}-${birthdate.month}-${birthdate.day}`;
 
     const { data, error } = await supabaseClient.auth.signUp({
@@ -97,7 +103,11 @@ function SignUpList() {
   return (
     <>
       <div className="space-y-8 mb-5 w-full">
-        <CheckEmail email={formData.email} onChange={handleChange} />
+        <CheckEmail
+          email={formData.email}
+          onChange={handleChange}
+          onEmailCheck={setIsEmailChecked}
+        />
         <CheckPassword
           password={formData.password}
           passwordConfirm={formData.passwordConfirm}
