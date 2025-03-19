@@ -32,7 +32,7 @@ function CardItem({ card }: CardItemProps) {
         initial={{ opacity: 0 }} // 처음엔 투명한 상태
         animate={{ opacity: 1 }} // 나타나는 효과
         exit={{ opacity: 0 }} // 사라지는 효과
-        transition={{ duration: 0.4 }} // 부드러운 전환
+        transition={{ duration: 0.2 }} // 부드러운 전환
       />
     </motion.div>
   );
