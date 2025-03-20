@@ -3,9 +3,10 @@ import { tm } from '@/utils/tw-marge';
 interface ThemaButtonProps {
   text: string;
   onClick: () => void;
+  disabled?: boolean;
 }
 
-function ThemaButton({ text, onClick }: ThemaButtonProps) {
+function ThemaButton({ text, onClick, disabled = false }: ThemaButtonProps) {
   return (
     <button
       className={tm(
@@ -19,10 +20,13 @@ function ThemaButton({ text, onClick }: ThemaButtonProps) {
         'w-full',
         'mt-2',
         'shadow-md',
-        'shadow-black/20'
+        'shadow-black/20',
+
+        disabled && 'opacity-50'
       )}
       type="button"
       onClick={onClick}
+      disabled={disabled}
     >
       <div className="text-left text-lg sm:text-xl">
         <h2 className=" font-bold">{text}</h2>
