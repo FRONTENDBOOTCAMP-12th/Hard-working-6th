@@ -106,7 +106,7 @@ function TairoHistory({ userId }: TairoHistoryProps) {
         aria-label="날짜를 선택하여 이전 기록을 볼 수 있는 캘린더"
       />
 
-      <div className="mt-4 w-full overflow-x-auto whitespace-nowrap scrollbar-none">
+      <div className="flex justify-center mt-4 w-full overflow-x-auto whitespace-nowrap scrollbar-none">
         <h2 id="chip-list" className="sr-only">
           운세 주제 선택
         </h2>
@@ -117,7 +117,7 @@ function TairoHistory({ userId }: TairoHistoryProps) {
 
       <div
         ref={contentRef}
-        className="mt-6 text-white w-full bg-[rgba(59,33,95,0.5)] px-4 rounded-lg h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-700"
+        className="mt-6 w-sm text-white bg-[rgba(59,33,95,0.5)] px-4 rounded-lg h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-700"
       >
         {filteredData.length > 0 ? (
           <ul className="mt-2">
