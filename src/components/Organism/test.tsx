@@ -2,15 +2,6 @@ import supabaseClient from '@/utils/SupabaseClient';
 import { getProfile } from '@/utils/supabaseProfile';
 import { useEffect, useState } from 'react';
 
-interface HistoryItem {
-  id: number;
-  user_id: string;
-  created_at: string;
-  card_theme: string;
-  card_name: string;
-  content: string;
-}
-
 function TestComponent() {
   const [userId, setUserId] = useState<string | null>(null);
 
@@ -30,17 +21,16 @@ function TestComponent() {
     const fetchHistory = async () => {
       const { data, error } = await getProfile({
         columns: '*',
-        page: 0,
-        perPage: 10,
         orderBy: 'updated_at',
         isAscending: false,
       });
 
       if (data) {
+        // const { id } = data as ProfileResponse;
         const userData = data.filter((item) => item.id === userId);
 
         console.log(userData); // 이부분
-        console.log(userData[0].full_name);
+        console.log(userData[0].zodiac_sign);
       }
 
       if (error) {
@@ -49,7 +39,7 @@ function TestComponent() {
     };
 
     if (userId) {
-      void fetchHistory();
+      fetchHistory();
     }
   }, [userId]);
 

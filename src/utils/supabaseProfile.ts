@@ -2,6 +2,19 @@ import supabaseClient from './SupabaseClient';
 
 const DB_NAME = 'profiles';
 
+interface ProfileResponse {
+  id: string;
+  updated_at: string;
+  username: string;
+  full_name: string;
+  avatar_url: string;
+  website: string;
+  birthdate: string;
+  gender: string;
+  zodiac_sign: string;
+  email: string;
+}
+
 // 행(rows) 데이터 읽기
 export const getProfile = async ({
   // 특정 열(columns) 읽기
@@ -21,16 +34,16 @@ export const getProfile = async ({
     .select(columns)
     .range(fromIndex, toIndex)
     .order(orderBy, { ascending: isAscending })
-    .returns<MemoListItem[]>();
+    .returns<ProfileResponse[]>();
 };
 
 // 행(row) 데이터 쓰기
-export const addProfile = async (newItem: RequiredMemoListItem) => {
+export const addProfile = async (newItem: ProfileResponse) => {
   return supabaseClient.from(DB_NAME).insert([newItem]).select();
 };
 
 // 행(row) 데이터 수정
-export const editProfile = async (editItem: MemoListItem) => {
+export const editProfile = async (editItem: ProfileResponse) => {
   return supabaseClient
     .from(DB_NAME)
     .update(editItem)
@@ -39,6 +52,6 @@ export const editProfile = async (editItem: MemoListItem) => {
 };
 
 // 행(row) 데이터 삭제
-export const deleteProfile = async (deleteItem: MemoListItem) => {
+export const deleteProfile = async (deleteItem: ProfileResponse) => {
   return supabaseClient.from(DB_NAME).delete().eq('id', deleteItem.id);
 };
