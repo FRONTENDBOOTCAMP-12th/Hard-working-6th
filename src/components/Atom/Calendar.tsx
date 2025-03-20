@@ -47,11 +47,6 @@ function CustomCalendar({ onDateSelect, markedDates }: CustomCalendarProps) {
       </div>
     );
   };
-  useEffect(() => {
-    const localDate = new Date();
-    localDate.setHours(localDate.getHours());
-    console.log(localDate);
-  });
 
   return (
     <div className="flex justify-center">
