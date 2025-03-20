@@ -22,6 +22,7 @@ function TestComponent() {
         console.error('에러 발생: ', error);
       } else {
         setUserId(data.user?.id);
+        console.log('유저 아이디:', userId);
       }
     })();
   }, []);
@@ -40,7 +41,7 @@ function TestComponent() {
         const userData = data.filter((item) => item.id === userId);
 
         console.log(userData); // 이부분
-        console.log(userData[0].full_name);
+        console.log(userData[0].zodiac_sign);
       }
 
       if (error) {
