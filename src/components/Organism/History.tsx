@@ -1,8 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import CustomCalendar from '../Atom/Calendar';
 import ChipList from '../Molecule/ChipList';
 import { getMemoList } from '@/utils/supabaseHistory';
-import { getMarkedDateKey } from '@/utils/dateUtils';
 
 interface HistoryItem {
   id: number;
@@ -24,9 +23,6 @@ function TairoHistory({ userId }: TairoHistoryProps) {
   const [historyData, setHistoryData] = useState<HistoryItem[]>([]);
   const [filteredData, setFilteredData] = useState<HistoryItem[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
-  const [markedDates, setMarkedDates] = useState<
-    Record<string, { isMarked: boolean; color: string }>
-  >({});
   const contentRef = useRef<HTMLDivElement | null>(null); // 스크롤을 참조할 ref
   const handleChipSelect = (selection: string | null) => {
     setSelectedChip(selection);
@@ -41,8 +37,6 @@ function TairoHistory({ userId }: TairoHistoryProps) {
     const fetchHistory = async () => {
       const { data, error } = await getMemoList({
         columns: '*',
-        page: 0,
-        perPage: 10,
         orderBy: 'created_at',
         isAscending: false,
       });
@@ -52,17 +46,6 @@ function TairoHistory({ userId }: TairoHistoryProps) {
           (item: HistoryItem) => item.user_id === userId
         );
         setHistoryData(userHistory);
-
-        const newMarkedDates: Record<
-          string,
-          { isMarked: boolean; color: string }
-        > = {};
-        userHistory.forEach((item) => {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          const dateKey = getMarkedDateKey(item.created_at as string);
-          newMarkedDates[dateKey] = { isMarked: true, color: 'red' };
-        });
-        setMarkedDates(newMarkedDates);
       } else {
         setHistoryData([]);
       }
@@ -77,6 +60,19 @@ function TairoHistory({ userId }: TairoHistoryProps) {
     }
   }, [userId]);
 
+  const markedDates = useMemo(() => {
+    return historyData.reduce(
+      (acc, item) => {
+        const date = new Date(item.created_at);
+        date.setHours(date.getHours() - 9);
+        const dateKey = item.created_at.split('T')[0]; // 날짜만 추출
+        acc[dateKey] = { isMarked: true, color: 'red' };
+        return acc;
+      },
+      {} as Record<string, { isMarked: boolean; color: string }>
+    );
+  }, [historyData]);
+
   useEffect(() => {
     let filtered = historyData;
 
@@ -89,7 +85,7 @@ function TairoHistory({ userId }: TairoHistoryProps) {
 
       filtered = filtered.filter((item) => {
         const createdAtKST = new Date(item.created_at);
-        createdAtKST.setHours(createdAtKST.getHours() - 9); // created_at이 로컬 시간이 UCT로 저장이 돼서 로컬 시간이 +9가 되어있는 상태여서 변환함
+        createdAtKST.setHours(createdAtKST.getHours() - 9); // DB에서 created_at이 로컬 시간으로 UTC 저장이 되어 로컬 시간이 +9가 되어있는 상태여서 -9로 시간을 맞춰줌
 
         return createdAtKST >= startOfDayKST && createdAtKST <= endOfDayKST;
       });

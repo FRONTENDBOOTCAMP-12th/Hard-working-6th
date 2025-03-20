@@ -3,19 +3,21 @@ import supabaseClient from '@/utils/SupabaseClient';
 import { useEffect, useState } from 'react';
 
 function TairoHistory() {
-  const [userId, setUserId] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | null>(
+    '4ce1ec4e-e9bb-4e95-8957-41ad0d64cd1a'
+  );
 
-  useEffect(() => {
-    void (async () => {
-      const { data, error } = await supabaseClient.auth.getUser();
+  // useEffect(() => {
+  //   void (async () => {
+  //     const { data, error } = await supabaseClient.auth.getUser();
 
-      if (error) {
-        console.error('에러 발생: ', error);
-      } else {
-        setUserId(data.user?.id);
-      }
-    })();
-  }, []);
+  //     if (error) {
+  //       console.error('에러 발생: ', error);
+  //     } else {
+  //       setUserId(data.user?.id);
+  //     }
+  //   })();
+  // }, []);
 
   return (
     <div className="min-h screen">

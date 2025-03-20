@@ -1,8 +1,7 @@
 import Calendar from 'react-calendar';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import '../../styles/components/calendar.css';
-import { getMarkedDateKey } from '@/utils/dateUtils';
 import moment from 'moment';
 
 type CalendarObject = HTMLDivElement & {
@@ -26,8 +25,10 @@ function CustomCalendar({ onDateSelect, markedDates }: CustomCalendarProps) {
     onDateSelect(today); // 부모 컴포넌트로 전달
   };
   const tileContent = ({ date }: { date: Date }) => {
-    const dateString = date.toISOString().split('T')[0]; // "YYYY-MM-DD" 형식으로 변환
-    const markedDate = markedDates[getMarkedDateKey(dateString)];
+    const localDate = new Date(date);
+    localDate.setHours(localDate.getHours());
+    const dateString = localDate.toLocaleDateString('en-CA'); // "YYYY-MM-DD" 형식으로 변환
+    const markedDate = markedDates[dateString];
 
     return (
       <div className="relative flex flex-col items-center">
@@ -46,6 +47,11 @@ function CustomCalendar({ onDateSelect, markedDates }: CustomCalendarProps) {
       </div>
     );
   };
+  useEffect(() => {
+    const localDate = new Date();
+    localDate.setHours(localDate.getHours());
+    console.log(localDate);
+  });
 
   return (
     <div className="flex justify-center">
