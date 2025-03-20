@@ -3,7 +3,7 @@ import supabaseClient from '@/utils/SupabaseClient';
 import { useEffect, useState } from 'react';
 
 function TairoHistory() {
-  const [userId, setUserId] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | null>('null');
 
   useEffect(() => {
     void (async () => {
