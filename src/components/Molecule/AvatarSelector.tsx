@@ -1,56 +1,65 @@
-import { useRef } from "react";
 import supabaseClient from '@/utils/SupabaseClient';
 import { useEffect, useId, useState } from 'react';
 
 interface AvatarSelectorProps {
-  onSelect: (newAvatar: string) => void;
-  onClose?: () => void;
+  url?: string; // 현재 아바타 URL 또는 경로
+  size: number; // 아바타 크기
+  onUpload: (filePath: string) => void; // 업로드 후 콜백
+  onClose?: () => void; // 닫기 콜백 (옵션)
 }
 
-const AvatarSelector = ({url, size, onUpload }) => {
-  // const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // // 🔹 사용자가 갤러리에서 이미지를 선택하는 경우
-  // const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       if (reader.result && typeof reader.result === "string") {
-  //         onSelect(reader.result); // ✅ Base64 변환된 이미지 전달
-  //         if (onClose) onClose(); // ✅ 모달 닫기
-  //       }
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
+const AvatarSelector = ({
+  url,
+  size,
+  onUpload,
+  onClose,
+}: AvatarSelectorProps) => {
   const id = useId();
-  const [avatarUrl, setAvatarUrl] = useState('');
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
+    if (!url) return;
+
+    // URL이 이미 완전한 URL인지 확인
+    if (
+      url.startsWith('http') ||
+      url.startsWith('blob') ||
+      url.startsWith('data:')
+    ) {
+      setAvatarUrl(url);
+      return;
+    }
+
+    // Supabase 스토리지 경로인 경우 다운로드
     const downloadImage = async (path: string) => {
+      console.log('실행');
+
       try {
         const { data, error } = await supabaseClient.storage
           .from('avatars')
           .download(path);
-          console.log('path: ', path)
 
         if (error) {
-          throw error;
+          console.error('이미지 다운로드 오류:', error);
+          return;
         }
 
-        const url = URL.createObjectURL(data);
-        setAvatarUrl(url);
-        console.log('url', url)
+        if (data) {
+          console.log(data);
+
+          const objectUrl = URL.createObjectURL(data);
+          setAvatarUrl(objectUrl);
+
+          // 컴포넌트 언마운트 시 URL 해제를 위한 클린업 함수
+          return () => URL.revokeObjectURL(objectUrl);
+        }
       } catch (error) {
         console.error(`이미지 다운로드 오류 발생! ${(error as Error).message}`);
       }
     };
 
-    if (url) {
-      downloadImage(url);
-    }
+    downloadImage(url);
   }, [url]);
 
   const uploadAvatar = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,90 +86,57 @@ const AvatarSelector = ({url, size, onUpload }) => {
       }
 
       onUpload(filePath);
-      setIsUploading(false);
     } catch (error) {
       console.error((error as Error).message);
+    } finally {
+      setIsUploading(false);
     }
   };
 
-
   return (
-    <div>
-      {
+    <div className="flex flex-col items-center">
+      {avatarUrl ? (
         <img
           src={avatarUrl}
           alt="아바타"
-          className="avatar image"
+          className="avatar image rounded-full"
           style={{ height: size, width: size }}
         />
-       
-      }
-      <div style={{ width: size }}>
-        <label htmlFor={id} className="button primary block">
-          {isUploading ? '업로드 중...' : '업로드'}
+      ) : (
+        <div
+          className="avatar no-image bg-gray-200 rounded-full flex items-center justify-center"
+          style={{ height: size, width: size }}
+        >
+          <span className="text-gray-500">이미지 없음</span>
+        </div>
+      )}
+
+      <div className="mt-4 relative" style={{ width: size }}>
+        <label
+          htmlFor={id}
+          className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-lg cursor-pointer"
+        >
+          <img src="/src/assets/icon/pencil.svg" alt="편집하기" />
         </label>
         <input
           id={id}
           type="file"
           accept="image/*"
           onChange={uploadAvatar}
-          aria-disabled={isUploading}
+          disabled={isUploading}
           style={{ visibility: 'hidden', position: 'absolute' }}
         />
       </div>
+
+      {onClose && (
+        <button
+          onClick={onClose}
+          className="mt-2 py-2 px-4 bg-gray-300 rounded text-gray-700"
+        >
+          취소
+        </button>
+      )}
     </div>
-    // <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-    //   <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-    //     <h2 className="text-lg font-semibold mb-4 text-center">프로필 사진 선택</h2>
-
-    //     {/* 🔹 기본 아바타 선택 */}
-    //     <div className="flex justify-around">
-    //       {avatars.map((avatar) => (
-    //         <button
-    //           key={avatar}
-    //           type="button"
-    //           onClick={() => {
-    //             onSelect(avatar);
-    //             if (onClose) onClose();
-    //           }}
-    //         >
-    //           <img
-    //             src={avatar}
-    //             alt="Avatar Option"
-    //             className="w-16 h-16 rounded-full border-2 cursor-pointer hover:border-indigo-500"
-    //           />
-    //         </button>
-    //       ))}
-    //     </div>
-
-    //     {/* 🔹 갤러리에서 사진 업로드 */}
-    //     <div className="mt-4 flex justify-center">
-    //       <button
-    //         className="px-4 py-2 bg-blue-500 text-white rounded-lg"
-    //         onClick={() => fileInputRef.current?.click()}
-    //       >
-    //         갤러리에서 선택
-    //       </button>
-    //       <input
-    //         type="file"
-    //         accept="image/*"
-    //         ref={fileInputRef}
-    //         className="hidden"
-    //         onChange={handleFileChange}
-    //       />
-    //     </div>
-
-    //     {/* 🔹 취소 버튼 */}
-    //     <div className="mt-4 flex justify-center">
-    //       <button
-    //         className="px-4 py-2 bg-gray-300 rounded-lg"
-    //         onClick={onClose}
-    //       >
-    //         취소
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
