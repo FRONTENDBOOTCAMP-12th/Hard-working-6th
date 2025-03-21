@@ -11,7 +11,7 @@ function ThemeButtonList() {
     '재물운',
     '학업운',
     '취업운',
-    '오늘의 운세',
+    '재회운',
     '월간운세',
   ];
   const updateTheme = useStore((state) => state.updateTheme);
