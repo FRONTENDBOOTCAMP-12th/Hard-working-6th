@@ -20,7 +20,7 @@ function ChipList({ onSelect }: ChipListProps) {
   const handleChipClick = (label: string) => {
     const newSelection = label;
     setSelectedChip(newSelection);
-    onSelect(newSelection); // 부모 컴포넌트로 전달
+    onSelect(newSelection);
   };
 
   return (
