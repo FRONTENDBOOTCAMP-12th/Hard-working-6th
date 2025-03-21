@@ -1,9 +1,20 @@
 .custom-calendar .react-calendar {
-	background: url('../../assets/paper.png') no-repeat center center;
+	position: relative;
+	background: none;
 	background-size: cover;
 	border: none;
 	padding: 1.5rem;
 	box-shadow: none;
+}
+
+.background-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 0;
 }
 
 .custom-calendar .react-calendar__navigation {

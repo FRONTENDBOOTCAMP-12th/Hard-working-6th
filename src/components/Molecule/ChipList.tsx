@@ -2,11 +2,11 @@ import { useState } from 'react';
 import Chip from '../Atom/Chip';
 
 const chipData = [
-  '재회운',
   '애정운',
   '재물운',
   '학업운',
   '취업운',
+  '재회운',
   '오늘의 운세',
 ];
 
@@ -15,14 +15,12 @@ interface ChipListProps {
 }
 
 function ChipList({ onSelect }: ChipListProps) {
-  const [selectedChip, setSelectedChip] = useState<string | null>(
-    '오늘의 운세'
-  );
+  const [selectedChip, setSelectedChip] = useState<string | null>('애정운');
 
   const handleChipClick = (label: string) => {
     const newSelection = label;
     setSelectedChip(newSelection);
-    onSelect(newSelection); // 부모 컴포넌트로 전달
+    onSelect(newSelection);
   };
 
   return (
