@@ -15,9 +15,7 @@ interface ChipListProps {
 }
 
 function ChipList({ onSelect }: ChipListProps) {
-  const [selectedChip, setSelectedChip] = useState<string | null>(
-    '오늘의 운세'
-  );
+  const [selectedChip, setSelectedChip] = useState<string | null>('애정운');
 
   const handleChipClick = (label: string) => {
     const newSelection = label;
