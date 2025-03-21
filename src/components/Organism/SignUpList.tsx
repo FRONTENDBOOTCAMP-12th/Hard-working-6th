@@ -131,7 +131,9 @@ function SignUpList() {
         />
       </div>
 
-      <CommonButton onClick={handleSignUp}>회원가입</CommonButton>
+      <CommonButton type="submit" onClick={handleSignUp}>
+        회원가입
+      </CommonButton>
     </>
   );
 }

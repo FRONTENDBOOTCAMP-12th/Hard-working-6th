@@ -69,7 +69,9 @@ function CheckEmail({ email, onChange, onEmailCheck }: CheckEmailProps) {
           onChange={handleChange}
         />
         {emailMessage && (
-          <p className="absolute -bottom-6 text-red text-sm">{emailMessage}</p>
+          <p className="absolute -bottom-6 text-red text-sm" aria-live="polite">
+            {emailMessage}
+          </p>
         )}
       </div>
       <ChipButtonSignup onClick={checkEmailDuplicate}>
