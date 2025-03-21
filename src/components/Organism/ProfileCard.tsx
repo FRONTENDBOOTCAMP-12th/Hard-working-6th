@@ -45,7 +45,6 @@ const ProfileCard = () => {
       console.log(data);
       if (data) {
         const userData = data.filter((item) => item.id === userId);
-
         console.log('durl', userData[0].avatar_url); // 이부분
         setUserProfile(userData[0]);
         setAvatar(userData[0].avatar_url);

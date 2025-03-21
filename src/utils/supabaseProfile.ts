@@ -23,8 +23,6 @@ export const getProfile = async ({
   orderBy = 'updated_at',
   isAscending = false,
 } = {}) => {
-  
-
   return supabaseClient
     .from(DB_NAME)
     .select(columns)
@@ -38,7 +36,7 @@ export const addProfile = async (newItem: ProfileResponse) => {
 };
 
 // 행(row) 데이터 수정
-export const editProfile = async (editItem: ProfileResponse) => {
+export const editProfile = async (editItem) => {
   return supabaseClient
     .from(DB_NAME)
     .update(editItem)
