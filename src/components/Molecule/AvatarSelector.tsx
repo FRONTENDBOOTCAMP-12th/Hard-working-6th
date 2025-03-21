@@ -1,4 +1,5 @@
 import supabaseClient from '@/utils/SupabaseClient';
+import { editProfile } from '@/utils/supabaseProfile';
 import { useEffect, useId, useState } from 'react';
 
 interface AvatarSelectorProps {
@@ -17,6 +18,7 @@ const AvatarSelector = ({
   const id = useId();
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
     if (!url) return;
@@ -62,6 +64,19 @@ const AvatarSelector = ({
     downloadImage(url);
   }, [url]);
 
+  useEffect(() => {
+    void (async () => {
+      const { data, error } = await supabaseClient.auth.getUser();
+      console.log(data);
+      if (error) {
+        console.error('에러 발생: ', error);
+      } else {
+        setUserId(data.user?.id);
+        console.log(userId);
+      }
+    })();
+  }, []);
+
   const uploadAvatar = async (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
       setIsUploading(true);
@@ -84,6 +99,11 @@ const AvatarSelector = ({
       if (uploadError) {
         throw uploadError;
       }
+
+      editProfile({
+        id: userId,
+        avatar_url: filePath,
+      });
 
       onUpload(filePath);
     } catch (error) {
