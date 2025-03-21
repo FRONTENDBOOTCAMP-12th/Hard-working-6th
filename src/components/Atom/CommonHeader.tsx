@@ -1,6 +1,7 @@
 import { tm } from '@/utils/tw-marge';
 import left from '/src/assets/icon/chevron-left-white.svg';
 import { useNavigate } from 'react-router';
+import { useCallback } from 'react';
 
 interface CommonHeaderProps {
   text?: string;
@@ -9,9 +10,9 @@ interface CommonHeaderProps {
 function CommonHeader({ text }: CommonHeaderProps) {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    void navigate(-1);
-  };
+  const handleClick = useCallback(() => {
+    navigate(-1);
+  }, [navigate]);
 
   return (
     <header
@@ -30,10 +31,11 @@ function CommonHeader({ text }: CommonHeaderProps) {
           aria-label="뒤로가기"
           onClick={handleClick}
         >
-          <img src={left} alt="" className="w-full" />
+          <img src={left} alt="" className="w-full" loading="lazy" />
         </button>
 
         <h1
+          aria-hidden="true"
           className={tm(
             'absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]',
             'font-medium'
