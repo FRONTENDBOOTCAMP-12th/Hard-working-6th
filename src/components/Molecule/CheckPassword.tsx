@@ -53,7 +53,7 @@ function CheckPassword({
           onChange={handlePasswordChange}
         />
         {passwordMessage && (
-          <p className="absolute -bottom-6 text-red text-sm">
+          <p className="absolute -bottom-6 text-red text-sm" aria-live="polite">
             {passwordMessage}
           </p>
         )}
@@ -68,7 +68,7 @@ function CheckPassword({
           onChange={handlePasswordConfirmChange}
         />
         {passwordConfirmMessage && (
-          <p className="absolute -bottom-6 text-red text-sm">
+          <p className="absolute -bottom-6 text-red text-sm" aria-live="polite">
             {passwordConfirmMessage}
           </p>
         )}

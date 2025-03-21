@@ -74,18 +74,16 @@ function LoginList() {
       </div>
 
       <div className="mt-14 space-y-4">
-        <div className="mt-4">
-          <CommonButton type="submit" onClick={signInWithEmail}>
-            로그인
-          </CommonButton>
-        </div>
+        <CommonButton type="submit" onClick={signInWithEmail}>
+          로그인
+        </CommonButton>
 
         <CommonButton type="submit" color="bg-black" onClick={signInWithOAuth}>
           <BrandGithub /> Github
         </CommonButton>
 
         <Link to="/sign-up">
-          <CommonButton type="submit" color="bg-gray">
+          <CommonButton color="bg-gray-500">
             아직 회원이 아니신가요?
           </CommonButton>
         </Link>
