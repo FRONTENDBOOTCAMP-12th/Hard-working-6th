@@ -53,7 +53,7 @@ function getIconName(text: string) {
       return ['calendar-fold', '꿈꾸던 직장을 만날 수 있을까요?'];
     case '재회운':
       return ['calendar-fold', '그 사람과 다시 만날 수 있을까요?'];
-    case '월간운세':
+    case '오늘의 운세':
       return ['calendar-fold', '이번 달, 행운이 찾아올까요?'];
     default:
       return 'default';

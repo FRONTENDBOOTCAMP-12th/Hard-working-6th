@@ -12,7 +12,7 @@ function ThemeButtonList() {
     '학업운',
     '취업운',
     '재회운',
-    '월간운세',
+    '오늘의 운세',
   ];
   const updateTheme = useStore((state) => state.updateTheme);
   const [TodayFortuneTheme, setTodayFortuneTheme] = useState<string[]>([]);
