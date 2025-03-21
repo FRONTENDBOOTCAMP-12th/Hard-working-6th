@@ -12,6 +12,7 @@
   align-items: center;
   width: 100%;
   height: 100%;
+  margin: auto;
 
 
   .swiper-slide {
@@ -22,6 +23,7 @@
     padding-block-start: 120px;
     justify-items: center;
     margin: auto;
+
 
     opacity: 0;
 
