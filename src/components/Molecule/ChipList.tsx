@@ -2,12 +2,12 @@ import { useState } from 'react';
 import Chip from '../Atom/Chip';
 
 const chipData = [
-  '오늘의 운세',
+  '재회운',
   '애정운',
   '재물운',
   '학업운',
   '취업운',
-  '월간운세',
+  '오늘의 운세',
 ];
 
 interface ChipListProps {
