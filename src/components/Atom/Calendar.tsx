@@ -61,7 +61,6 @@ function CustomCalendar({ onDateSelect, markedDates }: CustomCalendarProps) {
           src="/assets/calendar-paper.webp"
           alt="배경 이미지"
           className="background-img"
-          loading="lazy"
         />
         <MemoizedCalendar
           ref={calendarRef}
