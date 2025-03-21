@@ -1,6 +1,7 @@
 import supabaseClient from '@/utils/SupabaseClient';
 import { editProfile } from '@/utils/supabaseProfile';
 import { useEffect, useId, useState } from 'react';
+import pencil from '/src/assets/icon/pencil.svg';
 
 interface AvatarSelectorProps {
   url?: string; // 현재 아바타 URL 또는 경로
@@ -136,7 +137,7 @@ const AvatarSelector = ({
           htmlFor={id}
           className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-lg cursor-pointer"
         >
-          <img src="/src/assets/icon/pencil.svg" alt="편집하기" />
+          <img src={pencil} alt="편집하기" />
         </label>
         <input
           id={id}
