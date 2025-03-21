@@ -1,6 +1,9 @@
 .swiper.card-swiper {
   width: 340px;
   height: 380px;
+
+  display: flex;
+  justify-content: center;
 }
 
 .swiper.card-swiper .swiper-wrapper {
