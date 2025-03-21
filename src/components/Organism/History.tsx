@@ -66,7 +66,7 @@ function TairoHistory({ userId }: TairoHistoryProps) {
         const date = new Date(item.created_at);
         date.setHours(date.getHours() - 9);
         const dateKey = item.created_at.split('T')[0]; // 날짜만 추출
-        acc[dateKey] = { isMarked: true, color: 'red' };
+        acc[dateKey] = { isMarked: true, color: 'brown' };
         return acc;
       },
       {} as Record<string, { isMarked: boolean; color: string }>
