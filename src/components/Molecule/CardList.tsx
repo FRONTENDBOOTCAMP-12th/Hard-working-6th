@@ -71,7 +71,7 @@ function CardList({ setIsActive }: CardListProps) {
                 'absolute',
                 'left-1/2',
                 'transform -translate-x-1/2',
-                " bg-[url('/src/assets/tarot-image/card-back.png')]",
+                " bg-[url('/assets/tarot-image/card-back.png')]",
                 'bg-cover',
                 'shadow-md',
                 'w-20',
