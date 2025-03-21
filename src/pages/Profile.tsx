@@ -3,7 +3,7 @@ import ProfileCard from '@/components/Organism/ProfileCard';
 
 const Profile = () => {
   return (
-    <div className="min-h-screen p-6 text-white relative bg-[var(--color-primary-gradient1)]">
+    <div className="min-h-screen p-6 text-white relative">
       <ProfileCard />
       {/* <ProfileNavigation /> */}
     </div>
