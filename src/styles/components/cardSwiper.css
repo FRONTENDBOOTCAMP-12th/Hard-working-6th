@@ -4,6 +4,7 @@
 
   display: flex;
   justify-content: center;
+
 }
 
 .swiper.card-swiper .swiper-wrapper {
@@ -12,8 +13,6 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  margin: auto;
-
 
   .swiper-slide {
     position: relative;
@@ -22,7 +21,6 @@
     padding-top: 120px;
     padding-block-start: 120px;
     justify-items: center;
-    margin: auto;
 
 
     opacity: 0;
@@ -59,9 +57,12 @@
 
     img {
       width: 124px;
+
+
+
+
+
       box-shadow: 7px 4px 15px 4px rgb(0 0 0 / 40%);
-      left: 50%;
-      transform: translateX(-50%);
     }
 
     p {
