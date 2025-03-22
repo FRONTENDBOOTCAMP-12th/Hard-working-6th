@@ -1,9 +1,8 @@
 import cardsData from '@/assets/data/card_data.json';
 import CardItem from '../Atom/CardSlideItem';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, EffectCards } from 'swiper/modules';
+import { Autoplay, EffectCoverflow } from 'swiper/modules';
 import 'swiper/css';
-import { EffectCoverflow } from 'swiper/modules';
 
 // 카드 데이터 타입
 interface Card {
