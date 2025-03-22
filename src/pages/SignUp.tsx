@@ -1,13 +1,18 @@
-import Logo from '/src/assets/Logo.png';
-import CommonHeader from '../components/Atom/CommonHeader';
+import Logo from '/assets/logo-login.svg';
 import SignUpList from '@/components/Organism/SignUpList';
 
 function SignUp() {
   return (
     <div className="flex flex-col items-center p-5">
-      <CommonHeader></CommonHeader>
       <h1 className="sr-only">Sign Up</h1>
-      <img src={Logo} alt="tAIro" className="w-33 mb-10" />
+      <img
+        src={Logo}
+        alt="tAIro"
+        className="my-20"
+        width={132}
+        height={94}
+        fetchPriority="high"
+      />
       <SignUpList></SignUpList>
     </div>
   );

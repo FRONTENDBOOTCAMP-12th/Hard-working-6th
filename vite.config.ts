@@ -16,7 +16,8 @@ const viteConfig = defineConfig({
         start_url: '/',
         display: 'standalone',
         background_color: '#ffffff',
-        theme_color: '#4F2D86',
+        theme_color: '#4F2D88',
+        description: 'AI가 보는 타로로 미래를 예측해보세요!',
         icons: [
           {
             src: 'icon/icon-192x192.png',

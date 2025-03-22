@@ -19,20 +19,13 @@ interface ProfileResponse {
 export const getProfile = async ({
   // 특정 열(columns) 읽기
   columns = '*',
-  // 페이지네이션
-  page = 0,
-  perPage = 10,
   // 정렬
-  orderBy = 'created_at',
+  orderBy = 'updated_at',
   isAscending = false,
 } = {}) => {
-  const fromIndex = page > 0 ? page + perPage - 1 : 0;
-  const toIndex = perPage > 1 ? page + perPage - 1 : fromIndex;
-
   return supabaseClient
     .from(DB_NAME)
     .select(columns)
-    .range(fromIndex, toIndex)
     .order(orderBy, { ascending: isAscending })
     .returns<ProfileResponse[]>();
 };
@@ -43,7 +36,7 @@ export const addProfile = async (newItem: ProfileResponse) => {
 };
 
 // 행(row) 데이터 수정
-export const editProfile = async (editItem: ProfileResponse) => {
+export const editProfile = async (editItem) => {
   return supabaseClient
     .from(DB_NAME)
     .update(editItem)

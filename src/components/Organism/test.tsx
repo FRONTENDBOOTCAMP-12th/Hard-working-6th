@@ -13,6 +13,7 @@ function TestComponent() {
         console.error('에러 발생: ', error);
       } else {
         setUserId(data.user?.id);
+        console.log('유저 아이디:', userId);
       }
     })();
   }, []);
