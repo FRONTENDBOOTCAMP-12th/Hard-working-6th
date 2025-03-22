@@ -31,7 +31,7 @@ function TairoHistory({ userId }: TairoHistoryProps) {
     if (contentRef.current) {
       contentRef.current.scrollTop = 0; // 스크롤을 맨 위로 초기화
     }
-  }, [selectedChip, filteredData]);
+  }, [selectedChip]);
 
   useEffect(() => {
     const fetchHistory = async () => {
@@ -65,7 +65,7 @@ function TairoHistory({ userId }: TairoHistoryProps) {
       (acc, item) => {
         const date = new Date(item.created_at);
         date.setHours(date.getHours() - 9);
-        const dateKey = item.created_at.split('T')[0]; // 날짜만 추출
+        const dateKey = item.created_at.split('T')[0];
         acc[dateKey] = { isMarked: true, color: 'brown' };
         return acc;
       },

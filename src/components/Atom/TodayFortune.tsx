@@ -65,7 +65,7 @@ function TodayFortune({ className }: TodayFortuneProps) {
         .eq('today_fortune_date', today)
         .single(); // 단일 행 조회
 
-      console.log('data:', data);
+      // console.log('data:', data);
 
       if (error && error.code !== 'PGRST116') {
         // 'PGRST116': 조회된 데이터가 없는 경우 발생하는 에러
@@ -96,15 +96,6 @@ function TodayFortune({ className }: TodayFortuneProps) {
           today_fortune_date: today,
         };
         await addFortune(insertData);
-
-        // const { error: insertError } = await supabaseClient
-        //   .from('user_fortune')
-        //   .insert(insertData);
-
-        // if (insertError) {
-        //   console.error('운세 저장 중 오류 발생:', insertError);
-        //   return;
-        // }
 
         setTodayFortune(newFortune);
       }
