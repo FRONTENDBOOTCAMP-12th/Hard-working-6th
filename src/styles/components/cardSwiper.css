@@ -60,6 +60,8 @@
     img {
       width: 124px;
       box-shadow: 7px 4px 15px 4px rgb(0 0 0 / 40%);
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     p {
