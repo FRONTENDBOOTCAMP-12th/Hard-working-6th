@@ -2,7 +2,7 @@ import CommonNav from '@/components/Atom/CommonNav';
 import TodayFortune from '../components/Atom/TodayFortune';
 import CardSwiper from '../components/Molecule/CardSwiper';
 import LogoText from '/src/assets/LogoText.png';
-import UserZodiac from '@/components/Atom/UserZodiac';
+import UserZodiacSign from '@/components/Atom/UserZodiacSign';
 
 function HomePage() {
   return (
@@ -12,7 +12,7 @@ function HomePage() {
           <img src={LogoText} alt="tAIro" />
         </h1>
 
-        <UserZodiac className="absolute top-6 right-11" />
+        <UserZodiacSign className="absolute top-12 right-11" />
 
         <TodayFortune className="mb-20" />
 
