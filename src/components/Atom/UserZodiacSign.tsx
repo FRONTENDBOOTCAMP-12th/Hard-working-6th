@@ -80,7 +80,7 @@ function UserZodiacSign({ className }: UserZodiacSignProps) {
       <h2 className="sr-only">나의 별자리</h2>
       {userZodiacSign ? (
         <img
-          src={`/src${userZodiacSign.src}`}
+          src={`${userZodiacSign.src}`}
           className="w-32 opacity-95"
           alt={userZodiacSign.korean}
         />
