@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useMemo } from 'react';
+import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 import CustomCalendar from '../Atom/Calendar';
 import ChipList from '../Molecule/ChipList';
 import { getMemoList } from '@/utils/supabaseHistory';
@@ -17,47 +17,43 @@ interface TairoHistoryProps {
 }
 
 function TairoHistory({ userId }: TairoHistoryProps) {
-  const [selectedChip, setSelectedChip] = useState<string | null>(
-    '오늘의 운세'
-  );
+  const [selectedChip, setSelectedChip] = useState<string | null>('애정운');
   const [historyData, setHistoryData] = useState<HistoryItem[]>([]);
   const [filteredData, setFilteredData] = useState<HistoryItem[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const contentRef = useRef<HTMLDivElement | null>(null); // 스크롤을 참조할 ref
-  const handleChipSelect = (selection: string | null) => {
-    setSelectedChip(selection);
-  };
-  useEffect(() => {
-    if (contentRef.current) {
-      contentRef.current.scrollTop = 0; // 스크롤을 맨 위로 초기화
-    }
-  }, [selectedChip]);
+  const handleChipSelect = useCallback((selection: string | null) => {
+    setSelectedChip(selection ?? '애정운');
+  }, []);
 
   useEffect(() => {
+    if (!userId) return;
+
     const fetchHistory = async () => {
-      const { data, error } = await getMemoList({
-        columns: '*',
-        orderBy: 'created_at',
-        isAscending: false,
-      });
+      setIsLoading(true);
 
-      if (data) {
-        const userHistory = data.filter(
-          (item: HistoryItem) => item.user_id === userId
+      try {
+        const { data, error } = await getMemoList({
+          columns: '*',
+          orderBy: 'created_at',
+          isAscending: false,
+        });
+
+        if (error) throw error;
+
+        setHistoryData(
+          data?.filter((item: HistoryItem) => item.user_id === userId) ?? []
         );
-        setHistoryData(userHistory);
-      } else {
-        setHistoryData([]);
-      }
-
-      if (error) {
+      } catch (error) {
         console.error('데이터 로딩 에러:', error);
+        setHistoryData([]);
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    if (userId) {
-      fetchHistory();
-    }
+    fetchHistory();
   }, [userId]);
 
   const markedDates = useMemo(() => {
@@ -74,29 +70,31 @@ function TairoHistory({ userId }: TairoHistoryProps) {
   }, [historyData]);
 
   useEffect(() => {
-    let filtered = historyData;
+    if (!isLoading) {
+      let filtered = historyData;
 
-    if (selectedDate) {
-      const startOfDayKST = new Date(selectedDate);
-      startOfDayKST.setHours(0, 0, 0, 0);
+      if (selectedDate) {
+        const startOfDayKST = new Date(selectedDate);
+        startOfDayKST.setHours(0, 0, 0, 0);
 
-      const endOfDayKST = new Date(selectedDate);
-      endOfDayKST.setHours(23, 59, 59, 999);
+        const endOfDayKST = new Date(selectedDate);
+        endOfDayKST.setHours(23, 59, 59, 999);
 
-      filtered = filtered.filter((item) => {
-        const createdAtKST = new Date(item.created_at);
-        createdAtKST.setHours(createdAtKST.getHours() - 9); // DB에서 created_at이 로컬 시간으로 UTC 저장이 되어 로컬 시간이 +9가 되어있는 상태여서 -9로 시간을 맞춰줌
+        filtered = filtered.filter((item) => {
+          const createdAtKST = new Date(item.created_at);
+          createdAtKST.setHours(createdAtKST.getHours() - 9); // DB에서 created_at이 로컬 시간으로 UTC 저장이 되어 로컬 시간이 +9가 되어있는 상태여서 -9로 시간을 맞춰줌
 
-        return createdAtKST >= startOfDayKST && createdAtKST <= endOfDayKST;
-      });
+          return createdAtKST >= startOfDayKST && createdAtKST <= endOfDayKST;
+        });
+      }
+
+      if (selectedChip) {
+        filtered = filtered.filter((item) => item.card_theme === selectedChip);
+      }
+
+      setFilteredData(filtered);
     }
-
-    if (selectedChip) {
-      filtered = filtered.filter((item) => item.card_theme === selectedChip);
-    }
-
-    setFilteredData(filtered);
-  }, [selectedDate, selectedChip, historyData]);
+  }, [selectedDate, selectedChip, historyData, isLoading]);
 
   return (
     <div className="flex flex-col justify-center items-center p-6">
@@ -119,7 +117,11 @@ function TairoHistory({ userId }: TairoHistoryProps) {
         ref={contentRef}
         className="mt-6 w-sm text-white bg-[rgba(59,33,95,0.5)] px-4 rounded-lg h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-700"
       >
-        {filteredData.length > 0 ? (
+        {isLoading ? (
+          <p className="flex items-center justify-center h-full text-2xl">
+            로딩 중...
+          </p>
+        ) : filteredData.length > 0 ? (
           <ul className="mt-2">
             {filteredData.map((item) => (
               <li key={item.id} className="border-b border-gray-400 pt-2 pb-2">
