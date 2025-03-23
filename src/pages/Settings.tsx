@@ -1,52 +1,32 @@
-import { useNavigate } from "react-router-dom";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
-const Settings = () => {
-  const navigate = useNavigate();
-
-  // 설정 목록
-  const settingsOptions = [
-    { label: "비밀번호 변경", path: "/change-password" },
-    { label: "지난 기록 삭제", path: "/delete-history" },
-    { label: "어플 소개", path: "/about" },
-    { label: "로그아웃", path: "/logout" },
-    { label: "회원 탈퇴", path: "/delete-account" },
-  ];
-
+function Setting() {
   return (
-    <div className="relative flex flex-col items-center w-full min-h-screen bg-gradient-to-b p-6 text-white">
-      {/* 헤더 */}
-      <div className="flex items-center w-full px-4">
-        {/* 뒤로 가기 버튼 */}
-        <button onClick={() => { navigate(-1); }}>
-          <img
-            src="/assets/icon/chevron-left-white.svg"
-            alt="뒤로가기"
-            className="w-6 h-6"
-          />
-        </button>
-        <h2 className="flex-grow text-center text-lg font-semibold">설정</h2>
-      </div>
+    <div>
+      <h1 className="sr-only">Settings</h1>
+      <Accordion type="single" collapsible className="text-white">
+        <AccordionItem value="item-1">
+          <AccordionTrigger>비밀번호 변경</AccordionTrigger>
+          <AccordionContent>아코디언 매뉴입니다.</AccordionContent>
+        </AccordionItem>
 
-      {/* 설정 목록 */}
-      <ul className="mt-8 w-full max-w-md space-y-4">
-        {settingsOptions.map(({ label, path }) => (
-          <li key={path} className="border-b border-white">
-            <button
-              className="cursor-pointer w-full p-3 text-center text-lg hover:opacity-70"
-              onClick={() => { navigate(path); }} 
-              tabIndex={0} 
-              onKeyDown={(e) => {
-                if (e.key === "Enter") navigate(path); 
-              }}
-            >
-              {label}
-            </button>
-          </li>
-        ))}
-      </ul>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>지난 기록 삭제</AccordionTrigger>
+          <AccordionContent>아코디언 매뉴입니다.</AccordionContent>
+        </AccordionItem>
+
+        <AccordionItem value="item-3">
+          <AccordionTrigger>어플 소개</AccordionTrigger>
+          <AccordionContent>어플에 대한 내용</AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
-};
+}
 
-export default Settings;
-
+export default Setting;
