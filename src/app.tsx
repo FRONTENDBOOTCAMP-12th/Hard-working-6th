@@ -11,19 +11,9 @@ import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
 import NotFound from './pages/NotFound';
 import TestComponent from './components/Organism/test';
+import Settings from './pages/Settings'; 
 
 function App() {
-  // useEffect(() => {
-  //   // async function signUp() {
-  //   //   const { data, error } = await supabaseClient.auth.signUp({
-  //   //     email: 'audwognl@gmail.com',
-  //   //     password: 'password',
-  //   //   });
-  //   //   console.log(data, error);
-  //   // }
-  //   // signUp();
-  // });
-
   return (
     <BrowserRouter>
       <Routes>
@@ -42,6 +32,7 @@ function App() {
 
             <Route path="/tairo-history" element={<TairoHistory />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} /> 
 
             <Route path="/test" element={<TestComponent />} />
           </Route>
