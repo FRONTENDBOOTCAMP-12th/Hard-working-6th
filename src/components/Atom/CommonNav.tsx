@@ -1,8 +1,8 @@
 import { tm } from '@/utils/tw-marge';
-import home from '/src/assets/icon/house-white.svg';
-import tarot from '/src/assets/icon/moon-star-white.svg';
-import record from '/src/assets/icon/album-white.svg';
-import user from '/src/assets/icon/user-round-white.svg';
+import HomeIcon from '/src/assets/icon/house-white.svg?react';
+import TarotIcon from '/src/assets/icon/moon-star-white.svg?react';
+import RecordIcon from '/src/assets/icon/album-white.svg?react';
+import UserIcon from '/src/assets/icon/user-round-white.svg?react';
 import { NavLink } from 'react-router';
 
 function CommonNav() {
@@ -21,46 +21,35 @@ function CommonNav() {
           'flex flex-row items-center justify-between'
         )}
       >
-        <li>
-          <NavLink
-            to="/home"
-            end
-            className="flex flex-col items-center justify-center gap-1.5"
-          >
-            <img src={home} alt="홈 메뉴 " className="size-[30px]" />
-            <p className="text-white text-c-sm font-normal">홈</p>
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink
-            to="/tairo-theme"
-            className="flex flex-col items-center justify-center gap-1.5"
-          >
-            <img src={tarot} alt="타로 메뉴" className="size-[30px]" />
-            <p className="text-white text-c-sm font-normal">타로</p>
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink
-            to="/tairo-history"
-            className="flex flex-col items-center justify-center gap-1.5"
-          >
-            <img src={record} alt="기록 메뉴" className="size-[30px]" />
-            <p className="text-white text-c-sm font-normal">기록</p>
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink
-            to="/profile"
-            className="flex flex-col items-center justify-center gap-1.5"
-          >
-            <img src={user} alt="내정보 메뉴" className="size-[30px]" />
-            <p className="text-white text-c-sm font-normal">내정보</p>
-          </NavLink>
-        </li>
+        {[
+          { to: '/home', Icon: HomeIcon, label: '홈' },
+          { to: '/tairo-theme', Icon: TarotIcon, label: '타로' },
+          { to: '/tairo-history', Icon: RecordIcon, label: '기록' },
+          { to: '/profile', Icon: UserIcon, label: '내정보' },
+        ].map(({ to, Icon, label }) => (
+          <li key={to}>
+            <NavLink
+              to={to}
+              end
+              className={({ isActive }: { isActive: boolean }) =>
+                tm(
+                  'flex flex-col items-center justify-center gap-1.5',
+                  isActive ? 'text-yellow-400' : 'text-white'
+                )
+              }
+            >
+              {({ isActive }: { isActive: boolean }) => (
+                <>
+                  <Icon
+                    className="size-[30px]"
+                    fill={isActive ? '#FACC15' : '#FFFFFF'}
+                  />
+                  <p className="text-c-sm font-normal">{label}</p>
+                </>
+              )}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );
