@@ -82,6 +82,7 @@ function Setting() {
       <h1 className="sr-only">Settings</h1>
 
       <Accordion type="single" collapsible className="text-white">
+        {/* 비밀번호 변경 */}
         <AccordionItem value="item-1">
           <AccordionTrigger>비밀번호 변경</AccordionTrigger>
           <AccordionContent>
@@ -114,6 +115,7 @@ function Setting() {
           </AccordionContent>
         </AccordionItem>
 
+        {/* 지난 기록 삭제 */}
         <AccordionItem value="item-2">
           <AccordionTrigger>지난 기록 삭제</AccordionTrigger>
           <AccordionContent>
@@ -134,6 +136,7 @@ function Setting() {
           </AccordionContent>
         </AccordionItem>
 
+        {/* 어플 소개 */}
         <AccordionItem value="item-3">
           <AccordionTrigger>어플 소개</AccordionTrigger>
           <AccordionContent>
@@ -143,6 +146,7 @@ function Setting() {
           </AccordionContent>
         </AccordionItem>
 
+        {/* 로그아웃 */}
         <AccordionItem value="item-4">
           <AccordionTrigger>로그아웃</AccordionTrigger>
           <AccordionContent>
@@ -158,13 +162,14 @@ function Setting() {
                   로그아웃하기
                 </button>
                 <button className="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-black rounded-md">
-                  아니오
+                  로그인 유지하기
                 </button>
               </div>
             </div>
           </AccordionContent>
         </AccordionItem>
 
+        {/* 회원 탈퇴 */}
         <AccordionItem value="item-5">
           <AccordionTrigger>회원 탈퇴</AccordionTrigger>
           <AccordionContent>
