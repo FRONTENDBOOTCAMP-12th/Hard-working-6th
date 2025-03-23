@@ -16,15 +16,16 @@
     position: relative;
 
     height: 100%;
-    padding-top: 120px;
-    padding-block-start: 120px;
-    justify-items: center;
+    padding-top: 96px;
+    padding-block-start: 96px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     opacity: 0;
 
-    .tit {
-      z-index: 12;
-
+    .slide-tit {
       display: none;
       flex-flow: column;
       align-items: center;
@@ -54,12 +55,13 @@
 
     img {
       width: 124px;
+
+      border-radius: 10px;
       box-shadow: 7px 4px 15px 4px rgb(0 0 0 / 40%);
     }
 
     p {
       display: none;
-      z-index: 12;
 
       position: absolute;
       bottom: 0;
@@ -83,7 +85,7 @@
     z-index: 12;
     opacity: 1;
 
-    .tit {
+    .slide-tit {
       display: flex;
       opacity: 1;
     }

@@ -32,7 +32,7 @@ function TodayFortune({ className }: TodayFortuneProps) {
   const [userId, setUserId] = useState<string | null>(null);
   // 오늘의 운세
   const [todayFortune, setTodayFortune] = useState<Fortune>({
-    title: '운세를 불러오는 중...',
+    title: '오늘의 포춘 생성중...',
     desc: '잠시만 기다려 주세요.',
   });
 

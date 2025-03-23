@@ -41,11 +41,8 @@ function CardSwiper() {
       >
         {cards?.cards.map((card: Card, index: number) => {
           return (
-            <SwiperSlide
-              key={index}
-              className="flex justify-center items-center"
-            >
-              <div className="tit">
+            <SwiperSlide key={index}>
+              <div className="slide-tit">
                 <h3>{card.name}</h3>
                 <span>{card.number}</span>
               </div>
