@@ -23,7 +23,7 @@ function PageLayout() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-bg-gradient2 to-bg-gradient1">
+    <div className="min-h-screen pt-[110px] bg-gradient-to-tr from-bg-gradient2 to-bg-gradient1">
       <CommonHeader text={getHeaderText(location.pathname)}></CommonHeader>
       <div className="p-5 w-full h-full -z-40 pb-[110px]">
         <Outlet></Outlet>

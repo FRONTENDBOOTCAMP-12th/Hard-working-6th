@@ -21,7 +21,7 @@ const cards: Cards = cardsData;
 function CardSwiper() {
   return (
     <section className="flex flex-col items-center justify-center">
-      <h2 className="sr-only">타로 카드 보기</h2>
+      <h2 className="sr-only">타로 카드 설명</h2>
 
       <Swiper
         loop={true}
@@ -29,7 +29,8 @@ function CardSwiper() {
         slidesPerView={2}
         loopAdditionalSlides={1}
         slideToClickedSlide={true}
-        autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 3700 }}
+        speed={700}
         effect="coverflow"
         coverflowEffect={{
           rotate: 0,

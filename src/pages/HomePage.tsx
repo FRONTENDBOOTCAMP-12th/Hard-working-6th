@@ -14,7 +14,7 @@ function HomePage() {
 
         <UserZodiacSign className="absolute top-18 right-11" />
 
-        <TodayFortune className="mb-20" />
+        <TodayFortune className="mb-19" />
 
         <CardSwiper />
       </div>
