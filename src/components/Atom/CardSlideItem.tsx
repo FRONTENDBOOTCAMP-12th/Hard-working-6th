@@ -18,6 +18,7 @@ function CardItem({ card }: CardItemProps) {
 
   return (
     <motion.div
+      className="card-img-wrapper"
       initial={{ y: 0, scale: 1, opacity: 0.8 }}
       animate={{
         y: isActive ? -30 : 0,
