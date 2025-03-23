@@ -2,8 +2,8 @@
   "cards": [
     {
       "name": "The Fool",
-      "number": "0",
-      "src": "/assets/tarot-image/00-the-fool.png",
+      "number": "O",
+      "src": "/assets/tarot-image/00-the-fool.webp",
       "mean": "새로운 시작, 자유, 순수, 모험"
     },
     {
@@ -75,13 +75,13 @@
     {
       "name": "The Hanged Man",
       "number": "XII",
-      "src": "/assets/tarot-image/12-the-hanged-man.png",
+      "src": "/assets/tarot-image/12-the-hanged-man.webp",
       "mean": "희생, 관점 변화, 기다림"
     },
     {
       "name": "Death",
       "number": "XIII",
-      "src": "/assets/tarot-image/13-death.png",
+      "src": "/assets/tarot-image/13-death.webp",
       "mean": "끝맺음, 전환, 새로운 시작"
     },
     {
@@ -105,13 +105,13 @@
     {
       "name": "The Star",
       "number": "XVII",
-      "src": "/assets/tarot-image/17-the-star.png",
+      "src": "/assets/tarot-image/17-the-star.webp",
       "mean": "희망, 영감, 치유"
     },
     {
       "name": "The Moon",
       "number": "XVIII",
-      "src": "/assets/tarot-image/18-the-moon.png",
+      "src": "/assets/tarot-image/18-the-moon.webp",
       "mean": "환상, 직관, 무의식"
     },
     {
@@ -129,7 +129,7 @@
     {
       "name": "The World",
       "number": "XXI",
-      "src": "/assets/tarot-image/21-the-world.png",
+      "src": "/assets/tarot-image/21-the-world.webp",
       "mean": "완성, 성취, 통합"
     }
   ]

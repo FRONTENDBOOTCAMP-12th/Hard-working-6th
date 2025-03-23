@@ -18,10 +18,11 @@ function CommonHeader({ text }: CommonHeaderProps) {
     <header
       className={tm(
         'w-full h-[110px]',
+        'fixed top-0 left-0',
         'pt-16',
         'bg-transparent',
         'text-white',
-        'z-22'
+        'z-999'
       )}
     >
       <div className={tm('relative', 'flex flex-row')}>

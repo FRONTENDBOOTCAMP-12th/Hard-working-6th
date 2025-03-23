@@ -1,6 +1,6 @@
 import { useSwiperSlide } from 'swiper/react';
 import { motion } from 'motion/react';
-import cardBack from '@/assets/tarot-image/card-back.png';
+import cardBack from '/assets/tarot-image/card-back.webp';
 
 interface Card {
   name: string;
@@ -21,7 +21,7 @@ function CardItem({ card }: CardItemProps) {
       className="card-img-wrapper"
       initial={{ y: 0, scale: 1, opacity: 0.8 }}
       animate={{
-        y: isActive ? -30 : 0,
+        y: isActive ? -32 : 0,
         scale: isActive ? 1.1 : 1,
         opacity: isActive ? 1 : 0.8,
       }}
