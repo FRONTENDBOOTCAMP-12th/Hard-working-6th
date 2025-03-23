@@ -1,7 +1,7 @@
 import CommonNav from '@/components/Atom/CommonNav';
 import TodayFortune from '../components/Atom/TodayFortune';
 import CardSwiper from '../components/Molecule/CardSwiper';
-import LogoText from '/src/assets/LogoText.png';
+import LogoText from '/assets/LogoText.png';
 import UserZodiacSign from '@/components/Atom/UserZodiacSign';
 
 function HomePage() {

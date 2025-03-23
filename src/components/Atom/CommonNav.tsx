@@ -12,7 +12,7 @@ function CommonNav() {
         'w-full h-[83px] pt-[14px]',
         'bg-black opacity-57',
         'fixed bottom-0 left-0',
-        'z-22'
+        'z-999'
       )}
     >
       <ul

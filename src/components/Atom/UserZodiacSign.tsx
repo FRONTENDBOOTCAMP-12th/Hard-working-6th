@@ -81,11 +81,11 @@ function UserZodiacSign({ className }: UserZodiacSignProps) {
       {userZodiacSign ? (
         <img
           src={`${userZodiacSign.src}`}
-          className="w-32 opacity-95"
+          className="w-32 opacity-97"
           alt={userZodiacSign.korean}
         />
       ) : (
-        <p>로딩중입니다..</p>
+        <p className="mt-10 text-white opacity-70">당신의 별자리는..</p>
       )}
     </section>
   );
