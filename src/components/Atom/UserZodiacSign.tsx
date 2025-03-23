@@ -86,6 +86,7 @@ function UserZodiacSign({ className }: UserZodiacSignProps) {
         />
       ) : (
         <p className="mt-10 text-white opacity-70">당신의 별자리는..</p>
+
       )}
     </section>
   );
