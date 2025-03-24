@@ -48,17 +48,91 @@
 
 ### 🔨 기술 스택
 
-[![My Skills](https://skillicons.dev/icons?i=git,ts,react,tailwind,supabase,vite,vercel)](https://skillicons.dev)
-&nbsp;&nbsp;<img src="https://github.com/user-attachments/assets/c9cf585e-6385-4755-bd1b-ccef9d1f49e1" width="45" height="45">
+#### Frontend
+
+[![Frontend](https://skillicons.dev/icons?i=html,css,tailwind,ts,react)](https://skillicons.dev)
+<img src="https://github.com/user-attachments/assets/c9cf585e-6385-4755-bd1b-ccef9d1f49e1" width="45" height="45">
+
+#### Database
+
+[![Database](https://skillicons.dev/icons?i=supabase)](https://skillicons.dev)
+
+#### Version Control Systems
+
+[![Version control](https://skillicons.dev/icons?i=git,github)](https://skillicons.dev)
+
+#### CI/CD
+
+[![Version control](https://skillicons.dev/icons?i=vite,netlify)](https://skillicons.dev)
 
 ### 🔮 주제
 
-언제 어디서나 간단하고 편리있게 타로를 볼 수 있는 모바일 어플
+언제 어디서나 간단하고 편리하게 타로를 볼 수 있는 모바일 어플
 
 ### 🎨 시안
 
-- [피그마 시안 바로가기](https://www.figma.com/design/wSyDpiIDwv0Yn1uJByQQ4a/final-project?node-id=0-1&p=f&t=z2eeavrcsR6EHSrJ-0)
+[피그마 시안 바로가기](https://www.figma.com/design/wSyDpiIDwv0Yn1uJByQQ4a/final-project?node-id=0-1&p=f&t=z2eeavrcsR6EHSrJ-0)
 
 ### 🖇️ User Flow
 
 <img src="/public/assets/read-me/user-flow.jpg" width="800">
+
+## 3️⃣ 주요 기능
+
+### 주요 기능 시연 및 설명
+
+|     제목     | 상세설명                                                                                                                                                                                                         |
+| :----------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|     주제     | 회원가입 - 아이디 중복확인                                                                                                                                                                                       |
+|  동작 화면   | <img src="/public/assets/read-me/tairo-signup-id.gif"  width="430">                                                                                                                                              |
+| 기능 및 구현 | - 아이디 중복확인을 하지 않으면 알림창이 뜸 <br> - 이메일 형식에 맞지 않으면 유효성 검사를 통해 알려줌<br>- 중복된 아이디일 경우 경고 알림창을 띄워줌 <br> - 사용 가능한 아이디일 경우 확인 알림창을 띄워줌 <br> |
+
+<br>
+
+|     제목     | 상세설명                                                                                                                                         |
+| :----------: | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+|     주제     | 회원가입 - 비밀번호 유효성 검사                                                                                                                  |
+|  동작 화면   | <img src="/public/assets/read-me/tairo-signup-pw.gif"  width="430">                                                                              |
+| 기능 및 구현 | - 비밀번호가 6자리 이상이 아닐 경우 유효성 검사 메세지를 띄워줌 <br> - 비밀번호 확인이 비밀번호와 동일하지 않을 경우 유효성 검사 메세지로 알려줌 |
+
+<br>
+
+|     제목     | 상세설명                                                         |
+| :----------: | :--------------------------------------------------------------- |
+|     주제     | 회원가입 - 회원가입 완료                                         |
+|  동작 화면   | <img src="/public/assets/read-me/tairo-signup.gif"  width="430"> |
+| 기능 및 구현 | - 모든 정보를 입력한 후 회원가입 버튼을 누르면 화원가입이 완료됨 |
+
+<br>
+
+|     제목     | 상세설명                                                        |
+| :----------: | :-------------------------------------------------------------- |
+|     주제     | 로그인 - 로그인 성공                                            |
+|  동작 화면   | <img src="/public/assets/read-me/tairo-login.gif"  width="430"> |
+| 기능 및 구현 | - 가입된 정보를 올바르게 입력하면 로그인이 됨                   |
+
+<br>
+
+|     제목     | 상세설명                                                                      |
+| :----------: | :---------------------------------------------------------------------------- |
+|     주제     | 메인 페이지                                                                   |
+|  동작 화면   | <img src="/public/assets/read-me/tairo-main.gif"  width="430">                |
+| 기능 및 구현 | - 오늘의 운세를 볼 수 있음<br> - 22장의 메이저 타로카드들을 슬라이드로 보여줌 |
+
+<br>
+
+|     제목     | 상세설명                                                                                                                                                                   |
+| :----------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|     주제     | 타로 테마 선택, 타로 보기                                                                                                                                                  |
+|  동작 화면   | <img src="/public/assets/read-me/tairo-fortune.gif"  width="430">                                                                                                          |
+| 기능 및 구현 | - 총 6가지의 테마 중 하나를 선택하여 운세를 볼 수 있음<br> - 테마별로 하루에 한 번씩만 운세 보기가 가능 <br> - 카드를 선택하고 결과보기 버튼을 클릭하면 운세 결과가 나타남 |
+
+<br>
+
+|     제목     | 상세설명                                                                                                            |
+| :----------: | :------------------------------------------------------------------------------------------------------------------ |
+|     주제     | 이전 운세 기록 보기                                                                                                 |
+|  동작 화면   | <img src="/public/assets/read-me/tairo-fortune.gif"  width="430">                                                   |
+| 기능 및 구현 | - 운세를 본 날은 날짜 밑에 빨간 점으로 표시<br> - 해당 날짜를 클릭하면 그 날 봤던 테마별 운세를 다시 볼 수 있음<br> |
+
+<br>
