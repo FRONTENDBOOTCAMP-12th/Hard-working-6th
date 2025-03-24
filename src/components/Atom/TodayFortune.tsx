@@ -36,9 +36,6 @@ function TodayFortune({ className }: TodayFortuneProps) {
     desc: '잠시만 기다려 주세요.',
   });
 
-  // 오늘 날짜 구하기
-  const today = new Date().toISOString().split('T')[0];
-
   useEffect(() => {
     // 수퍼베이스에서 userId 가져오기
 
@@ -53,6 +50,16 @@ function TodayFortune({ className }: TodayFortuneProps) {
     })();
   }, []);
 
+  // 오늘 날짜 구하기
+  const today = new Date()
+    .toLocaleDateString('ko-KR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    })
+    .replace(/\. /g, '-')
+    .replace(/\./g, '');
+
   useEffect(() => {
     if (!userId) return;
 
@@ -64,8 +71,6 @@ function TodayFortune({ className }: TodayFortuneProps) {
         .eq('user_id', userId)
         .eq('today_fortune_date', today)
         .single(); // 단일 행 조회
-
-      // console.log('data:', data);
 
       if (error && error.code !== 'PGRST116') {
         // 'PGRST116': 조회된 데이터가 없는 경우 발생하는 에러
