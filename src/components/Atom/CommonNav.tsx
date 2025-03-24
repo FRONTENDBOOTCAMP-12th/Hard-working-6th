@@ -1,8 +1,8 @@
 import { tm } from '@/utils/tw-marge';
-import HomeIcon from '/src/assets/icon/house-white.svg?react';
-import TarotIcon from '/src/assets/icon/moon-star-white.svg?react';
-import RecordIcon from '/src/assets/icon/album-white.svg?react';
-import UserIcon from '/src/assets/icon/user-round-white.svg?react';
+import HomeIcon from '/src/assets/icon/house.svg?react';
+import TarotIcon from '/src/assets/icon/moon-star.svg?react';
+import RecordIcon from '/src/assets/icon/album.svg?react';
+import UserIcon from '/src/assets/icon/user-round.svg?react';
 import { NavLink } from 'react-router';
 
 function CommonNav() {
@@ -42,7 +42,7 @@ function CommonNav() {
                 <>
                   <Icon
                     className="size-[30px]"
-                    fill={isActive ? '#FACC15' : '#FFFFFF'}
+                    stroke={isActive ? '#FACC15' : '#FFFFFF'}
                   />
                   <p className="text-c-sm font-normal">{label}</p>
                 </>
