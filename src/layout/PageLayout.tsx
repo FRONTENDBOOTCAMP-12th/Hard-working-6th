@@ -17,6 +17,8 @@ function PageLayout() {
         return '기록';
       case '/profile':
         return '프로필';
+      case '/settings':
+        return '설정';
       default:
         return 'title';
     }
