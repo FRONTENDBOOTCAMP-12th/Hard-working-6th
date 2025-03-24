@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -17,6 +17,7 @@ function Setting() {
   const newPwRef = useRef<HTMLInputElement>(null);
   const confirmPwRef = useRef<HTMLInputElement>(null);
   const MySwal = withReactContent(Swal);
+  const [userId, setUserId] = useState<string | null>(null);
 
   const handlePasswordChange = async () => {
     const currentPassword = currentPwRef.current?.value;
@@ -79,6 +80,35 @@ function Setting() {
     }
   };
 
+  useEffect(() => {
+    const fetchUserId = async () => {
+      const { data, error } = await supabaseClient.auth.getUser();
+
+      if (error) {
+        console.error('에러 발생:', error);
+        return;
+      }
+
+      setUserId(data?.user?.id || null);
+    };
+
+    fetchUserId();
+  }, []);
+
+  const handleDeleteHistory = async () => {
+    const { error } = await supabaseClient
+      .from('histories')
+      .delete()
+      .eq('user_id', userId);
+
+    if (!error) {
+      MySwal.fire('모든 기록이 삭제되었습니다.');
+    } else {
+      console.error('기록 삭제 중 에러 발생:', error);
+      MySwal.fire('삭제 실패! 다시 시도해주세요.');
+    }
+  };
+
   return (
     <div>
       <h1 className="sr-only">Settings</h1>
@@ -111,6 +141,22 @@ function Setting() {
                 className="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 rounded-md mt-2"
               >
                 변경하기
+              </button>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+
+        <AccordionItem value="item-2">
+          <AccordionTrigger>기록 삭제</AccordionTrigger>
+          <AccordionContent>
+            <div className="border border-white/30 rounded-xl p-4 text-sm bg-white/5">
+              모든 기록을 삭제하려면 아래 버튼을 클릭하세요.
+              <button
+                className="flex px-4 py-2 bg-gray-300 hover:bg-gray-400 text-black rounded-md mt-2"
+                onClick={handleDeleteHistory}
+                aria-label="기록 삭제"
+              >
+                기록 삭제
               </button>
             </div>
           </AccordionContent>
