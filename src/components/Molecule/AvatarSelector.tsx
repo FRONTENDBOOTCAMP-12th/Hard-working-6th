@@ -4,10 +4,10 @@ import { useEffect, useId, useState } from 'react';
 import pencil from '/src/assets/icon/pencil.svg';
 
 interface AvatarSelectorProps {
-  url?: string; // 현재 아바타 URL 또는 경로
-  size: number; // 아바타 크기
-  onUpload: (filePath: string) => void; // 업로드 후 콜백
-  onClose?: () => void; // 닫기 콜백 (옵션)
+  url?: string;
+  size: number;
+  onUpload: (filePath: string) => void;
+  onClose?: () => void;
 }
 
 const AvatarSelector = ({
@@ -24,7 +24,6 @@ const AvatarSelector = ({
   useEffect(() => {
     if (!url) return;
 
-    // URL이 이미 완전한 URL인지 확인
     if (
       url.startsWith('http') ||
       url.startsWith('blob') ||
@@ -34,7 +33,6 @@ const AvatarSelector = ({
       return;
     }
 
-    // Supabase 스토리지 경로인 경우 다운로드
     const downloadImage = async (path: string) => {
       console.log('실행');
 
@@ -54,7 +52,6 @@ const AvatarSelector = ({
           const objectUrl = URL.createObjectURL(data);
           setAvatarUrl(objectUrl);
 
-          // 컴포넌트 언마운트 시 URL 해제를 위한 클린업 함수
           return () => URL.revokeObjectURL(objectUrl);
         }
       } catch (error) {
