@@ -5,6 +5,8 @@
 - [배포 URL 바로가기](https://tairo.netlify.app/)
 - [WIKI 바로가기](https://github.com/FRONTENDBOOTCAMP-12th/Hard-working-6th/wiki)
 
+![Image](https://github.com/user-attachments/assets/3db2b92e-c622-4e1d-a2e4-b51e94de2080)
+
 ## 📋 목차
 
 1. [팀 소개](#팀-소개)
