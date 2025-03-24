@@ -1,27 +1,161 @@
-interface AvatarProps {
-    src: string;
-    alt?: string;
-    onSelect?: (newSrc: string) => void; // 이미지 변경을 위한 콜백 추가
-  }
-  
-  const Avatar = ({ src, alt = "Profile Image", onSelect }: AvatarProps) => {
-    return (
-      <button
-        onClick={() => onSelect && onSelect("/assets/avatar2.svg")}
-        onKeyDown={(e) => {
-          if ((e.key === "Enter" || e.key === " ") && onSelect) {
-            onSelect("/assets/avatar2.svg");
-          }
-        }}
-        className="w-32 h-32 rounded-full border-4 border-white shadow-lg cursor-pointer focus:outline-none"
-        aria-label="Change Profile Image"
-      >
-        <img src={src} alt={alt} className="w-full h-full rounded-full" />
-      </button>
-    );
+import supabaseClient from '@/utils/SupabaseClient';
+import { editProfile } from '@/utils/supabaseProfile';
+import { useEffect, useId, useState } from 'react';
+import pencil from '/src/assets/icon/pencil.svg';
+
+interface AvatarSelectorProps {
+  url?: string;
+  size: number;
+  onUpload: (filePath: string) => void;
+  onClose?: () => void;
+}
+
+const AvatarSelector = ({
+  url,
+  size,
+  onUpload,
+  onClose,
+}: AvatarSelectorProps) => {
+  const id = useId();
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!url) return;
+
+    if (
+      url.startsWith('http') ||
+      url.startsWith('blob') ||
+      url.startsWith('data:')
+    ) {
+      setAvatarUrl(url);
+      return;
+    }
+
+    const downloadImage = async (path: string) => {
+      console.log('실행');
+
+      try {
+        const { data, error } = await supabaseClient.storage
+          .from('avatars')
+          .download(path);
+
+        if (error) {
+          console.error('이미지 다운로드 오류:', error);
+          return;
+        }
+
+        if (data) {
+          console.log(data);
+
+          const objectUrl = URL.createObjectURL(data);
+          setAvatarUrl(objectUrl);
+
+          return () => URL.revokeObjectURL(objectUrl);
+        }
+      } catch (error) {
+        console.error(`이미지 다운로드 오류 발생! ${(error as Error).message}`);
+      }
+    };
+
+    downloadImage(url);
+  }, [url]);
+
+  useEffect(() => {
+    void (async () => {
+      const { data, error } = await supabaseClient.auth.getUser();
+      console.log(data);
+      if (error) {
+        console.error('에러 발생: ', error);
+      } else {
+        setUserId(data.user?.id);
+        console.log(userId);
+      }
+    })();
+  }, []);
+
+  const uploadAvatar = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    try {
+      setIsUploading(true);
+
+      const { files } = e.currentTarget;
+
+      if (!files || files.length === 0) {
+        throw new Error('업로드할 이미지를 선택해야 합니다.');
+      }
+
+      const [file] = files;
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `${fileName}`;
+
+      const { error: uploadError } = await supabaseClient.storage
+        .from('avatars')
+        .upload(filePath, file);
+
+      if (uploadError) {
+        throw uploadError;
+      }
+
+      editProfile({
+        id: userId,
+        avatar_url: filePath,
+      });
+
+      onUpload(filePath);
+    } catch (error) {
+      console.error((error as Error).message);
+    } finally {
+      setIsUploading(false);
+    }
   };
-  
-  
-  
-  export default Avatar;
-  
+
+  return (
+    <div className="flex flex-col items-center">
+      {avatarUrl ? (
+        <img
+          src={avatarUrl}
+          alt="아바타"
+          className="avatar image rounded-full"
+          style={{ height: size, width: size }}
+        />
+      ) : (
+        <div
+          className="avatar no-image bg-gray-200 rounded-full flex items-center justify-center"
+          style={{ height: size, width: size }}
+        >
+          <span className="text-gray-500">이미지 없음</span>
+        </div>
+      )}
+
+      <div className="mt-4 relative" style={{ width: size }}>
+        <label
+          htmlFor={id}
+          className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-lg cursor-pointer"
+        >
+          <img src={pencil} alt="편집하기" />
+        </label>
+        <input
+          id={id}
+          type="file"
+          accept="image/*"
+          onChange={uploadAvatar}
+          disabled={isUploading}
+          style={{ visibility: 'hidden', position: 'absolute' }}
+        />
+      </div>
+
+      {onClose && (
+        <button
+          onClick={onClose}
+          className="mt-2 py-2 px-4 bg-gray-300 rounded text-gray-700"
+        >
+          취소
+        </button>
+      )}
+    </div>
+  );
+};
+
+export default AvatarSelector;
