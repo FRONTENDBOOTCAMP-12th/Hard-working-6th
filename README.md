@@ -48,16 +48,30 @@
 
 ### 🔨 기술 스택
 
-[![My Skills](https://skillicons.dev/icons?i=git,ts,react,tailwind,supabase,vite,vercel)](https://skillicons.dev)
-&nbsp;&nbsp;<img src="https://github.com/user-attachments/assets/c9cf585e-6385-4755-bd1b-ccef9d1f49e1" width="45" height="45">
+#### Frontend
+
+[![Frontend](https://skillicons.dev/icons?i=html,css,tailwind,ts,react)](https://skillicons.dev)
+<img src="https://github.com/user-attachments/assets/c9cf585e-6385-4755-bd1b-ccef9d1f49e1" width="45" height="45">
+
+#### Database
+
+[![Database](https://skillicons.dev/icons?i=supabase)](https://skillicons.dev)
+
+#### Version Control Systems
+
+[![Version control](https://skillicons.dev/icons?i=git,github)](https://skillicons.dev)
+
+#### CI/CD
+
+[![Version control](https://skillicons.dev/icons?i=vite,netlify)](https://skillicons.dev)
 
 ### 🔮 주제
 
-언제 어디서나 간단하고 편리있게 타로를 볼 수 있는 모바일 어플
+언제 어디서나 간단하고 편리하게 타로를 볼 수 있는 모바일 어플
 
 ### 🎨 시안
 
-- [피그마 시안 바로가기](https://www.figma.com/design/wSyDpiIDwv0Yn1uJByQQ4a/final-project?node-id=0-1&p=f&t=z2eeavrcsR6EHSrJ-0)
+[피그마 시안 바로가기](https://www.figma.com/design/wSyDpiIDwv0Yn1uJByQQ4a/final-project?node-id=0-1&p=f&t=z2eeavrcsR6EHSrJ-0)
 
 ### 🖇️ User Flow
 
