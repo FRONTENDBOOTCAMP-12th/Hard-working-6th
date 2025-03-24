@@ -6,12 +6,12 @@ interface AvatarProps {
 }
 
 const Avatar = ({ src, alt = 'Profile Image' }: AvatarProps) => {
-  const [selectedSrc, setSelectedSrc] = useState(src); // ✅ 상태 선언
+  const [selectedSrc, setSelectedSrc] = useState(src);
 
   return (
     <button
       type="button"
-      onClick={() => setSelectedSrc('/src/assets/avatar2.svg')} // ✅ 클릭 시 이미지 변경
+      onClick={() => setSelectedSrc('/src/assets/avatar2.svg')}
     >
       <img
         src={selectedSrc}

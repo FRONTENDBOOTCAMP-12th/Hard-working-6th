@@ -4,11 +4,10 @@ import AvatarSelector from '@/components/Molecule/AvatarSelector';
 import { getProfile } from '@/utils/supabaseProfile';
 import supabaseClient from '@/utils/SupabaseClient';
 
-// ✅ `UserProfileData` 타입 정의
 interface UserProfileData {
   full_name: string;
   gender: string;
-  birth_date: string;
+  birthdate: string;
   zodiac_sign: string;
   email: string;
   joined_at: string;
@@ -45,7 +44,7 @@ const ProfileCard = () => {
       console.log(data);
       if (data) {
         const userData = data.filter((item) => item.id === userId);
-        console.log('durl', userData[0].avatar_url); // 이부분
+        console.log('durl', userData[0].avatar_url);
         setUserProfile(userData[0]);
         setAvatar(userData[0].avatar_url);
       }
@@ -64,23 +63,21 @@ const ProfileCard = () => {
         url={avatar}
         size={150}
         onUpload={(avatarUrl) => {
-          setAvatar(avatarUrl); // 아바타 상태도 업데이트
-          setIsModalOpen(false); // 선택 후 모달 닫기(선택 사항)
+          setAvatar(avatarUrl);
+          setIsModalOpen(false);
         }}
       />
 
-      {/* 프로필 정보 */}
       <div className="w-full flex flex-col items-center mt-6">
         <ProfileInfo
           name={userProfile?.full_name ?? '사용자'}
           gender={userProfile?.gender ?? '알 수 없음'}
-          birth={userProfile?.birth_date ?? '알 수 없음'}
+          birthdate={userProfile?.birthdate ?? '알 수 없음'}
           zodiac={userProfile?.zodiac_sign ?? ''}
           email={userProfile?.email ?? '알 수 없음'}
         />
       </div>
 
-      {/* 프로필 선택 모달 */}
       {}
     </div>
   );
