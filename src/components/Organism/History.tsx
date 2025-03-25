@@ -118,7 +118,7 @@ function TairoHistory({ userId }: TairoHistoryProps) {
         className="mt-6 w-sm text-white bg-[rgba(59,33,95,0.5)] px-4 rounded-lg h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-700"
       >
         {isLoading ? (
-          <p className="flex items-center justify-center h-full text-2xl">
+          <p className="flex items-center justify-center h-full text-xl">
             로딩 중...
           </p>
         ) : filteredData.length > 0 ? (
@@ -131,7 +131,7 @@ function TairoHistory({ userId }: TairoHistoryProps) {
             ))}
           </ul>
         ) : (
-          <p className="flex items-center justify-center h-full text-2xl">
+          <p className="flex items-center justify-center h-full text-xl">
             이전 기록이 없습니다.
           </p>
         )}
