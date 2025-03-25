@@ -7,7 +7,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen p-6 text-white relative">
+    <div className=" p-6 text-white relative">
       <div className="flex justify-start mb-4">
         <button onClick={() => navigate('/settings')}>
           <Settings className="w-6 h-6 text-white" />

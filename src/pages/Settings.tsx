@@ -166,8 +166,14 @@ function Setting() {
           <AccordionTrigger>어플 소개</AccordionTrigger>
           <AccordionContent>
             <div className="border border-white/30 rounded-xl p-4 text-sm bg-white/5">
-              타로와 AI의 결합인{' '}
-              <strong className="text-indigo-300">tairo</strong>입니다.
+              "타로와 인공지능이 만난 새로운 경험,{' '}
+              <strong className="text-indigo-300">tAIro!</strong>
+              <br></br>
+              <br></br> 육체노동이 개발한 이 혁신적인 애플리케이션은 전통적인
+              타로 카드 리딩을 AI의 직관과 분석으로 더욱 정확하고 흥미롭게
+              풀어냅니다. 운명과 인사이트를 AI와 함께 탐험하세요. <br></br>
+              <strong className="text-indigo-300">tAIro</strong>에서 당신의
+              이야기를 시작해보세요!"
             </div>
           </AccordionContent>
         </AccordionItem>
