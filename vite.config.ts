@@ -72,6 +72,9 @@ const viteConfig = defineConfig({
     }),
     svgr(),
   ],
+  optimizeDeps: {
+    exclude: ['lodash', 'moment'],
+  },
   server: {
     host: 'localhost',
     port: 3000,
