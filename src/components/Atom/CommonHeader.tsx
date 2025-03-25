@@ -1,7 +1,7 @@
 import { tm } from '@/utils/tw-marge';
 import left from '/src/assets/icon/chevron-left-white.svg';
 import { useNavigate } from 'react-router';
-import { useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface CommonHeaderProps {
   text?: string;
@@ -9,6 +9,19 @@ interface CommonHeaderProps {
 
 function CommonHeader({ text }: CommonHeaderProps) {
   const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // 스크롤 이벤트 핸들러
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY >= 40); // 40px 이상 스크롤 시 true
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleClick = useCallback(() => {
     navigate(-1);
@@ -20,7 +33,10 @@ function CommonHeader({ text }: CommonHeaderProps) {
         'w-full h-[110px]',
         'fixed top-0 left-0',
         'pt-16',
-        'bg-transparent',
+        'transition-colors duration-500',
+        isScrolled
+          ? 'bg-gradient-to-tr from-bg-gradient2 to-bg-gradient1'
+          : 'bg-transparent',
         'text-white',
         'z-999'
       )}
