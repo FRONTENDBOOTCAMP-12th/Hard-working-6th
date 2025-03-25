@@ -19,10 +19,11 @@ function CardItem({ card }: CardItemProps) {
   return (
     <motion.div
       className="card-img-wrapper"
-      initial={{ y: 0, scale: 1 }}
+      initial={{ y: 0, scale: 1, opacity: 0.8 }}
       animate={{
         y: isActive ? -32 : 0,
         scale: isActive ? 1.1 : 1,
+        opacity: isActive ? 1 : 0.8,
       }}
       transition={{ duration: 0.5, ease: 'easeInOut' }}
     >

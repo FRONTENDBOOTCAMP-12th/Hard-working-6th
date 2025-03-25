@@ -33,7 +33,7 @@ function CommonHeader({ text }: CommonHeaderProps) {
         'w-full h-[110px]',
         'fixed top-0 left-0',
         'pt-16',
-        'transition-colors duration-500',
+        'transition-colors duration-400',
         isScrolled
           ? 'bg-gradient-to-tr from-bg-gradient2 to-bg-gradient1'
           : 'bg-transparent',
