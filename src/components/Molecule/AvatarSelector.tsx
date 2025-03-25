@@ -117,7 +117,7 @@ const AvatarSelector = ({
         <img
           src={avatarUrl}
           alt="아바타"
-          className="avatar image rounded-full"
+          className="avatar image rounded-full object-cover"
           style={{ height: size, width: size }}
         />
       ) : (
