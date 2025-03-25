@@ -58,7 +58,7 @@ const ProfileCard = () => {
   }, [userId]);
 
   return (
-    <div className="relative flex flex-col items-center min-h-screen bg-gradient-to-b p-6">
+    <div className="relative flex flex-col items-center bg-gradient-to-b p-6">
       <AvatarSelector
         url={avatar}
         size={150}
