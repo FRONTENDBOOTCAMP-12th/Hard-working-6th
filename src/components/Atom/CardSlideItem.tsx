@@ -19,21 +19,21 @@ function CardItem({ card }: CardItemProps) {
   return (
     <motion.div
       className="card-img-wrapper"
-      initial={{ y: 0, scale: 1, opacity: 0.8 }}
+      initial={{ y: 0, scale: 1 }}
       animate={{
         y: isActive ? -32 : 0,
         scale: isActive ? 1.1 : 1,
-        opacity: isActive ? 1 : 0.8,
       }}
       transition={{ duration: 0.5, ease: 'easeInOut' }}
     >
       <motion.img
+        key={isActive ? card.src : 'back'}
         src={isActive ? card.src : cardBack}
         alt={isActive ? card.name : '카드 뒷면 이미지'}
         initial={{ opacity: 0 }} // 처음엔 투명한 상태
         animate={{ opacity: 1 }} // 나타나는 효과
         exit={{ opacity: 0 }} // 사라지는 효과
-        transition={{ duration: 0.2 }} // 부드러운 전환
+        transition={{ duration: 0.3 }} // 부드러운 전환
       />
     </motion.div>
   );

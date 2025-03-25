@@ -30,7 +30,7 @@ function CardSwiper() {
         loopAdditionalSlides={1}
         slideToClickedSlide={true}
         autoplay={{ delay: 3700 }}
-        speed={700}
+        speed={600}
         effect="coverflow"
         coverflowEffect={{
           rotate: 0,
