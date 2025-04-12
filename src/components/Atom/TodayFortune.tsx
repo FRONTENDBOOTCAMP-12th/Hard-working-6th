@@ -2,7 +2,7 @@ import { tm } from '@/utils/tw-marge';
 import todayFortunesData from '@/assets/data/today_fortunes.json';
 import { useEffect, useState } from 'react';
 import supabaseClient from '@/utils/SupabaseClient';
-import { addFortune } from '@/utils/supabaseFortune';
+import { upsertFortune } from '@/utils/supabaseFortune';
 
 interface Fortune {
   title: string;
@@ -94,13 +94,13 @@ function TodayFortune({ className }: TodayFortuneProps) {
         );
         const newFortune = todayFortunes.today_fortunes[randomIndex];
 
-        // 새로운 데이터 정보를 수퍼베이스에 저장
-        const insertData = {
+        // 수퍼베이스에서 동일한 id를 찾아서 새로운 데이터 정보로 수정
+        const upsertData = {
           today_fortune: newFortune,
           user_id: userId,
           today_fortune_date: today,
         };
-        await addFortune(insertData);
+        await upsertFortune(upsertData);
 
         setTodayFortune(newFortune);
       }
