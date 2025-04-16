@@ -30,6 +30,10 @@ interface FortuneResponse {
 function TodayFortune({ className }: TodayFortuneProps) {
   // 유저 아이디
   const [userId, setUserId] = useState<string | null>(null);
+
+  // 오늘 날짜
+  const [today, setToday] = useState<string>('');
+
   // 오늘의 운세
   const [todayFortune, setTodayFortune] = useState<Fortune>({
     title: '오늘의 포춘 생성중...',
@@ -38,7 +42,6 @@ function TodayFortune({ className }: TodayFortuneProps) {
 
   useEffect(() => {
     // 수퍼베이스에서 userId 가져오기
-
     void (async () => {
       const { data, error } = await supabaseClient.auth.getUser();
 
@@ -51,17 +54,33 @@ function TodayFortune({ className }: TodayFortuneProps) {
   }, []);
 
   // 오늘 날짜 구하기
-  const today = new Date()
-    .toLocaleDateString('ko-KR', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    })
-    .replace(/\. /g, '-')
-    .replace(/\./g, '');
+  // const today = new Date()
+  //     .toLocaleDateString('ko-KR', {
+  //       year: 'numeric',
+  //       month: '2-digit',
+  //       day: '2-digit',
+  //     })
+  //     .replace(/\. /g, '-')
+  //     .replace(/\./g, '');
+
+  // 한국 시간 기준으로 today 값을 UTC로 보정해 생성해주는 함수
+  const getKoreanToday = (): string => {
+    const now = new Date();
+
+    // 한국 시간 보정 (UTC+9)
+    const koreaTimeOffset = 9 * 60 * 60 * 1000;
+    const koreaNow = new Date(now.getTime() + koreaTimeOffset);
+
+    return koreaNow.toISOString().split('T')[0]; // 'YYYY-MM-DD'
+  };
+  // 컴포넌트가 마운트될 때 한 번만 today 값을 설정
+  useEffect(() => {
+    const koreanToday = getKoreanToday();
+    setToday(koreanToday);
+  }, []);
 
   useEffect(() => {
-    if (!userId) return;
+    if (!userId || !today) return;
 
     const fetchTodayFortune = async () => {
       // 수퍼베이스에서 userId, today와 일치하는 정보 찾기
