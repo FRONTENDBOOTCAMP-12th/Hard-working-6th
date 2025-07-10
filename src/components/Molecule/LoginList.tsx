@@ -18,7 +18,7 @@ function LoginList() {
     const { error, data } = await supabaseClient.auth.signInWithOAuth({
       provider: 'github',
       options: {
-        redirectTo: 'https://tairo.netlify.app/home',
+        redirectTo: 'https://tairo.vercel.app/home',
       },
     });
 
